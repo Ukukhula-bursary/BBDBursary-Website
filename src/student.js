@@ -18,6 +18,7 @@ const studentAllocationInput = document.getElementById(
 const updateStudentAllocationByIdButton = document.getElementById(
   "update-student-allocation-by-id"
 );
+
 const deleteStudentAllocationByIdButton = document.getElementById(
   "delete-student-allocation-by-id"
 );
@@ -87,4 +88,30 @@ updateStudentAllocationByIdButton.addEventListener("click", (e) => {
       .then((res) => res.json())
       .then(() => location.reload()),
   });
+});
+
+//when clicking on a row (by id)
+deleteStudentAllocationByIdButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const url = "/student/allocation/{id}";
+  fetch(url, {
+    method: "DELETE",
+  })
+    .then((res) => res.json())
+    .then(() => location.reload());
+});
+
+getStudentAllocationByTotalSpentButton.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const url = "/student/allocation/total-spent";
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => (studentAllocationSection.innerHTML += `${data.json()}`))
+    .catch((err) => console.log(err));
 });
