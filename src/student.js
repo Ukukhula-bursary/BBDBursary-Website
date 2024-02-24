@@ -46,10 +46,14 @@ getStudentAllocationByIdButton.addEventListener("click", (e) => {
   studentAllocationSection.innerHTML = "";
   const url = "student/allocation/{id}";
   fetch(url, {
-    method: "DELETE",
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
-    .then(() => location.reload());
+    .then((data) => (studentAllocationSection.innerHTML += `${data.json()}`))
+    .catch((err) => console.log(err));
 });
 
 postStudentAllocationButton.addEventListener("click", (e) => {
@@ -65,5 +69,22 @@ postStudentAllocationButton.addEventListener("click", (e) => {
       .then((res) => res.json())
       .then(() => studentAllocationInput.clear())
       .catch((err) => console.log(err)),
+  });
+});
+
+//when clicking on a row in students allocation list, then update with this button
+//update value in studentAllocationInput
+updateStudentAllocationByIdButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const amount = studentAllocationInput.value;
+  const url = "/student/allocation/{id}";
+  fetch(url, {
+    method: "PATCH",
+    headers: { "Content-Type": "Application/json" },
+    body: JSON.stringify({
+      studentAllocatedAmount: amount,
+    })
+      .then((res) => res.json())
+      .then(() => location.reload()),
   });
 });
