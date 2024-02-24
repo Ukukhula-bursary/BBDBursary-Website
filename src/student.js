@@ -1,6 +1,9 @@
 const getStudentAllocationButton = document.getElementById(
   "get-student-allocation"
 );
+const studentAllocationSection = document.getElementById(
+  "student-allocation-section"
+);
 const getStudentAllocationByIdButton = document.getElementById(
   "get-student-allocation-by-id"
 );
@@ -27,6 +30,6 @@ getStudentAllocationButton.addEventListener("click", (e) => {
     },
   })
     .then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((data) => (studentAllocationSection.innerHTML += `${data.json()}`))
     .catch((err) => console.log(err));
 });
