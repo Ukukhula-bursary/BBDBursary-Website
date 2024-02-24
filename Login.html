@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAuth Login Example</title>
+</head>
+<body>
+    <button onclick="trySampleRequest();">Try sample request</button>
+
+    <script>
+        var YOUR_CLIENT_ID = '509502634606-7bcfbabbs4mmfiphg8ae4tn4djvom8rv.apps.googleusercontent.com';
+        var YOUR_REDIRECT_URI = "http://localhost:8080";
+
+        function trySampleRequest() {
+            var params = JSON.parse(localStorage.getItem('oauth2-test-params'));
+            if (params && params['access_token']) {
+                var accessToken = params['access_token'];
+                sendTokenToEndpoint(accessToken);
+            } else {
+                oauth2SignIn();
+            }
+        }
+     
+            function sendTokenToEndpoint(accessToken) {
+                console.log('Sending token to backend:', accessToken);
+    fetch('http://localhost:8090/auth/login?oauth_token=' + accessToken, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ oauth_token: accessToken })
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error('Failed to authenticate');
+    })
+    .then(data => {
+        console.log('Login successful:', data);
+        // Display the received data on the div
+        document.getElementById('display').innerText = JSON.stringify(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle error here
+    });
+}
+
+
+
+        function oauth2SignIn() {
+            // Google OAuth 2.0 endpoint for requesting an access token
+            var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+            var form = document.createElement('form');
+            form.setAttribute('method', 'GET');
+            form.setAttribute('action', oauth2Endpoint);
+
+            var params = {
+                'client_id': YOUR_CLIENT_ID,
+                'redirect_uri': YOUR_REDIRECT_URI,
+                'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
+                'state': 'try_sample_request',
+                'include_granted_scopes': 'true',
+                'response_type': 'token'
+            };
+
+            for (var p in params) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'hidden');
+                input.setAttribute('name', p);
+                input.setAttribute('value', params[p]);
+                form.appendChild(input);
+            }
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+    <div id="display"></div>
+</body>
+</html>
