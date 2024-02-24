@@ -7,9 +7,14 @@ const studentAllocationSection = document.getElementById(
 const getStudentAllocationByIdButton = document.getElementById(
   "get-student-allocation-by-id"
 );
+
 const postStudentAllocationButton = document.getElementById(
   "post-student-allocation"
 );
+const studentAllocationInput = document.getElementById(
+  "student-allocation-input"
+);
+
 const updateStudentAllocationByIdButton = document.getElementById(
   "update-student-allocation-by-id"
 );
@@ -45,4 +50,20 @@ getStudentAllocationByIdButton.addEventListener("click", (e) => {
   })
     .then((res) => res.json())
     .then(() => location.reload());
+});
+
+postStudentAllocationButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const amount = studentAllocationInput.value;
+  const url = "/student/allocation";
+  fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "Application/json" },
+    body: JSON.stringify({
+      studentAllocatedAmount: amount,
+    })
+      .then((res) => res.json())
+      .then(() => studentAllocationInput.clear())
+      .catch((err) => console.log(err)),
+  });
 });
