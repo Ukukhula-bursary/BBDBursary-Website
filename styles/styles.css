@@ -23,7 +23,8 @@ body {
     border: 2px solid #FEFFFF;
     border-radius: 2px;
 }
-#nav-logo{
+
+#nav-logo {
     background-color: white;
     padding: 0.5rem;
     margin-right: 1rem;
@@ -93,6 +94,10 @@ body {
 .nav img {
     width: 2rem;
     margin: 0.2rem;
+}
+
+.home-section p {
+    padding: 1rem;
 }
 
 .home-section p {
@@ -340,6 +345,18 @@ a.social-link-icons:active {
     background-color: orange;
     padding: 0.5rem;
 }
+
+/* Admin Dashboard */
+
+
+#admin-dashboard {
+    background-color: chocolate;
+    display: flex;
+    flex: 3;
+
+}
+
+.home-section-add-institution {}
 
 @media (max-width : 768px) {
     #home-body {
