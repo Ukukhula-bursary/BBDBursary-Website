@@ -22,6 +22,7 @@ const getStudentAllocationByTotalSpentButton = document.getElementById(
 
 getStudentAllocationButton.addEventListener("click", (e) => {
   e.preventDefault();
+  studentAllocationSection.innerHTML = "";
   const url = "localhost:8080/student/allocation";
   fetch(url, {
     method: "GET",
@@ -32,4 +33,16 @@ getStudentAllocationButton.addEventListener("click", (e) => {
     .then((res) => res.json())
     .then((data) => (studentAllocationSection.innerHTML += `${data.json()}`))
     .catch((err) => console.log(err));
+});
+
+//get id from clicked student allocation, so getStudentAllocationByIdButton selector needs to change
+getStudentAllocationByIdButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  studentAllocationSection.innerHTML = "";
+  const url = "student/allocation/{id}";
+  fetch(url, {
+    method: "DELETE",
+  })
+    .then((res) => res.json())
+    .then(() => location.reload());
 });
