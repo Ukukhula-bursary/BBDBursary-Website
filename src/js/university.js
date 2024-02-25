@@ -15,6 +15,7 @@ const updateAllFundsButton = document.getElementById("update-all-funds-button");
 const addNewAllocationButton = document.getElementById(
   "add-new-allocation-button"
 );
+const addNewAllocationInput = document.getElementById("add-new");
 
 getApplicationByIdButton.addEventListener("click", (e) => {
   e.preventDefault();
@@ -55,5 +56,19 @@ updateAllFundsButton.addEventListener("click", (e) => {
   })
     .then((res) => res.json())
     .then(() => location.reload())
+    .catch((err) => console.log(err));
+});
+
+addNewAllocationButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const value = addNewAllocationInput.value;
+  const url = "/universities/addNew";
+  fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ Amount: value }),
+  })
+    .then((res) => res.json())
+    .then(() => location.reload()) //should get all after posted
     .catch((err) => console.log(err));
 });
