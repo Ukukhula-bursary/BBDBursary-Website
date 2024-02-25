@@ -50,3 +50,16 @@ updateStudentApplicationStatusButton.addEventListener("click", (e) => {
     .then(() => location.reload())
     .catch((err) => console.log(err));
 });
+
+// ******not sure
+updateStudentApplicationColumnValue.addEventListener("click", (e) => {
+  e.preventDefault();
+  const url = "/student/updateColumn/{studentID}";
+  fetch(url, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    //body: JSON.stringify({})
+  })
+    .then((res) => res.json())
+    .then(() => location.reload());
+});
