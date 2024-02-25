@@ -37,3 +37,16 @@ getAllStudentApplicationsButton.addEventListener("click", (e) => {
     .then((data) => data)
     .catch((err) => console.log(err));
 });
+
+updateStudentApplicationStatusButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const url = "/status/{studentID}";
+  fetch(url, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ Status: updatedStatus }),
+  })
+    .then((res) => res.json())
+    .then(() => location.reload())
+    .catch((err) => console.log(err));
+});
