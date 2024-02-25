@@ -26,4 +26,14 @@ getStudentByIdButton.addEventListener("click", (e) => {
 
 getAllStudentApplicationsButton.addEventListener("click", (e) => {
   e.preventDefault();
+  const url = "/students";
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => data)
+    .catch((err) => console.log(err));
 });
