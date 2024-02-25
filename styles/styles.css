@@ -346,6 +346,17 @@ a.social-link-icons:active {
     padding: 0.5rem;
 }
 
+.close {
+    display: none;
+    background-color: rgb(255, 113, 113);
+}
+
+.open {
+    display: block;
+    background-color: rgb(114, 245, 114);
+}
+
+
 /* Admin Dashboard */
 
 
@@ -377,16 +388,15 @@ a.social-link-icons:active {
 
 }
 
-.close {
-    display: none;
-    background-color: rgb(255, 113, 113);
+
+/* Admin - add an institution */
+
+#add-institution-section{
+    background-color: orange;
 }
 
-.open {
-    display: block;
-    background-color: rgb(114, 245, 114);
-}
-.home-section-add-institution {}
+
+
 
 @media (max-width : 768px) {
     #home-body {
