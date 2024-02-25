@@ -2,6 +2,13 @@ const getStudentByIdButton = document.getElementById("get-student-by-id");
 const getAllStudentApplicationsButton = document.getElementById(
   "get-student-applications"
 );
+const studentApplicationsSection = document.getElementById(
+  "student-applications"
+);
+
+const studentStatusOutcomeSection = document.getElementById(
+  "student-status-outcome"
+);
 const updateStudentApplicationStatusButton = document.getElementById(
   "update-student-application-status"
 );
@@ -34,7 +41,7 @@ getAllStudentApplicationsButton.addEventListener("click", (e) => {
     },
   })
     .then((res) => res.json())
-    .then((data) => data)
+    .then((data) => (studentApplicationsSection.innerHTML += `${data}`))
     .catch((err) => console.log(err));
 });
 
