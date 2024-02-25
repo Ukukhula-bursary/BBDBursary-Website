@@ -377,7 +377,15 @@ a.social-link-icons:active {
 
 }
 
+.close {
+    display: none;
+    background-color: rgb(255, 113, 113);
+}
 
+.open {
+    display: block;
+    background-color: rgb(114, 245, 114);
+}
 .home-section-add-institution {}
 
 @media (max-width : 768px) {
@@ -445,15 +453,7 @@ a.social-link-icons:active {
     #hamburger-bar-cross {
         background-color: var(--text-color);
     }
-
-    .close {
-        display: none;
-    }
-
-    .open {
-        display: block;
-    }
-
+    
     #hamburger-section {
         display: flex;
         flex-direction: row;
