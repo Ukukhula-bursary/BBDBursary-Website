@@ -351,10 +351,32 @@ a.social-link-icons:active {
 
 #admin-dashboard {
     background-color: chocolate;
+}
+
+#admin-dashboard-wrapper {
+    background-color: rgb(218, 206, 197);
     display: flex;
-    flex: 3;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4rem; 
+}
+
+#admin-dashboard-wrapper .item {
+    background-color:var(--secondary-color);
+    display: flex;
+    width: 30%;
+    height: auto;
+    flex-wrap: wrap;
+    margin: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+    color: var(--text-color);
+    padding: 2rem; 
 
 }
+
 
 .home-section-add-institution {}
 
