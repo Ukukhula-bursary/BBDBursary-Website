@@ -9,8 +9,38 @@
     
     <!-- @GetMapping("/universities/application/{id}") -->
     <section id="display-university-id"></section>
-    <button id="get-application-by-id">get application by id</button>
+    <button id="get-application-by-id-button">get application by id</button>
 
+    <!-- @GetMapping("/{id}") getUniversityAllocationById -->
+    <section id="university-allocations"></section>
+    <button id="university-allocation-by-id-button">get uni allocation by id</button>
+
+    <!-- @GetMapping("/all") getAllUniversityAllocations()  -->
+    <section id="all-university-allocations"></section>
+    <button id="get-all-university-allocations-button">get all uni allocations</button>
+
+    <!-- @PutMapping("/allocate-to-all") allocateFundsEvenlyToApproved()  -->
+    <button id="update-funds-to-all-button">update funds</button>
+
+    <!-- @PostMapping("/addnew") addNewAllocation -->
+    <input type="text">
+    <button id="add-new-allocation-button">add new allocation</button>
+
+    <!-- @GetMapping("/totalspent/{year}") getTotalSpentInYear -->
+    <section id="total-spent"></section>
+    <button id="total-spent-button">get total spent by year</button>
+
+    <!-- @GetMapping("/universities") all -->
+    <section id="all-universities"></section>
+    <button id="all-universities-button">get all universities</button>
+  
+    <!-- @PostMapping("/universities") newUniversity -->
+    <input type="text">
+    <button id="add-new-university-button">add new university</button>
+  
+    <!-- @GetMapping("/universities/{id}") universityById -->
+    <section id="university-by-id"></section>
+    <button id="get-univerity-by-id-button">get uni by id</button>
 
     <script type="text/javascript" src = "../src/js/university.js"></script>
 
