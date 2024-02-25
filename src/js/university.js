@@ -17,6 +17,9 @@ const addNewAllocationButton = document.getElementById(
 );
 const addNewAllocationInput = document.getElementById("add-new");
 
+const totalSpentButton = document.getElementById("total-spent-button");
+const displayTotalSpent = document.getElementById("total-spent");
+
 getApplicationByIdButton.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -70,5 +73,20 @@ addNewAllocationButton.addEventListener("click", (e) => {
   })
     .then((res) => res.json())
     .then(() => location.reload()) //should get all after posted
+    .catch((err) => console.log(err));
+});
+
+totalSpentButton.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const url = "/universities/totalspent/{year}";
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => (displayTotalSpent.innerHTML += `${data}`))
     .catch((err) => console.log(err));
 });
