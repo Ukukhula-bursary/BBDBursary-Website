@@ -17,7 +17,7 @@ const addNewAllocationButton = document.getElementById(
 );
 const addNewAllocationInput = document.getElementById("add-new");
 
-const totalSpentButton = document.getElementById("total-spent-button");
+const getTotalSpentButton = document.getElementById("total-spent-button");
 const displayTotalSpent = document.getElementById("total-spent");
 
 getApplicationByIdButton.addEventListener("click", (e) => {
@@ -76,7 +76,7 @@ addNewAllocationButton.addEventListener("click", (e) => {
     .catch((err) => console.log(err));
 });
 
-totalSpentButton.addEventListener("click", (e) => {
+getTotalSpentButton.addEventListener("click", (e) => {
   e.preventDefault();
 
   const url = "/universities/totalspent/{year}";
