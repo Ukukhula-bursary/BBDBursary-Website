@@ -43,3 +43,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   homeBody.style.top = homeMenuHeight + "px";
 });
+
+// This function should be called when the user is redirected back to your application with the token
+function handleTokenResponse() {
+  // Extract the token from the URL
+  var hash = window.location.hash.substring(1);
+  var params = new URLSearchParams(hash);
+  var accessToken = params.get('access_token');
+
+  // Store the token in local storage (for demonstration purposes)
+  localStorage.setItem('google_access_token', accessToken);
+
+  // Optionally, you can now use the stored token to make authenticated API requests
+}
