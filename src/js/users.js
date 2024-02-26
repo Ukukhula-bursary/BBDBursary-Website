@@ -41,3 +41,28 @@ userExistsButton.addEventListener("click", (e) => {
     })
     .catch((err) => console.log(err));
 });
+
+userExistsButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+
+  const url = "http://localhost:8090/users/new";
+
+  fetch(url, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "Application/json",
+    },
+    body: JSON.stringify({
+      firstName: firstName,
+      lastName: lastName,
+    }),
+  })
+    .then((res) => res.json())
+    .then(() => {
+      console.log("user added");
+    })
+    .catch((err) => console.log(err));
+});
