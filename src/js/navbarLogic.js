@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <li><a href="/html/admin_view/add_an_admin.html">Add An Admin</a></li>
                 <li><a href="/html/admin_view/review_a_university_application.html">Review A University Application</a></li>
                 <li><a href="/html/admin_view/review_a_student_application.html">Review A Student Application</a></li>
-                <li><a href="#">Allocate Institution Funds</a></li>
+                <li><a href="#">Allocate Funds</a></li>
                 <li>
                     <button id="logInButton" type="button" title="Log In">Log In</button>
                     <button id="logOutButton" type="button" title="Log Out">Log Out</button>
