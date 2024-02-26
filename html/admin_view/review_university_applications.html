@@ -8,9 +8,9 @@
         <!-- Download fonts locally -->
         <link rel="shortcut icon" href="">
         <title>BBD Ukukhula Bursary - Review University Application(s)</title>
+        <script src="../../src/js/navbarLogic.js" defer></script>
+        <script src="../../src/js/reviewUniversityApplications.js" defer></script>
     </head>
-    <script src="../../src/js/navbarLogic.js" defer></script>
-    <script src="../../src/js/reviewUniversityApplications.js" defer></script>
     <body>
         <main id="home-body">
             <section id="home-section-add-institution" class="home-section">
@@ -26,12 +26,7 @@
                 <section id="add-institution-section">
                     <section id="home-section-generic" class="home-section">
                         <section id="form-section" id="home-contact-section" class="home-section">
-                            <form
-                                id="generic-form"
-                                action="#"
-                                method="POST"
-                                data-netlify="true"
-                            >
+                            <form id="generic-form" action="#" method="POST">
                                 <h3 id="successMessage"></h3>
                                 <label for="university-names">University Name:</label>
                                 <select id="university-names" name="university-names" class="buttons">
@@ -47,25 +42,6 @@
                                     <option value="No">No</option>
                                     <option value="yes">Yes</option>
                                 </select>
-                                <h1 id="application-table-heading">Applications Table</h1>
-                                <section id="application-table-container">
-                                    <section id="application-list">
-                                        <table id="tableID">
-                                            <tbody id="tbodyID">
-                                                <tr id="theadings">
-                                                    <th>Application ID</th>
-                                                    <th>University Name</th>
-                                                    <th>Status</th>
-                                                    <th>Motivation</th>
-                                                    <th>Date of Application</th>
-                                                    <th>Reviewer Name</th>
-                                                    <th>Reviewer Comment</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </section>
-                                </section>
                                 <input
                                     type="submit"
                                     id="submit-button"
@@ -75,6 +51,27 @@
                             </form>
                         </section>
                     </section>
-                </main>
-            </body>
-        </html>
+                    <h1 id="application-table-heading">Applications Table</h1>
+                    <section id="application-table-container">
+                        <section id="application-list">
+                            <table id="tableID">
+                                <tbody id="tbodyID">
+                                    <tr id="theadings">
+                                        <th>Application ID</th>
+                                        <th>University Name</th>
+                                        <th>Status</th>
+                                        <th>Motivation</th>
+                                        <th>Date of Application</th>
+                                        <th>Reviewer Name</th>
+                                        <th>Reviewer Comment</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </main>
+    </body>
+</html>
