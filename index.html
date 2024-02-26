@@ -16,51 +16,6 @@
   <script src="/src/js/navbarLogic.js" defer></script>
   <script src="/index.js" defer></script>
   <body>
-    <nav id="nav">
-      <section id="hamburger-section">
-        <h2 id="hamburger-section-header">
-          <img
-            alt="graduation-cap"
-            src="src/assets/icons/bbd-logo.svg"
-            id="nav-logo"
-          />
-          <a href="/">Ukukhula Bursary</a>
-        </h2>
-
-        <form id="hamburger-form">
-          <button type="button" id="hamburger-bar">
-            <img alt="hamburger-bar" src="src/assets/icons/hamburger-bar.png" />
-          </button>
-
-          <button type="button" id="hamburger-bar-cross">
-            <img
-              alt="hamburger-bar-cross"
-              src="src/assets/icons/hamburger-bar-cross.png"
-            />
-          </button>
-        </form>
-      </section>
-
-      <ul id="nav-menu">
-        <li><a href="#home-section">Home</a></li>
-        <li><a href="/html/admin_view/admin_dashboard.html">Dashboard</a></li>
-        <li><a href="#">Add Institution</a></li>
-        <li>
-          <a href="#">Add University Head Of Department</a>
-        </li>
-        <li><a href="#">Add An Admin</a></li>
-        <li>
-          <a href="#">Review Application</a>
-        </li>
-        <li>
-          <a href="#">Allocate Institution Funds</a>
-        </li>
-        <li>
-          <button type="button" title="Log In">Log In</button>
-      </li>
-      </ul>
-    </nav>
-
     <main id="home-body">
       <section id="home-section-about-us" class="home-section">
         <h2>
@@ -91,20 +46,20 @@
         </section>
       </section>
 
-      <section id="home-section-contact-us" class="home-section">
+      <section id="home-section-generic" class="home-section">
         <section
           id="form-section"
           id="home-contact-section"
           class="home-section"
         >
           <form
-            id="contact-us-form"
+            id="generic-form"
             action="/submit"
             method="POST"
             data-netlify="true"
           >
             <h3 id="successMessage"></h3>
-            <label for="firstName" id="contact-us-form-first-name-label"
+            <label for="firstName" id="generic-form-first-name-label"
               >First Name</label
             >
             <input
