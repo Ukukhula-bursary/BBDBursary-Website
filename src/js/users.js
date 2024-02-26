@@ -4,6 +4,8 @@ const displayUserByEmail = document.getElementById("user-by-email");
 const userExistsButton = document.getElementById("user-exists-button");
 const displayUserExists = document.getElementById("user-exists");
 
+const addNewUserButton = document.getElementById("add-new-user-button");
+
 userByEmailButton.addEventListener("click", (e) => {
   e.preventDefault();
   const url = "http://localhost:8090/users/get/susan.white@bbd.co.za";
@@ -42,10 +44,12 @@ userExistsButton.addEventListener("click", (e) => {
     .catch((err) => console.log(err));
 });
 
-userExistsButton.addEventListener("click", (e) => {
+addNewUserButton.addEventListener("click", (e) => {
   e.preventDefault();
   const firstName = document.getElementById("firstName").value;
   const lastName = document.getElementById("lastName").value;
+  const phoneNumber = document.getElementById("phoneNumber").value;
+  const email = document.getElementById("email").value;
 
   const url = "http://localhost:8090/users/new";
 
@@ -58,11 +62,16 @@ userExistsButton.addEventListener("click", (e) => {
     body: JSON.stringify({
       firstName: firstName,
       lastName: lastName,
+      phoneNumber: phoneNumber,
+      email: email,
     }),
   })
-    .then((res) => res.json())
+    .then((res) => {
+      console.log(res.json());
+      res.json();
+    })
     .then(() => {
       console.log("user added");
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err, "this is err"));
 });
