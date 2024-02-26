@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <li><a href="/html/admin_view/admin_dashboard.html">Dashboard</a></li>
                 <li><a href="/html/admin_view/add_institution.html">Add Institution</a></li>
                 <li><a href="/html/admin_view/add_university_head_of_department.html">Add University Head Of Department</a></li>
-                <li><a href="#">Add An Admin</a></li>
+                <li><a href="/html/admin_view/add_an_admin.html">Add An Admin</a></li>
                 <li><a href="/html/admin_view/review_a_university_application.html">Review A University Application</a></li>
                 <li><a href="/html/admin_view/review_a_student_application.html">Review A Student Application</a></li>
                 <li><a href="#">Allocate Institution Funds</a></li>
