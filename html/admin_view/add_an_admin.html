@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../styles/styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <!-- Download fonts locally -->
+        <link rel="shortcut icon" href="">
+        <title>BBD Ukukhula Bursary - Add Admin</title>
+    </head>
+    <script src="../../src/js/navbarLogic.js" defer></script>
+    <body>
+        <main id="home-body">
+            <section id="home-section-add-institution" class="home-section">
+                <h2>
+                    <img
+                        alt="graduation-cap"
+                        src="../../src/assets/icons/graduation-cap.jfif"
+                        id="add-institution-icon"
+                        class="section-icons"
+                    >
+                    Add Admin
+                </h2>
+                <section id="add-institution-section">
+                    <section id="home-section-generic" class="home-section">
+                        <section id="form-section" id="home-contact-section" class="home-section">
+                            <form
+                                id="generic-form"
+                                action="#"
+                                method="POST"
+                                
+                            >
+                                <h3 id="successMessage"></h3>
+                                <label for="admin-role">Admin Role:</label>
+                                <select id="admin-role" name="university-status" class="buttons">
+                                    <!-- to be populated by the database -->
+                                    <option value="" selected disabled>Select Role</option>
+                                    <!-- should only be accessible by super admin -->
+                                    <option value="BBDAdmin_Finance">BBDAdmin_Finance</option>
+                                    <option value="BBDAdmin_Reviewers">BBDAdmin_Reviewers</option>
+                                    <option value="BBDSuperAdmin">BBDSuperAdmin</option>
+                                </select>
+                                <label for="firstName" id="generic-form-first-name-label">
+                                    First Name
+                                </label
+                            >
+                                <input
+                                    pattern="[a-zA-Z\s]{2,256}$"
+                                    title="First Name: Must be filled, only alphabets and space allowed."
+                                    type="text"
+                                    id="firstName"
+                                    name="First Name"
+                                    required
+                                    placeholder="Enter First Name"
+                                >
+                                <label for="lastName" id="generic-form-last-name-label">
+                                    Last Name
+                                </label
+                            >
+                                <input
+                                    pattern="[a-zA-Z\s]{2,256}$"
+                                    title="Last Name: Must be filled, only alphabets and space allowed."
+                                    type="text"
+                                    id="lastName"
+                                    name="Last Name"
+                                    required
+                                    placeholder="Enter Last Name"
+                                >
+                                <label for="emailAddress">Email</label>
+                                <input
+                                    pattern="[A-Za-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,320}$"
+                                    title="Email: Must be in the following order: 'characters@characters.domain'"
+                                    type="email"
+                                    id="emailAddress"
+                                    name="emailAddress"
+                                    required
+                                    placeholder="Enter Your Email Address"
+                                >
+                                <label for="phone-number">Phone Number</label>
+                                <input
+                                    pattern="^0[0-9]{9}$"
+                                    title="Phone Number: Must start with  0 and be followed by  9 digits."
+                                    type="tel"
+                                    id="phone-number"
+                                    name="phone-number"
+                                    required
+                                    placeholder="Enter Your Phone Number"
+                                >
+                            </form>
+                        </section>
+                    </section>
+                </main>
+            </body>
+        </html>
