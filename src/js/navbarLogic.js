@@ -49,10 +49,10 @@ createAdminNav();
   navMenu.classList.add("close");
 
   hamburgerBar.onclick = () => {
-    hamburgerBar.classList.remove("open");
-    hamburgerBar.classList.add("close");
-    hamburgerBarCross.classList.add("open");
-    navMenu.classList.add("open");
+ hamburgerBar.classList.remove("open");
+ hamburgerBar.classList.add("close");
+ hamburgerBarCross.classList.add("open");
+ navMenu.classList.add("open");
   };
 
   const navMenuHide = () => {
