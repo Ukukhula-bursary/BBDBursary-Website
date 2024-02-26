@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   document
-    .getElementById("contact-us-form")
+    .getElementById("generic-form")
     .addEventListener("submit", function (event) {
       event.preventDefault();
       submitForm();
@@ -79,6 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   function resetFormFields() {
-    document.getElementById("contact-us-form").reset();
+    document.getElementById("generic-form").reset();
   }
 });
