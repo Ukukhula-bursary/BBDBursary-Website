@@ -1,4 +1,44 @@
 document.addEventListener("DOMContentLoaded", function () {
+  
+  function createAdminNav() {
+    const navHtml = `
+        <nav id="nav">
+            <section id="hamburger-section">
+                <h2 id="hamburger-section-header">
+                    <img alt="graduation-cap" src="../../src/assets/icons/bbd-logo.svg" id="nav-logo">
+                    <a href="/">Ukukhula Bursary</a>
+                </h2>
+                <form id="hamburger-form">
+                    <button type="button" id="hamburger-bar">
+                        <img alt="hamburger-bar" src="../../src/assets/icons/hamburger-bar.png">
+                    </button>
+                    <button type="button" id="hamburger-bar-cross">
+                        <img alt="hamburger-bar-cross" src="../../src/assets/icons/hamburger-bar-cross.png">
+                    </button>
+                </form>
+            </section>
+            <ul id="nav-menu">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/html/admin_view/admin_dashboard.html">Dashboard</a></li>
+                <li><a href="/html/admin_view/add_institution.html">Add Institution</a></li>
+                <li><a href="/html/admin_view/add_university_head_of_department.html">Add University Head Of Department</a></li>
+                <li><a href="#">Add An Admin</a></li>
+                <li><a href="/html/admin_view/review_a_university_application.html">Review A University Application</a></li>
+                <li><a href="/html/admin_view/review_a_student_application.html">Review A Student Application</a></li>
+                <li><a href="#">Allocate Institution Funds</a></li>
+                <li>
+                    <button id="logInButton" type="button" title="Log In">Log In</button>
+                    <button id="logOutButton" type="button" title="Log Out">Log Out</button>
+                </li>
+            </ul>
+        </nav>
+    `;
+
+    document.body.insertAdjacentHTML('afterbegin', navHtml);
+}
+
+createAdminNav();
+  
   const hamburgerBar = document.getElementById("hamburger-bar");
   const hamburgerBarCross = document.getElementById("hamburger-bar-cross");
   const navMenu = document.getElementById("nav-menu");
@@ -44,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
   homeBody.style.top = homeMenuHeight + "px";
 
   // Save data to sessionStorage
-  sessionStorage.setItem("isSessionActive", "false");
+  sessionStorage.setItem("isSessionActive", "true");
   sessionStorage.setItem("userRole", "none");
 
   // Get saved data from sessionStorage
