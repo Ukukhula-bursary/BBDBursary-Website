@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+</head>
+<body>
+    
+
+    <!-- @RequestMapping("/users") getUserByEmail @GetMapping("/get/{email}") -->
+    <section id="user-by-email"></section>
+    <button id="user-by-email-button">get user by email</button>
+
+    <!-- @GetMapping("/exists/{email}") -->
+    <section id="user-exists"></section>
+    <button id="user-exists-button">check if user exists</button>
+
+    <!-- @GetMapping("/all") -->
+    <section id="all-users"></section>
+    <button id="all-users-button">get all users</button>
+
+    <!-- @PostMapping("/new") -->
+    <input type="text"/>
+    <button id="add-new-user-button">add new user</button>
+
+    <!-- @PutMapping("/update") -->
+    <button id="update-user-button">update user</button>
+
+    <!-- @PostMapping("/UpdateRole") -->
+    <input type="text">
+    <button id="update-role-button">update role</button>
+
+    <script type="text" src = "../src/js/users.js"></script>
+</body>
+</html>
