@@ -11,49 +11,6 @@
     </head>
     <script src="../../src/js/navbarLogic.js" defer></script>
     <body>
-        <nav id="nav">
-            <section id="hamburger-section">
-                <h2 id="hamburger-section-header">
-                    <img alt="graduation-cap" src="../../src/assets/icons/bbd-logo.svg" id="nav-logo">
-                    <a href="/">Ukukhula Bursary</a>
-                </h2>
-                <form id="hamburger-form">
-                    <button type="button" id="hamburger-bar">
-                        <img alt="hamburger-bar" src="../../src/assets/icons/hamburger-bar.png">
-                    </button>
-                    <button type="button" id="hamburger-bar-cross">
-                        <img alt="hamburger-bar-cross" src="../../src/assets/icons/hamburger-bar-cross.png">
-                    </button>
-                </form>
-            </section>
-            <ul id="nav-menu">
-                <li>
-                    <a href="#home-section">Home</a>
-                </li>
-                <li>
-                    <a href="/html/admin_view/admin_dashboard.html">Dashboard</a>
-                </li>
-                <li>
-                    <a href="/html/admin_view/add_institution.html">Add Institution</a>
-                </li>
-                <li>
-                    <a href="#">Add University Head Of Department</a>
-                </li>
-                <li>
-                    <a href="#">Add An Admin</a>
-                </li>
-                <li>
-                    <a href="#">Review Application</a>
-                </li>
-                <li>
-                    <a href="#">Allocate Institution Funds</a>
-                </li>
-                <li>
-                    <button id="logInButton" type="button" title="Log In">Log In</button>
-                    <button id="logOutButton" type="button" title="Log Out">Log Out</button>
-                </li>
-            </ul>
-        </nav>
         <main id="home-body">
             <section id="home-section-add-institution" class="home-section">
                 <h2>
@@ -66,30 +23,31 @@
                     Add An Institution
                 </h2>
                 <section id="add-institution-section">
-                    <section id="home-section-contact-us" class="home-section">
+                    <section id="home-section-generic" class="home-section">
                         <section id="form-section" id="home-contact-section" class="home-section">
                             <form
-                                id="contact-us-form"
+                                id="generic-form"
                                 action="#"
                                 method="POST"
                                 data-netlify="true"
                             >
                                 <h3 id="successMessage"></h3>
-                                <label for="firstName" id="contact-us-form-first-name-label">
+                                <label for="universityName" id="generic-form-first-name-label">
                                     University Name
                                 </label
                             >
                                 <input
                                     pattern="[a-zA-Z\s]{2,256}$"
-                                    title="FirstName: Must be filled, only one name allowed."
+                                    title="University Name: Must be filled, only alphabets and space allowed."
                                     type="text"
-                                    id="firstName"
-                                    name="firstName"
+                                    id="universityName"
+                                    name="universityName"
                                     required
                                     placeholder="Enter University Name"
                                 >
                                 <label for="universityStatus">Choose Active Status:</label>
                                 <select id="universityStatus" name="universityStatus" class="buttons">
+                                    <option value="" selected disabled>Choose Status</option>
                                     <option value="No">No</option>
                                     <option value="yes">Yes</option>
                                 </select>

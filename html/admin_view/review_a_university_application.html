@@ -7,9 +7,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <!-- Download fonts locally -->
         <link rel="shortcut icon" href="">
-        <title>BBD Ukukhula Bursary - Add Head Of Department</title>
+        <title>BBD Ukukhula Bursary - Review An Application</title>
     </head>
     <script src="../../src/js/navbarLogic.js" defer></script>
+    <script src="../../src/js/review_a_university_application.js" defer></script>
     <body>
         <main id="home-body">
             <section id="home-section-add-institution" class="home-section">
@@ -20,7 +21,7 @@
                         id="add-institution-icon"
                         class="section-icons"
                     >
-                    Add An Head Of Department
+                    Review An Application
                 </h2>
                 <section id="add-institution-section">
                     <section id="home-section-generic" class="home-section">
@@ -32,58 +33,26 @@
                                 data-netlify="true"
                             >
                                 <h3 id="successMessage"></h3>
-                                <label for="universityStatus">University Name:</label>
-                                <select id="universityStatus" name="universityStatus" class="buttons">
+                                <label for="universityName">University Name:</label>
+                                <select id="adminRole" name="universityStatus" class="buttons">
+                                    <!-- to be populated by the database -->
                                     <option value="" selected disabled>Select University</option>
                                     <option value="UCT">UCT</option>
                                     <option value="UP">UP</option>
-                                    <option value="BC">BC</option>
+                                    <option value="UKZN">UKZN</option>
                                 </select>
-                                <label for="firstName" id="generic-form-first-name-label">
-                                    First Name
+                                <label for="searchByName" id="generic-form-search-by-name-label">
+                                    Search By Name:
                                 </label
                             >
                                 <input
                                     pattern="[a-zA-Z\s]{2,256}$"
-                                    title="First Name: Must be filled, only alphabets and space allowed."
+                                    title="Name: Only alphabets and space allowed."
                                     type="text"
-                                    id="firstName"
-                                    name="First Name"
+                                    id="searchByName"
+                                    name="searchByName"
                                     required
-                                    placeholder="Enter First Name"
-                                >
-                                <label for="lastName" id="generic-form-last-name-label">
-                                    Last Name
-                                </label
-                            >
-                                <input
-                                    pattern="[a-zA-Z\s]{2,256}$"
-                                    title="Last Name: Must be filled, only alphabets and space allowed."
-                                    type="text"
-                                    id="lastName"
-                                    name="Last Name"
-                                    required
-                                    placeholder="Enter Last Name"
-                                >
-                                <label for="emailAddress">Email</label>
-                                <input
-                                    pattern="[A-Za-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,320}$"
-                                    title="Email: Must be in the following order: 'characters@characters.domain'"
-                                    type="email"
-                                    id="emailAddress"
-                                    name="emailAddress"
-                                    required
-                                    placeholder="Enter Your Email Address"
-                                >
-                                <label for="phoneNumber">Phone Number</label>
-                                <input
-                                    pattern="^0[0-9]{9}$"
-                                    title="Phone Number: Must start with  0 and be followed by  9 digits."
-                                    type="tel"
-                                    id="phoneNumber"
-                                    name="phoneNumber"
-                                    required
-                                    placeholder="Enter Your Phone Number"
+                                    placeholder="Student Name"
                                 >
                                 <label for="universityStatus">Choose Active Status:</label>
                                 <select id="isActiveStatus" name="isActiveStatus" class="buttons">
@@ -91,6 +60,29 @@
                                     <option value="No">No</option>
                                     <option value="yes">Yes</option>
                                 </select>
+                                <div id="visitor__form__container"></div>
+                                <div id="add__a__visitor__button__section">
+                                    <button id="add__a__visitor__button" class="form-control">New Visitor</button>
+                                </div>
+                                <h1 id="visitor__table_heading">Visitor Table</h1>
+                                <div id="visitor__table__container">
+                                    <div id="visitor__list">
+                                        <table id="tableID">
+                                            <tbody id="tbodyID">
+                                                <tr id="theadings">
+                                                    <th>ID</th>
+                                                    <th>Full Name</th>
+                                                    <th>Assistance</th>
+                                                    <th>Age</th>
+                                                    <th>Date of Visit</th>
+                                                    <th>Time of Visit</th>
+                                                    <th>Comments</th>
+                                                    <th></th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                                 <input
                                     type="submit"
                                     id="visitorSubmitButton"
