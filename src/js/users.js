@@ -3,15 +3,19 @@ const displayUserByEmail = document.getElementById("user-by-email");
 
 userByEmailButton.addEventListener("click", (e) => {
   e.preventDefault();
-
-  const url = "localhost:8090/users/get/susan.white@bbd.co.za";
+  console.log("clicked");
+  const url = "http://localhost:8090/users/get/susan.white@bbd.co.za";
   fetch(url, {
     method: "GET",
+    mode: "no-cors",
     headers: {
-      " Content-Type": "application/json",
+      "Content-Type": "Application/json",
     },
   })
     .then((res) => res.json())
-    .then((data) => (displayUserByEmail.innerHTML += `${data}`))
-    .catch((err) => console.log(err));
+    .then((data) => {
+      console.log(data);
+      displayUserByEmail.innerHTML += `${data}`;
+    })
+    .catch((err) => console.log(err, "hi"));
 });
