@@ -11,49 +11,6 @@
     </head>
     <script src="../../src/js/navbarLogic.js" defer></script>
     <body>
-        <nav id="nav">
-            <section id="hamburger-section">
-                <h2 id="hamburger-section-header">
-                    <img alt="graduation-cap" src="../../src/assets/icons/bbd-logo.svg" id="nav-logo">
-                    <a href="/">Ukukhula Bursary</a>
-                </h2>
-                <form id="hamburger-form">
-                    <button type="button" id="hamburger-bar">
-                        <img alt="hamburger-bar" src="../../src/assets/icons/hamburger-bar.png">
-                    </button>
-                    <button type="button" id="hamburger-bar-cross">
-                        <img alt="hamburger-bar-cross" src="../../src/assets/icons/hamburger-bar-cross.png">
-                    </button>
-                </form>
-            </section>
-            <ul id="nav-menu">
-                <li>
-                    <a href="/index.html">Home</a>
-                </li>
-                <li>
-                    <a href="/html/admin_view/admin_dashboard.html">Dashboard</a>
-                </li>
-                <li>
-                    <a href="/html/admin_view/add_institution.html">Add Institution</a>
-                </li>
-                <li>
-                    <a href="/html/admin_view/add_university_head_of_department.html">Add University Head Of Department</a>
-                </li>
-                <li>
-                    <a href="#">Add An Admin</a>
-                </li>
-                <li>
-                    <a href="#">Review Application</a>
-                </li>
-                <li>
-                    <a href="#">Allocate Institution Funds</a>
-                </li>
-                <li>
-                    <button id="logInButton" type="button" title="Log In">Log In</button>
-                    <button id="logOutButton" type="button" title="Log Out">Log Out</button>
-                </li>
-            </ul>
-        </nav>
         <main id="home-body">
             <section id="home-section-add-institution" class="home-section">
                 <h2>
@@ -82,7 +39,7 @@
                                     <option value="BBDAdmin_Finance">BBDAdmin_Finance</option>
                                     <option value="BBDAdmin_Reviewers">BBDAdmin_Reviewers</option>
                                     <option value="BBDSuperAdmin">BBDSuperAdmin</option>
-                                 </select>
+                                </select>
                                 <label for="firstName" id="generic-form-first-name-label">
                                     First Name
                                 </label
@@ -119,7 +76,6 @@
                                     required
                                     placeholder="Enter Your Email Address"
                                 >
-                                
                                 <label for="phoneNumber">Phone Number</label>
                                 <input
                                     pattern="^0[0-9]{9}$"
@@ -130,7 +86,6 @@
                                     required
                                     placeholder="Enter Your Phone Number"
                                 >
-
                                 <label for="universityStatus">Choose Active Status:</label>
                                 <select id="isActiveStatus" name="isActiveStatus" class="buttons">
                                     <option value="" selected disabled>Choose Status</option>
