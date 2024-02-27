@@ -79,8 +79,9 @@ addNewUserButton.addEventListener("click", (e) => {
   const userRoleId = document.getElementById("userRoleID").value;
   const phoneNumber = document.getElementById("phoneNumber").value;
   const email = document.getElementById("email").value;
+  const activeID = document.getElementById("isActiveID").value;
 
-  const url = "http://localhost:8090/users/new";
+  const url = "https://bursary-api-1709020026838.azurewebsites.net/users/new";
 
   fetch(url, {
     method: "POST",
@@ -94,6 +95,7 @@ addNewUserButton.addEventListener("click", (e) => {
       userRoleId: userRoleId,
       phoneNumber: phoneNumber,
       email: email,
+      aisActiveID: activeID,
     }),
   })
     .then((res) => {
