@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../styles/styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <!-- Download fonts locally -->
+        <link rel="shortcut icon" href="">
+        <title>BBD Ukukhula Bursary - Review University Application(s)</title>
+        <script src="../../src/js/navbarLogic.js" defer></script>
+        <script src="../../src/js/reviewUniversityApplications.js" defer></script>
+    </head>
+    <body>
+        <main id="home-body">
+            <section id="home-section-add-institution" class="home-section">
+                <h2>
+                    <img
+                        alt="graduation-cap"
+                        src="../../src/assets/icons/graduation-cap.jfif"
+                        id="add-institution-icon"
+                        class="section-icons"
+                    >
+                    Review University Application(s)
+                </h2>
+                <section id="add-institution-section">
+                    <section id="home-section-generic" class="home-section">
+                        <section id="form-section" id="home-contact-section" class="home-section">
+                            <form
+                                id="generic-form"
+                                class="generic-form"
+                                action="#"
+                                method="POST"
+                            >
+                                <h3 id="successMessage"></h3>
+                                <label for="university-names">University Name:</label>
+                                <select id="university-names" name="university-names" class="buttons">
+                                    <!-- to be populated by the database -->
+                                    <option value="" selected disabled>Select University</option>
+                                    <option value="UCT">UCT</option>
+                                    <option value="UP">UP</option>
+                                    <option value="UKZN">UKZN</option>
+                                </select>
+                                <label for="is-active-status">Choose Active Status:</label>
+                                <select id="is-active-status" name="is-active-status" class="buttons">
+                                    <option value="" selected disabled>Choose Status</option>
+                                    <option value="No">No</option>
+                                    <option value="yes">Yes</option>
+                                </select>
+                                <input
+                                    type="submit"
+                                    id="submit-button"
+                                    class="buttons"
+                                    value="Submit (Update)"
+                                >
+                            </form>
+                        </section>
+                    </section>
+                    <h1 id="application-table-heading">Applications Table</h1>
+                    <section id="application-table-container">
+                        <section id="application-list">
+                            <table id="tableID">
+                                <tbody id="tbodyID">
+                                    <tr id="theadings">
+                                        <th>Application ID</th>
+                                        <th>University Name</th>
+                                        <th>Status</th>
+                                        <th>Motivation</th>
+                                        <th>Date of Application</th>
+                                        <th>Reviewer Name</th>
+                                        <th>Reviewer Comment</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </main>
+    </body>
+</html>
