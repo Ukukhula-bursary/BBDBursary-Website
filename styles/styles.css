@@ -352,6 +352,7 @@ a.social-link-icons:active {
 
 .close {
     display: none;
+    background-color: rgb(255, 113, 113);
 }
 
 .open {
