@@ -29,7 +29,8 @@ const getStudentAllocationByTotalSpentButton = document.getElementById(
 getStudentAllocationButton.addEventListener("click", (e) => {
   e.preventDefault();
   studentAllocationSection.innerHTML = "";
-  const url = "localhost:8080/student/allocation";
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/student/allocation";
   fetch(url, {
     method: "GET",
     headers: {
