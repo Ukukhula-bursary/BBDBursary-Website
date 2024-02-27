@@ -29,6 +29,7 @@ const listApplicationsTesting = () => {
   return [{
     "applicationID": 1,
     "universityName": "University Of Pretoria",
+    "fundsRequested" : "R100,000.00",
     "status": "Approved",
     "motivation": "I love it here!",
     "dateOfApplication": "2024-01-01",
@@ -37,15 +38,35 @@ const listApplicationsTesting = () => {
   }, {
     "applicationID": 2,
     "universityName": "University Of Limpopo",
+    "fundsRequested" : "R100,000.00",
     "status": "Approved",
     "motivation": "I love it also here!",
     "dateOfApplication": "2023-01-01",
     "reviewerName": "John",
     "reviewerComment": "Something John Said",
+  }, {
+    "applicationID": 3,
+    "universityName": "University Of Free State",
+    "fundsRequested" : "R100,000.00",
+    "status": "Rejected",
+    "motivation": "We would like to be funded",
+    "dateOfApplication": "2020-01-01",
+    "reviewerName": "John",
+    "reviewerComment": "Sorry Not Meeting Quotas",
+  }
+    , {
+    "applicationID": 4,
+    "universityName": "University Of The Cape",
+    "fundsRequested" : "R100,000.00",
+    "status": "Under Review",
+    "motivation": "We would like to be funded",
+    "dateOfApplication": "2019-01-01",
+    "reviewerName": "John",
+    "reviewerComment": "N/A",
   }]
 };
 
-// const updateapplications = (id) => {
+// const updateApplications = (id) => {
 //   return new Promise((resolve, reject) => {
 //     $.ajax({
 //       url: `/applications/${id}`,
@@ -71,6 +92,7 @@ async function loadTable() {
     let tableRow = populateRow(
       application.applicationID,
       application.universityName,
+      application.fundsRequested,
       application.status,
       application.motivation,
       application.dateOfApplication,
@@ -112,7 +134,7 @@ function populateRow(...args) {
   updateButton.onclick = async (event) => {
     const clickedButton = event.target;
     const applicationsId = parseInt(clickedButton.value);
-    handleupdate(confirmupdate(applicationsId), applicationsId);
+    handleUpdate(confirmUpdate(applicationsId), applicationsId);
   };
   updateSection.appendChild(updateButton);
   cell.appendChild(updateSection);
@@ -128,18 +150,31 @@ function populateRow(...args) {
 // };
 // loadExistingApplicationsTable();
 
-const confirmupdate = (applicationsId) => {
+
+
+const confirmUpdate = (applicationsId) => {
   return window.confirm(
     `Your are about to update this Application: ID = ${applicationsId}?`
   );
 };
 
-const handleupdate = async (updateapplications, applicationsId) => {
-  if (updateapplications) {
-    await updateapplications(applicationsId);
+const handleUpdate = async (updateApplications, applicationsId) => {
+  if (updateApplications) {
+    await updateApplications(applicationsId);
     await loadTable();
   }
 };
+
+document.getElementById('approval-status').addEventListener('change', function () {
+  var selectedOptionText = this.options[this.selectedIndex].text;
+  var rejectionReasonContainer = document.getElementById('rejection-reason-container');
+
+  if (selectedOptionText === 'Rejected') {
+    rejectionReasonContainer.style.display = 'flex';
+  } else {
+    rejectionReasonContainer.style.display = 'none';
+  }
+});
 
 // const addapplicationsButton = document.getElementById("add-a-applications-button");
 // addapplicationsButton.onclick = () => {
