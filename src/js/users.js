@@ -1,8 +1,12 @@
+const searchUserEmail = document.getElementById("search-user-email");
 const userByEmailButton = document.getElementById("user-by-email-button");
 const displayUserByEmail = document.getElementById("user-by-email");
 
 const userExistsButton = document.getElementById("user-exists-button");
 const displayUserExists = document.getElementById("user-exists");
+
+const getAllUsersButton = document.getElementById("all-users-button");
+const displayAllUsers = document.getElementById("all-users");
 
 const addNewUserButton = document.getElementById("add-new-user-button");
 
@@ -12,8 +16,8 @@ const updateRoleButton = document.getElementById("update-role-button");
 
 userByEmailButton.addEventListener("click", (e) => {
   e.preventDefault();
-  const url =
-    "https://bursary-api-1709020026838.azurewebsites.net/users/get/susan.white@bbd.co.za";
+  const userEmail = searchUserEmail.value;
+  const url = `https://bursary-api-1709020026838.azurewebsites.net/users/get/${userEmail}`;
   fetch(url, {
     method: "GET",
     mode: "cors",
@@ -31,8 +35,8 @@ userByEmailButton.addEventListener("click", (e) => {
 
 userExistsButton.addEventListener("click", (e) => {
   e.preventDefault();
-
-  const url = "http://localhost:8090/users/exists/david.green@bbd.co.za";
+  const userEmail = searchUserEmail.value;
+  const url = `https://bursary-api-1709020026838.azurewebsites.net/users/exists/${userEmail}`;
 
   fetch(url, {
     method: "GET",
@@ -45,6 +49,25 @@ userExistsButton.addEventListener("click", (e) => {
     .then((data) => {
       console.log(data);
       displayUserExists.innerHTML += `${data}`;
+    })
+    .catch((err) => console.log(err));
+});
+
+getAllUsersButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const url = "https://bursary-api-1709020026838.azurewebsites.net/users/all";
+
+  fetch(url, {
+    method: "GET",
+    mode: "cors",
+    headers: {
+      "Content-Type": "Application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      displayAllUsers.innerHTML += `${data}`;
     })
     .catch((err) => console.log(err));
 });
