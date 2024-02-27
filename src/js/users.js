@@ -6,6 +6,10 @@ const displayUserExists = document.getElementById("user-exists");
 
 const addNewUserButton = document.getElementById("add-new-user-button");
 
+const updateUserButton = document.getElementById("update-user-button");
+
+const updateRoleButton = document.getElementById("update-role-button");
+
 userByEmailButton.addEventListener("click", (e) => {
   e.preventDefault();
   const url = "http://localhost:8090/users/get/susan.white@bbd.co.za";
@@ -48,6 +52,7 @@ addNewUserButton.addEventListener("click", (e) => {
   e.preventDefault();
   const firstName = document.getElementById("firstName").value;
   const lastName = document.getElementById("lastName").value;
+  const userRoleId = document.getElementById("userRoleID").value;
   const phoneNumber = document.getElementById("phoneNumber").value;
   const email = document.getElementById("email").value;
 
@@ -62,6 +67,7 @@ addNewUserButton.addEventListener("click", (e) => {
     body: JSON.stringify({
       firstName: firstName,
       lastName: lastName,
+      userRoleId: userRoleId,
       phoneNumber: phoneNumber,
       email: email,
     }),
@@ -74,4 +80,10 @@ addNewUserButton.addEventListener("click", (e) => {
       console.log("user added");
     })
     .catch((err) => console.log(err, "this is err"));
+});
+
+updateUserButton.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  //get edit button
 });
