@@ -26,10 +26,15 @@
                 <section id="add-institution-section">
                     <section id="home-section-generic" class="home-section">
                         <section id="form-section" id="home-contact-section" class="home-section">
-                            <form id="generic-form" action="#" method="POST">
+                            <form
+                                id="generic-form"
+                                class="generic-form"
+                                action="#"
+                                method="POST"
+                            >
                                 <h3 id="successMessage"></h3>
                                 <label for="university-names">University Name:</label>
-                                <select id="university-names" name="university-names" class="buttons">
+                                <select id="university-names" name="university-names" class="generic-drop-downs">
                                     <!-- to be populated by the database -->
                                     <option value="" selected disabled>Select University</option>
                                     <option value="UCT">UCT</option>
@@ -37,11 +42,24 @@
                                     <option value="UKZN">UKZN</option>
                                 </select>
                                 <label for="is-active-status">Choose Active Status:</label>
-                                <select id="is-active-status" name="is-active-status" class="buttons">
+                                <select id="is-active-status" name="is-active-status" class="generic-drop-downs">
                                     <option value="" selected disabled>Choose Status</option>
                                     <option value="No">No</option>
                                     <option value="yes">Yes</option>
                                 </select>
+                                <label for="approval-status">Choose Approval Status:</label>
+                                <select id="approval-status" name="approval-status" class="generic-drop-downs">
+                                    <option value="" selected disabled>Choose Approval Status:</option>
+                                    <option value="1">Accepted</option>
+                                    <option value="2">Rejected</option>
+                                    <option value="3">Under Review</option>
+                                </select>
+                                <section id="rejection-reason-container">
+                                    <label for="rejection-reason">Give Rejection Reason</label>
+                                    <input type="text" id="rejection-reason" name="rejection-reason"></input>
+                                    <label for="admin-comment">Reviewer Comment (optional)</label>
+                                    <input type="text" id="admin-comment" name="admin-comment"></input>
+                                </section>
                                 <input
                                     type="submit"
                                     id="submit-button"
@@ -52,6 +70,19 @@
                         </section>
                     </section>
                     <h1 id="application-table-heading">Applications Table</h1>
+                    <!-- Filtering -->
+                    <section id="filter-section">
+                        <label for="filter-section-status">Filter By: Approval Status</label>
+                        <select id="filter-section-status" name="filter-section" class="generic-drop-downs">
+                            <option value="" selected disabled>Status</option>
+                            <option value="1">Accepted</option>
+                            <option value="2">Rejected</option>
+                            <option value="3">Submitted</option>
+                            <option value="4">Under Review</option>
+                        </select>
+                        <button type="button" id="filter-button" class="buttons" value="Search">Search</button>
+                    </section>
+                    <!-- Table -->
                     <section id="application-table-container">
                         <section id="application-list">
                             <table id="tableID">
@@ -59,6 +90,7 @@
                                     <tr id="theadings">
                                         <th>Application ID</th>
                                         <th>University Name</th>
+                                        <th>Budget Requested</th>
                                         <th>Status</th>
                                         <th>Motivation</th>
                                         <th>Date of Application</th>

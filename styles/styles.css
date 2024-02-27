@@ -56,7 +56,6 @@ body {
 
 #nav-menu {
     margin: 1px;
-    background-color: rgb(5, 224, 67);
 }
 
 #nav ul {
@@ -235,7 +234,47 @@ section h2 {
 
 }
 
+.generic-drop-downs {
+    background-color: var(--third-color);
+    color: #FEFFFF;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+
+}
+
+#rejection-reason-container {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+}
+
+#filter-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--fourth-color)
+}
+
 .buttons:hover {
+    background-color: var(--third-color);
+    color: #FEFFFF;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+}
+
+.generic-drop-downs:hover {
     background-color: var(--secondary-color);
     color: #FEFFFF;
     padding: 20px;
@@ -294,7 +333,7 @@ a.social-link-icons:active {
     color: black;
 }
 
-#generic-form {
+.generic-form {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -302,32 +341,37 @@ a.social-link-icons:active {
     margin-top: 1rem;
 }
 
-#generic-form label {
+.generic-form label {
     background-color: var(--primary-color);
     padding: 1rem 1rem 1rem 1rem;
     color: var(--text-color);
 }
 
-#generic-form-first-name-label {
+.generic-form-first-name-label {
     border-radius: 1rem 1rem 0 0;
 }
 
-#generic-form input[type="text"],
-#generic-form input[type="email"],
-#generic-form textarea {
+.generic-form input[type="text"],
+.generic-form input[type="email"],
+.generic-form textarea {
     background-color: var(--text-color);
     padding: 1rem 1rem 1rem 1rem;
     color: var(--primary-color);
 }
 
-#generic-form input[type="submit"]:hover,
-#generic-form input[type="button"]:hover {
+.generic-form input[type="submit"]:hover,
+.generic-form input[type="button"]:hover {
     background-color: var(--secondary-color);
 }
 
-#generic-form input[type="submit"],
-#generic-form input[type="button"] {
+.generic-form input[type="submit"],
+.generic-form input[type="button"] {
     border: 2px solid var(--text-color);
+}
+
+#admin-pop-up-form-section {
+    background-color: red;
+
 }
 
 #form-section {
@@ -356,7 +400,7 @@ a.social-link-icons:active {
     background-color: rgb(114, 245, 114);
 }
 
-.dashboard a{
+.dashboard a {
     text-decoration: none;
     color: var(--text-color);
 }
@@ -364,21 +408,21 @@ a.social-link-icons:active {
 /* Dashboard */
 
 
- .dashboard {
+.dashboard {
     background-color: chocolate;
 }
 
- .dashboard-wrapper {
+.dashboard-wrapper {
     background-color: rgb(218, 206, 197);
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
-    padding: 4rem; 
+    padding: 4rem;
 }
 
- .dashboard-wrapper .item {
-    background-color:var(--secondary-color);
+.dashboard-wrapper .item {
+    background-color: var(--secondary-color);
     display: flex;
     width: 30%;
     height: auto;
@@ -386,21 +430,21 @@ a.social-link-icons:active {
     margin: 1rem;
     align-items: center;
     justify-content: center;
-    text-align: center; 
+    text-align: center;
     color: var(--text-color);
-    padding: 2rem; 
+    padding: 2rem;
 }
 
-.dashboard-wrapper .item:hover{
-    background-color:var(--primary-color);
-    color:var(--secondary-color);
+.dashboard-wrapper .item:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
 
 }
 
 
 /* Admin - add an institution */
 
-#add-institution-section{
+#add-institution-section {
     background-color: orange;
 }
 
@@ -472,7 +516,7 @@ a.social-link-icons:active {
     #hamburger-bar-cross {
         background-color: var(--text-color);
     }
-    
+
     #hamburger-section {
         display: flex;
         flex-direction: row;
@@ -638,7 +682,7 @@ a.social-link-icons:active {
         color: black;
     }
 
-    #generic-form {
+    .generic-form {
         display: flex;
         flex-direction: column;
         width: 80vw;
@@ -646,27 +690,27 @@ a.social-link-icons:active {
         margin-top: 1rem;
     }
 
-    #generic-form label {
+    .generic-form label {
         background-color: var(--primary-color);
         padding: 1rem 1rem 1rem 1rem;
         color: var(--text-color);
     }
 
-    #generic-form-first-name-label {
+    .generic-form-first-name-label {
         border-radius: 1rem 1rem 0 0;
     }
 
-    #generic-form input[type="text"],
-    #generic-form input[type="email"],
-    #generic-form input[type="tel"],
-    #generic-form textarea {
+    .generic-form input[type="text"],
+    .generic-form input[type="email"],
+    .generic-form input[type="tel"],
+    .generic-form textarea {
         background-color: var(--text-color);
         padding: 1rem 1rem 1rem 1rem;
         color: var(--primary-color);
     }
 
-    #generic-form input[type="submit"]:hover,
-    #generic-form input[type="button"]:hover {
+    .generic-form input[type="submit"]:hover,
+    .generic-form input[type="button"]:hover {
         background-color: var(--secondary-color);
     }
 
@@ -689,107 +733,106 @@ a.social-link-icons:active {
 #admin-fields-container {
     display: flex;
     flex-direction: column;
-  }
-  
-  .admin-field {
+}
+
+.admin-field {
     margin-right: auto;
     width: 100%;
-  }
-  
-  .admin-field label {
+}
+
+.admin-field label {
     background-color: rgb(213, 213, 213);
     display: flex;
     flex-direction: row;
     width: 100%;
-  }
-  
-  .form-control {
+}
+
+.form-control {
     width: 100%;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-  }
-  
-  #application-table-container {
+}
+
+#application-table-container {
     background-color: aliceblue;
     width: 100%;
     height: 5rem;
     display: flex;
     margin-bottom: 10px;
-  }
-  
-  #application-table-heading {
+}
+
+#application-table-heading {
     display: flex;
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-top: 1rem;
     color: var(--text-color);
     background-color: var(--third-color);
-  }
-  
-  table {
+}
+
+table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-  }
-  
-  td,
-  th {
+}
+
+td,
+th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-  }
-  
-  tr:nth-child(even) {
+}
+
+tr:nth-child(even) {
     background-color: #dddddd;
-  }
-  
-  .update-button {
+}
+
+.update-button {
     background-color: var(--third-color);
     color: white;
     padding: 10px;
     border-radius: 10px;
     border-color: transparent;
-  }
+}
 
-  .update-button:hover {
+.update-button:hover {
     background-color: var(--fourth-color);
     color: var(--primary-color)
-  }
-  
-  .update-button-section {
+}
+
+.update-button-section {
     display: flex;
-  }
-  
-  #add-a-admin-button-section {
+}
+
+#add-a-admin-button-section {
     display: flex;
     padding: 10px;
     border-radius: 10px;
     width: 100%;
-  }
-  
-  #add-a-admin-button {
+}
+
+#add-a-admin-button {
     background-color: rgb(172, 231, 123);
     color: white;
     padding: 10px;
     border-radius: 10px;
     border-color: transparent;
-  }
-  
-  #admin-submit-button {
+}
+
+#admin-submit-button {
     background-color: rgb(172, 231, 123);
     color: white;
     padding: 10px;
     margin-top: 10px;
     border-radius: 10px;
     border-color: transparent;
-  }
-  
-  #admin-cancel-button {
+}
+
+#admin-cancel-button {
     background-color: salmon;
     color: white;
     padding: 10px;
     margin-top: 10px;
     border-radius: 10px;
     border-color: transparent;
-  }
-  
+}
