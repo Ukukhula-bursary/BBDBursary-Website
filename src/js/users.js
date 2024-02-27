@@ -12,7 +12,8 @@ const updateRoleButton = document.getElementById("update-role-button");
 
 userByEmailButton.addEventListener("click", (e) => {
   e.preventDefault();
-  const url = "http://localhost:8090/users/get/susan.white@bbd.co.za";
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/users/get/susan.white@bbd.co.za";
   fetch(url, {
     method: "GET",
     mode: "cors",
