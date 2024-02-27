@@ -71,10 +71,10 @@ document.addEventListener("DOMContentLoaded", function () {
   homeBody.style.top = homeMenuHeight + "px";
 
   const clearFieldsButton = document.getElementById(
-    "clear-fields-button"
+    "clearFieldsButton"
   );
 
-  clear-fields-button.onclick = () => {
+  clearFieldsButton.onclick = () => {
     resetFormFields();
   };
 
