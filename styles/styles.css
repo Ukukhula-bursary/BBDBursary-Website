@@ -234,7 +234,47 @@ section h2 {
 
 }
 
+.generic-drop-downs {
+    background-color: var(--third-color);
+    color: #FEFFFF;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+
+}
+
+#rejection-reason-container {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+}
+
+#filter-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--fourth-color)
+}
+
 .buttons:hover {
+    background-color: var(--third-color);
+    color: #FEFFFF;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+}
+
+.generic-drop-downs:hover {
     background-color: var(--secondary-color);
     color: #FEFFFF;
     padding: 20px;
