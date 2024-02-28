@@ -55,7 +55,8 @@ getAllStudentApplicationsButton.addEventListener("click", (e) => {
 
 updateStudentApplicationStatusButton.addEventListener("click", (e) => {
   e.preventDefault();
-  const url = "/status/{studentID}";
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/status/{studentID}";
   fetch(url, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
