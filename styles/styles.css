@@ -154,6 +154,14 @@ body {
     background-color: rgb(104, 186, 100);
 }
 
+#admin-student-application-form-section h2 {
+    background-color: rgb(104, 186, 100);
+}
+
+#admin-student-application-form-section {
+    display: none;
+}
+
 form label {
     background-color: rgb(170, 170, 170);
     width: 100%;
@@ -239,6 +247,34 @@ section h2 {
 
 }
 
+.download-buttons {
+    background-color: var(--third-color);
+    color:var(--text-color);
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+}
+
+
+.download-buttons:hover{
+    background-color: var(--secondary-color);
+    color: var(--fourth-color);
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
 .generic-drop-downs {
     background-color: var(--third-color);
     color: #FEFFFF;
@@ -279,7 +315,6 @@ section h2 {
     border: none;
     border-radius: 12px;
     transition: all 0.3s ease;
-
 }
 
 .generic-drop-downs:hover {
@@ -380,7 +415,8 @@ a.social-link-icons:active {
     border: 2px solid var(--text-color);
 }
 
-.admin-cancel-button:hover {
+.admin-cancel-button,
+.admin-back-button:hover {
     background-color: var(--fourth-color);
     transition: all 0.3s ease;
     color: #17252A;
@@ -391,6 +427,13 @@ a.social-link-icons:active {
 }
 
 #form-section {
+    background-color: rgb(18, 45, 54);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-section {
     background-color: rgb(18, 45, 54);
     display: flex;
     align-items: center;
@@ -580,7 +623,8 @@ tr:nth-child(even) {
     border-color: transparent;
 }
 
-.admin-cancel-button {
+.admin-cancel-button,
+.admin-back-button {
     background-color: var(--danger-color);
     color: white;
     padding: 20px;
@@ -603,12 +647,14 @@ tr:nth-child(even) {
     display: flex;
 }
 
-#admin-student-application-form {
+#admin-student-application-view-details-section {
     display: none;
+
 }
 
 
-@media (max-width : 768px) {
+
+/* @media (max-width : 768px) {
     #home-body {
         background-color: var(--text-color);
         text-decoration: none;
@@ -717,6 +763,10 @@ tr:nth-child(even) {
     }
 
     #home-contact-section h2 {
+        background-color: rgb(104, 186, 100);
+    }
+
+    #admin-student-application-form-section h2 {
         background-color: rgb(104, 186, 100);
     }
 
@@ -888,4 +938,4 @@ tr:nth-child(even) {
         width: 80vw;
     }
 
-}
+} */
