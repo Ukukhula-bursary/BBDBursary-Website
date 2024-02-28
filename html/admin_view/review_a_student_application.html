@@ -23,119 +23,119 @@
                     >
                     Review An Application
                 </h2>
-                <section id="add-institution-section">
-                    <section id="home-section-generic" class="home-section">
-                        <section id="form-section" id="home-contact-section" class="home-section">
-                            <form
-                                id="generic-form"
-                                class="generic-form"
-                                action="#"
-                                method="POST"
-                            >
-                                <h3 id="successMessage"></h3>
-                                <label for="university-name">University Name:</label>
-                                <select id="university-name" name="university-status" class="buttons">
-                                    <!-- to be populated by the database -->
-                                    <option value="" selected disabled>Select University</option>
-                                    <option value="UCT">UCT</option>
-                                    <option value="UP">UP</option>
-                                    <option value="UKZN">UKZN</option>
-                                </select>
-                                <label for="is-active-status">Choose Active Status:</label>
-                                <select id="is-active-status" name="is-active-status" class="generic-drop-downs">
-                                    <option value="" selected disabled>Choose Status</option>
-                                    <option value="No">No</option>
-                                    <option value="yes">Yes</option>
-                                </select>
-                                <label for="approval-status">Choose Approval Status:</label>
-                                <select id="approval-status" name="approval-status" class="generic-drop-downs">
-                                    <option value="" selected disabled>Choose Approval Status:</option>
-                                    <option value="1">Accepted</option>
-                                    <option value="2">Rejected</option>
-                                    <option value="3">Under Review</option>
-                                </select>
-                                <section id="rejection-reason-container">
-                                    <label for="rejection-reason">Give Rejection Reason</label>
-                                    <input type="text" id="rejection-reason" name="rejection-reason"></input>
-                                    <label for="admin-comment">Reviewer Comment (optional)</label>
-                                    <input type="text" id="admin-comment" name="admin-comment"></input>
-                                </section>
-                                <section id="student-form"></section>
-                                <input
-                                    type="submit"
-                                    id="submit-button"
-                                    class="buttons"
-                                    value="Submit (Update)"
-                                >
-                            </form>
+            </section>
+            <section id="admin-student-application-section" class="home-section">
+                <section id="form-section" id="home-contact-section" class="home-section">
+                    <form
+                        id="admin-student-application-form"
+                        class="generic-form"
+                        action="#"
+                        method="POST"
+                    >
+                        <label for="is-active-status">Choose Active Status:</label>
+                        <select id="is-active-status" name="is-active-status" class="generic-drop-downs">
+                            <option value="" selected disabled>Choose Status</option>
+                            <option value="No">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                        <label for="approval-status">Choose Approval Status:</label>
+                        <select id="approval-status" name="approval-status" class="generic-drop-downs">
+                            <option value="" selected disabled>Choose Approval Status:</option>
+                            <option value="1">Accepted</option>
+                            <option value="2">Rejected</option>
+                            <option value="3">Under Review</option>
+                        </select>
+                        <section id="rejection-reason-container">
+                            <label for="rejection-reason">Give Rejection Reason</label>
+                            <input type="text" id="rejection-reason" name="rejection-reason"></input>
+                            <label for="admin-comment">Reviewer Comment (optional)</label>
+                            <input type="text" id="admin-comment" name="admin-comment"></input>
                         </section>
-                    </section>
-                    <!-- Table -->
-                    <h1 id="application-table-heading">Applications Table</h1>
-                    <!-- Filtering -->
-                    <section id="filter-section">
-                        <section>
-                            <label for="searchByName" id="generic-form-search-by-name-label">
-                                Search By Name:
-                            </label
+                        <section id="student-form"></section>
+                        <input
+                            type="submit"
+                            id="submit-button"
+                            class="buttons"
+                            value="Submit (Update)"
                         >
-                            <input
-                                pattern="[a-zA-Z\s]{2,256}$"
-                                title="Name: Only alphabets and space allowed."
-                                type="text"
-                                id="searchByName"
-                                name="searchByName"
-                                required
-                                placeholder="Student Name"
-                            >
-                            <button
-                                type="button"
-                                id="search-student-button"
-                                class="buttons"
-                                value="Search"
-                            >Search</button>
-                        </section>
-                        <section>
-                            <label for="filter-section-status">Filter By: Approval Status</label>
-                            <select id="filter-section-status" name="filter-section" class="generic-drop-downs">
-                                <option value="" selected disabled>Status</option>
-                                <option value="1">Accepted</option>
-                                <option value="2">Rejected</option>
-                                <option value="3">Submitted</option>
-                                <option value="4">Under Review</option>
-                            </select>
-                            <button
-                                type="button"
-                                id="filter-button"
-                                class="buttons"
-                                value="Search"
-                            >Search</button>
-                        </section>
+                        <input
+                            type="button"
+                            id="admin-cancel-button"
+                            class="admin-cancel-button"
+                            value="Cancel"
+                        >
+                    </form>
+                </section>
+            </section>
+            <!-- Table Section -->
+            <section id="admin-student-application-table-section">
+                <!-- Table -->
+                <h1 id="application-table-heading">Applications Table</h1>
+                <!-- Filtering -->
+                <section id="filter-section">
+                    <section>
+                        <label for="searchByName" id="generic-form-search-by-name-label">
+                            Search By Name:
+                        </label
+                        >
+                        <input
+                            pattern="[a-zA-Z\s]{2,256}$"
+                            title="Name: Only alphabets and space allowed."
+                            type="text"
+                            id="searchByName"
+                            name="searchByName"
+                            required
+                            placeholder="Student Name"
+                        >
+                        <button
+                            type="button"
+                            id="search-student-button"
+                            class="buttons"
+                            value="Search"
+                        >Search</button>
                     </section>
-                    <section id="application-table-container">
-                        <section id="application-list">
-                            <table id="tableID">
-                                <tbody id="tbodyID">
-                                    <tr id="theadings">
-                                        <th>Application ID</th>
-                                        <th>University Name</th>
-                                        <th>Department</th>
-                                        <th>Student Name</th>
-                                        <th>Ethnicity</th>
-                                        <th>Bursary Amount</th>
-                                        <th>Status</th>
-                                        <th>Motivation</th>
-                                        <th>Date Of Application</th>
-                                        <th>BBD Reviewer Name</th>
-                                        <th>BBD Reviewer Comment</th>
-                                        <th>University Staff Reviewer Name</th>
-                                        <th>University Staff Reviewer Comment</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </section>
+                    <section>
+                        <label for="filter-section-status">Filter By: Approval Status</label>
+                        <select id="filter-section-status" name="filter-section" class="generic-drop-downs">
+                            <option value="" selected disabled>Status</option>
+                            <option value="1">Accepted</option>
+                            <option value="2">Rejected</option>
+                            <option value="3">Submitted</option>
+                            <option value="4">Under Review</option>
+                        </select>
+                        <button
+                            type="button"
+                            id="filter-button"
+                            class="buttons"
+                            value="Search"
+                        >Search</button>
                     </section>
-                </main>
-            </body>
-        </html>
+                </section>
+                <section id="application-table-container">
+                    <section id="application-list">
+                        <table id="tableID">
+                            <tbody id="tbodyID">
+                                <tr id="theadings">
+                                    <th>Application ID</th>
+                                    <th>University Name</th>
+                                    <th>Department</th>
+                                    <th>Student Name</th>
+                                    <th>Ethnicity</th>
+                                    <th>Bursary Amount</th>
+                                    <th>Status</th>
+                                    <th>Motivation</th>
+                                    <th>Date Of Application</th>
+                                    <th>BBD Reviewer Name</th>
+                                    <th>BBD Reviewer Comment</th>
+                                    <th>University Staff Reviewer Name</th>
+                                    <th>University Staff Reviewer Comment</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </section>
+            </section>
+        </main>
+    </body>
+</html>
