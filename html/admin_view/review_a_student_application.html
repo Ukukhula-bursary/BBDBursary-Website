@@ -25,7 +25,8 @@
                 </h2>
             </section>
             <section id="admin-student-application-section" class="home-section">
-                <section id="form-section" id="home-contact-section" class="home-section">
+                <!-- student application form section -->
+                <section id="admin-student-application-form-section" class="form-section">
                     <form
                         id="admin-student-application-form"
                         class="generic-form"
@@ -66,73 +67,113 @@
                         >
                     </form>
                 </section>
-            </section>
-            <!-- Table Section -->
-            <section id="admin-student-application-table-section">
-                <!-- Table -->
-                <h1 id="application-table-heading">Applications Table</h1>
-                <!-- Filtering -->
-                <section id="filter-section">
-                    <section>
-                        <label for="searchByName" id="generic-form-search-by-name-label">
-                            Search By Name:
-                        </label
-                        >
+                <!-- View Details Section -->
+                <section id="admin-student-application-view-details-section" class="form-section">
+                    <form
+                        id="admin-student-view-details-application-form"
+                        class="generic-form"
+                        action="#"
+                        method="POST"
+                    >
+                        <label for="download-certified-id-copy">Certified ID Copy:</label>
+                        <button
+                            id="download-certified-id-copy"
+                            type="button"
+                            value="StudentID"
+                            class="download-buttons"
+                        >Download Certified ID</button>
+                       
+                        <label for="download-accedemic-transcript">Academic Transcript:</label>
+                        <button
+                            id="download-accedemic-transcript"
+                            type="button"
+                            value="StudentID"
+                            class="download-buttons"
+                        >Download Academic Transcript</button>
+                       
+                        <label for="download-accedemic-vitae-transcript">Curriculum Vitae:</label>
+                        <button
+                            id="download-curriculum-transcript"
+                            type="button"
+                            value="StudentID"
+                            class="download-buttons"
+                        >Download Curriculum Vitae</button>
+                        
                         <input
-                            pattern="[a-zA-Z\s]{2,256}$"
-                            title="Name: Only alphabets and space allowed."
-                            type="text"
-                            id="searchByName"
-                            name="searchByName"
-                            required
-                            placeholder="Student Name"
+                            type="button"
+                            id="admin-back-button"
+                            class="admin-back-button"
+                            value="Back"
                         >
-                        <button
-                            type="button"
-                            id="search-student-button"
-                            class="buttons"
-                            value="Search"
-                        >Search</button>
-                    </section>
-                    <section>
-                        <label for="filter-section-status">Filter By: Approval Status</label>
-                        <select id="filter-section-status" name="filter-section" class="generic-drop-downs">
-                            <option value="" selected disabled>Status</option>
-                            <option value="1">Accepted</option>
-                            <option value="2">Rejected</option>
-                            <option value="3">Submitted</option>
-                            <option value="4">Under Review</option>
-                        </select>
-                        <button
-                            type="button"
-                            id="filter-button"
-                            class="buttons"
-                            value="Search"
-                        >Search</button>
-                    </section>
+                    </form>
                 </section>
-                <section id="application-table-container">
-                    <section id="application-list">
-                        <table id="tableID">
-                            <tbody id="tbodyID">
-                                <tr id="theadings">
-                                    <th>Application ID</th>
-                                    <th>University Name</th>
-                                    <th>Department</th>
-                                    <th>Student Name</th>
-                                    <th>Ethnicity</th>
-                                    <th>Bursary Amount</th>
-                                    <th>Status</th>
-                                    <th>Motivation</th>
-                                    <th>Date Of Application</th>
-                                    <th>BBD Reviewer Name</th>
-                                    <th>BBD Reviewer Comment</th>
-                                    <th>University Staff Reviewer Name</th>
-                                    <th>University Staff Reviewer Comment</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </tbody>
-                        </table>
+                <!-- Table Section -->
+                <section id="admin-student-application-table-section">
+                    <!-- Table -->
+                    <h1 id="application-table-heading">Applications Table</h1>
+                    <!-- Filtering -->
+                    <section id="filter-section">
+                        <section>
+                            <label for="searchByName" id="generic-form-search-by-name-label">
+                                Search By Name:
+                            </label
+                        >
+                            <input
+                                pattern="[a-zA-Z\s]{2,256}$"
+                                title="Name: Only alphabets and space allowed."
+                                type="text"
+                                id="searchByName"
+                                name="searchByName"
+                                required
+                                placeholder="Student Name"
+                            >
+                            <button
+                                type="button"
+                                id="filter-by-student-button"
+                                class="buttons"
+                                value="Search"
+                            >Search</button>
+                        </section>
+                        <section>
+                            <label for="filter-section-status">Filter By: Approval Status</label>
+                            <select id="filter-section-status" name="filter-section" class="generic-drop-downs">
+                                <option value="" selected disabled>Status</option>
+                                <option value="1">Accepted</option>
+                                <option value="2">Rejected</option>
+                                <option value="3">Submitted</option>
+                                <option value="4">Under Review</option>
+                            </select>
+                            <button
+                                type="button"
+                                id="filter-button"
+                                class="buttons"
+                                value="Search"
+                            >Search</button>
+                        </section>
+                    </section>
+                    <section id="application-table-container">
+                        <section id="application-list">
+                            <table id="tableID">
+                                <tbody id="tbodyID">
+                                    <tr id="theadings">
+                                        <th>Application ID</th>
+                                        <th>University Name</th>
+                                        <th>Department</th>
+                                        <th>Student Name</th>
+                                        <th>Ethnicity</th>
+                                        <th>Bursary Amount</th>
+                                        <th>Status</th>
+                                        <th>Motivation</th>
+                                        <th>Date Of Application</th>
+                                        <th>BBD Reviewer Name</th>
+                                        <th>BBD Reviewer Comment</th>
+                                        <th>University Staff Reviewer Name</th>
+                                        <th>University Staff Reviewer Comment</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
                     </section>
                 </section>
             </section>
