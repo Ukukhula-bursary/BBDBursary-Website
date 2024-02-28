@@ -123,7 +123,7 @@ function populateRow(...args) {
 
   cell = document.createElement("td");
   updateSection = document.createElement("section");
-  updateSection.setAttribute("class", "update-button-section");
+  updateSection.setAttribute("class", "action-button-section");
 
   updateButton = document.createElement("button");
   const applicationsId = args[0];

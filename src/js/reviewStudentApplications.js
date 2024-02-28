@@ -139,7 +139,7 @@ function populateRow(...args) {
   cell = document.createElement("td");
   updateSection = document.createElement("section");
   // viewDetailsSection = document.createElement("section");
-  updateSection.setAttribute("class", "update-button-section");
+  updateSection.setAttribute("class", "action-button-section");
   // viewDetailsSection.setAttribute("class", "view-details-button-section");
 
   updateButton = document.createElement("button");

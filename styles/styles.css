@@ -800,7 +800,7 @@ tr:nth-child(even) {
     color: var(--primary-color)
 }
 
-.update-button-section {
+.action-button-section {
     display: flex;
 }
 
