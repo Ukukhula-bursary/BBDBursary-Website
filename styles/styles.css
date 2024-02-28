@@ -4,6 +4,7 @@
     --third-color: #3AAFA9;
     --fourth-color: #DEF2F1;
     --text-color: #FEFFFF;
+    --danger-color: salmon;
 }
 
 
@@ -36,7 +37,7 @@ body {
     display: flex;
     top: 0;
     width: 100%;
-    transition: top 0.3s;
+    transition: all 0.3s;
     z-index: 1;
     padding: 1rem;
     justify-content: space-between;
@@ -52,6 +53,8 @@ body {
 
 #nav-menu :hover {
     color: var(--third-color);
+    transition: all 0.3s ease;
+
 }
 
 #nav-menu {
@@ -143,10 +146,20 @@ body {
 #hamburger-section-header :hover {
     color: var(--third-color);
     text-decoration: underline;
+    transition: all 0.3s ease;
+
 }
 
 #home-contact-section h2 {
     background-color: rgb(104, 186, 100);
+}
+
+#admin-student-application-form-section h2 {
+    background-color: rgb(104, 186, 100);
+}
+
+#admin-student-application-form-section {
+    display: none;
 }
 
 form label {
@@ -234,6 +247,34 @@ section h2 {
 
 }
 
+.download-buttons {
+    background-color: var(--third-color);
+    color:var(--text-color);
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+}
+
+
+.download-buttons:hover{
+    background-color: var(--secondary-color);
+    color: var(--fourth-color);
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
 .generic-drop-downs {
     background-color: var(--third-color);
     color: #FEFFFF;
@@ -245,7 +286,7 @@ section h2 {
     margin: 4px 2px;
     border: none;
     border-radius: 12px;
-
+    transition: all 0.3s ease;
 }
 
 #rejection-reason-container {
@@ -253,6 +294,7 @@ section h2 {
     width: 100%;
     flex-direction: column;
 }
+
 
 #filter-section {
     display: flex;
@@ -272,6 +314,7 @@ section h2 {
     margin: 4px 2px;
     border: none;
     border-radius: 12px;
+    transition: all 0.3s ease;
 }
 
 .generic-drop-downs:hover {
@@ -285,6 +328,8 @@ section h2 {
     margin: 4px 2px;
     border: none;
     border-radius: 12px;
+    transition: all 0.3s ease;
+
 }
 
 #about-us-text {
@@ -359,22 +404,36 @@ a.social-link-icons:active {
     color: var(--primary-color);
 }
 
-.generic-form input[type="submit"]:hover,
-.generic-form input[type="button"]:hover {
+.generic-form input[type="submit"]:hover {
     background-color: var(--secondary-color);
+    transition: all 0.3s ease;
 }
+
 
 .generic-form input[type="submit"],
 .generic-form input[type="button"] {
     border: 2px solid var(--text-color);
 }
 
-#admin-pop-up-form-section {
-    background-color: red;
+.admin-cancel-button,
+.admin-back-button:hover {
+    background-color: var(--fourth-color);
+    transition: all 0.3s ease;
+    color: #17252A;
+}
 
+#admin-pop-up-form-section {
+    transition: all 0.3s ease;
 }
 
 #form-section {
+    background-color: rgb(18, 45, 54);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-section {
     background-color: rgb(18, 45, 54);
     display: flex;
     align-items: center;
@@ -438,6 +497,7 @@ a.social-link-icons:active {
 .dashboard-wrapper .item:hover {
     background-color: var(--primary-color);
     color: var(--secondary-color);
+    transition: all 0.3s ease;
 
 }
 
@@ -449,9 +509,152 @@ a.social-link-icons:active {
 }
 
 
+/* Tables */
 
 
-@media (max-width : 768px) {
+#admin-fields-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-field {
+    margin-right: auto;
+    width: 100%;
+}
+
+.admin-field label {
+    background-color: rgb(213, 213, 213);
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.form-control {
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+#application-table-container {
+    background-color: aliceblue;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#application-table-heading {
+    display: flex;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    color: var(--text-color);
+    background-color: var(--third-color);
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+.update-action-button {
+    background-color: var(--third-color);
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+.action-button {
+    background-color: var(--third-color);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    border-color: var(--primary-color);
+    /* margin: ; */
+}
+
+
+.action-button:hover {
+    background-color: var(--fourth-color);
+    color: var(--primary-color)
+}
+
+.action-button-section {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#add-a-admin-button-section {
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+#add-a-admin-button {
+    background-color: rgb(172, 231, 123);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+#admin-submit-button {
+    background-color: rgb(172, 231, 123);
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+.admin-cancel-button,
+.admin-back-button {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border-color: transparent;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+}
+
+#admin-student-application-view-details-section {
+    display: none;
+
+}
+
+
+
+/* @media (max-width : 768px) {
     #home-body {
         background-color: var(--text-color);
         text-decoration: none;
@@ -502,6 +705,8 @@ a.social-link-icons:active {
 
     #nav-menu :hover {
         color: var(--third-color);
+        transition: all 0.3s ease;
+
     }
 
     #nav img {
@@ -526,6 +731,8 @@ a.social-link-icons:active {
 
     #hamburger-form {
         display: flex;
+        transition: all 0.3s ease;
+
     }
 
     #hamburger-section-header {
@@ -542,6 +749,8 @@ a.social-link-icons:active {
     #hamburger-section-header :hover {
         color: var(--third-color);
         text-decoration: underline;
+        transition: all 0.3s ease;
+
     }
 
     #nav-menu {
@@ -554,6 +763,10 @@ a.social-link-icons:active {
     }
 
     #home-contact-section h2 {
+        background-color: rgb(104, 186, 100);
+    }
+
+    #admin-student-application-form-section h2 {
         background-color: rgb(104, 186, 100);
     }
 
@@ -725,114 +938,4 @@ a.social-link-icons:active {
         width: 80vw;
     }
 
-}
-
-/* Tables */
-
-
-#admin-fields-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.admin-field {
-    margin-right: auto;
-    width: 100%;
-}
-
-.admin-field label {
-    background-color: rgb(213, 213, 213);
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-.form-control {
-    width: 100%;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-}
-
-#application-table-container {
-    background-color: aliceblue;
-    width: 100%;
-    height: 5rem;
-    display: flex;
-    margin-bottom: 10px;
-}
-
-#application-table-heading {
-    display: flex;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin-top: 1rem;
-    color: var(--text-color);
-    background-color: var(--third-color);
-}
-
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td,
-th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-
-.update-button {
-    background-color: var(--third-color);
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    border-color: transparent;
-}
-
-.update-button:hover {
-    background-color: var(--fourth-color);
-    color: var(--primary-color)
-}
-
-.update-button-section {
-    display: flex;
-}
-
-#add-a-admin-button-section {
-    display: flex;
-    padding: 10px;
-    border-radius: 10px;
-    width: 100%;
-}
-
-#add-a-admin-button {
-    background-color: rgb(172, 231, 123);
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    border-color: transparent;
-}
-
-#admin-submit-button {
-    background-color: rgb(172, 231, 123);
-    color: white;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 10px;
-    border-color: transparent;
-}
-
-#admin-cancel-button {
-    background-color: salmon;
-    color: white;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 10px;
-    border-color: transparent;
-}
+} */

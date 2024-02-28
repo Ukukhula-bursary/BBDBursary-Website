@@ -36,7 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.body.insertAdjacentHTML('afterbegin', navHtml);
 }
-
+//save as html
+//insert xml
+// xml http requests ( pass )
 
 createAdminNav();
   
