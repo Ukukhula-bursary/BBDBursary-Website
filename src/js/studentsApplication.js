@@ -19,14 +19,15 @@ const updateStudentApplicationColumnValue = document.getElementById(
 
 getStudentByIdButton.addEventListener("click", (e) => {
   e.preventDefault();
+  console.log("hi");
 
   const id = studentByIdInput.value;
-  const url = `https://bursary-api-1709020026838.azurewebsites.net/student/${id}`;
+  const url = `https://bursary-api-1709020026838.azurewebsites.net/studentapplication/student/${id}`;
   fetch(url, {
     method: "GET",
     mode: "cors",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "Application/json",
     },
   })
     .then((res) => res.json())
@@ -36,6 +37,7 @@ getStudentByIdButton.addEventListener("click", (e) => {
 
 getAllStudentApplicationsButton.addEventListener("click", (e) => {
   e.preventDefault();
+  console.log("hi");
   const url = "/students";
   fetch(url, {
     method: "GET",
