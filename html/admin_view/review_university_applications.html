@@ -9,7 +9,7 @@
         <link rel="shortcut icon" href="">
         <title>BBD Ukukhula Bursary - Review University Application(s)</title>
         <script src="../../src/js/navbarLogic.js" defer></script>
-        <script src="../../src/js/reviewUniversityApplications.js" defer></script>
+        <script src="../../src/js/reviewStudentApplications.js" defer></script>
     </head>
     <body>
         <main id="home-body">
@@ -41,6 +41,19 @@
                                     <option value="UP">UP</option>
                                     <option value="UKZN">UKZN</option>
                                 </select>
+                                <label for="searchByName" id="generic-form-search-by-name-label">
+                                    Search By Name:
+                                </label
+                            >
+                                <input
+                                    pattern="[a-zA-Z\s]{2,256}$"
+                                    title="Name: Only alphabets and space allowed."
+                                    type="text"
+                                    id="searchByName"
+                                    name="searchByName"
+                                    required
+                                    placeholder="Student Name"
+                                >
                                 <label for="is-active-status">Choose Active Status:</label>
                                 <select id="is-active-status" name="is-active-status" class="generic-drop-downs">
                                     <option value="" selected disabled>Choose Status</option>
@@ -80,7 +93,12 @@
                             <option value="3">Submitted</option>
                             <option value="4">Under Review</option>
                         </select>
-                        <button type="button" id="filter-button" class="buttons" value="Search">Search</button>
+                        <button
+                            type="button"
+                            id="filter-button"
+                            class="buttons"
+                            value="Search"
+                        >Search</button>
                     </section>
                     <!-- Table -->
                     <section id="application-table-container">
