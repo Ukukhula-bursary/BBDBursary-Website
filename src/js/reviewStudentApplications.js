@@ -26,44 +26,54 @@
 
 
 const listApplicationsTesting = () => {
-  return [{
-    "applicationID": 1,
-    "universityName": "University Of Pretoria",
-    "fundsRequested" : "R100,000.00",
-    "status": "Approved",
-    "motivation": "I love it here!",
-    "dateOfApplication": "2024-01-01",
-    "reviewerName": "John",
-    "reviewerComment": "Something John Said",
-  }, {
-    "applicationID": 2,
-    "universityName": "University Of Limpopo",
-    "fundsRequested" : "R100,000.00",
-    "status": "Approved",
-    "motivation": "I love it also here!",
-    "dateOfApplication": "2023-01-01",
-    "reviewerName": "John",
-    "reviewerComment": "Something John Said",
-  }, {
-    "applicationID": 3,
-    "universityName": "University Of Free State",
-    "fundsRequested" : "R100,000.00",
-    "status": "Rejected",
-    "motivation": "We would like to be funded",
-    "dateOfApplication": "2020-01-01",
-    "reviewerName": "John",
-    "reviewerComment": "Sorry Not Meeting Quotas",
-  }
-    , {
-    "applicationID": 4,
-    "universityName": "University Of The Cape",
-    "fundsRequested" : "R100,000.00",
-    "status": "Under Review",
-    "motivation": "We would like to be funded",
-    "dateOfApplication": "2019-01-01",
-    "reviewerName": "John",
-    "reviewerComment": "N/A",
-  }]
+  return [
+    {
+      "applicationID": 1,
+      "universityName": "University Of Pretoria",
+      "department": "Computer Science",
+      "studentName": "John Doe",
+      "ethnicity": "Black",
+      "bursaryAmount": "R10,000.00",
+      "status": "Approved",
+      "motivation": "I love it here!",
+      "dateOfApplication": "2024-01-01",
+      "bbdReviewerName": "John",
+      "bbdReviewerComment": "Something John Said",
+      "universityStaffReviewerName": "Jane",
+      "universityStaffReviewerComment": "Something Jane Said",
+    },
+    {
+      "applicationID": 2,
+      "universityName": "University Of Cape Town",
+      "department": "Marketing",
+      "studentName": "Jane Smith",
+      "ethnicity": "White",
+      "bursaryAmount": "R8,000.00",
+      "status": "Pending",
+      "motivation": "I want to make a difference.",
+      "dateOfApplication": "2024-01-02",
+      "bbdReviewerName": "Alice",
+      "bbdReviewerComment": "Something Alice Said",
+      "universityStaffReviewerName": "Bob",
+      "universityStaffReviewerComment": "Something Bob Said",
+    },
+    // Continue adding more records following the same structure...
+    {
+      "applicationID": 10,
+      "universityName": "University Of Johannesburg",
+      "department": "Engineering",
+      "studentName": "Mary Johnson",
+      "ethnicity": "Asian",
+      "bursaryAmount": "R12,000.00",
+      "status": "Rejected",
+      "motivation": "I'm dedicated to my studies.",
+      "dateOfApplication": "2024-01-10",
+      "bbdReviewerName": "Charlie",
+      "bbdReviewerComment": "Something Charlie Said",
+      "universityStaffReviewerName": "Dana",
+      "universityStaffReviewerComment": "Something Dana Said",
+    }
+  ];
 };
 
 // const updateApplications = (id) => {
@@ -92,12 +102,17 @@ async function loadTable() {
     let tableRow = populateRow(
       application.applicationID,
       application.universityName,
-      application.fundsRequested,
+      application.department,
+      application.studentName,
+      application.ethnicity,
+      application.bursaryAmount,
       application.status,
-      application.motivation,
       application.dateOfApplication,
-      application.reviewerName,
-      application.reviewerComment,
+      application.motivation,
+      application.bbdReviewerName,
+      application.bbdReviewerComment,
+      application.universityStaffReviewerName,
+      application.universityStaffReviewerComment,
     );
 
     tableBody.appendChild(tableRow);
@@ -123,25 +138,52 @@ function populateRow(...args) {
 
   cell = document.createElement("td");
   updateSection = document.createElement("section");
+  // viewDetailsSection = document.createElement("section");
   updateSection.setAttribute("class", "update-button-section");
+  // viewDetailsSection.setAttribute("class", "view-details-button-section");
 
   updateButton = document.createElement("button");
+  viewDetailsButton = document.createElement("button");
+
   const applicationsId = args[0];
   updateButton.setAttribute("type", "button");
   updateButton.setAttribute("class", "update-button");
+
+  viewDetailsButton.setAttribute("type", "button");
+  viewDetailsButton.setAttribute("class", "update-button");
+
   updateButton.setAttribute("value", applicationsId);
+  viewDetailsButton.setAttribute("value", applicationsId);
+
   updateButton.textContent = "update";
+  viewDetailsButton.textContent = "View Details";
+
   updateButton.onclick = async (event) => {
     const clickedButton = event.target;
     const applicationsId = parseInt(clickedButton.value);
     handleUpdate(confirmUpdate(applicationsId), applicationsId);
   };
+
+
+  viewDetailsButton.onclick = async (event) => {
+    const clickedButton = event.target;
+    const applicationsId = parseInt(clickedButton.value);
+    handleViewDetails(applicationsId);
+  };
+
+
   updateSection.appendChild(updateButton);
+  updateSection.appendChild(viewDetailsButton);
+
   cell.appendChild(updateSection);
   tableRow.appendChild(cell);
 
   return tableRow;
 };
+
+function handleViewDetails(applicationsId) {
+
+}
 
 // const loadExistingApplicationsTable = () => {
 //   $(document).ready(function () {
