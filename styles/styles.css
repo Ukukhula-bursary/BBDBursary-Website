@@ -4,6 +4,7 @@
     --third-color: #3AAFA9;
     --fourth-color: #DEF2F1;
     --text-color: #FEFFFF;
+    --danger-color: salmon;
 }
 
 
@@ -36,7 +37,7 @@ body {
     display: flex;
     top: 0;
     width: 100%;
-    transition: top 0.3s;
+    transition: all 0.3s;
     z-index: 1;
     padding: 1rem;
     justify-content: space-between;
@@ -52,6 +53,8 @@ body {
 
 #nav-menu :hover {
     color: var(--third-color);
+    transition: all 0.3s ease;
+
 }
 
 #nav-menu {
@@ -143,6 +146,8 @@ body {
 #hamburger-section-header :hover {
     color: var(--third-color);
     text-decoration: underline;
+    transition: all 0.3s ease;
+
 }
 
 #home-contact-section h2 {
@@ -245,7 +250,7 @@ section h2 {
     margin: 4px 2px;
     border: none;
     border-radius: 12px;
-
+    transition: all 0.3s ease;
 }
 
 #rejection-reason-container {
@@ -253,6 +258,7 @@ section h2 {
     width: 100%;
     flex-direction: column;
 }
+
 
 #filter-section {
     display: flex;
@@ -272,6 +278,8 @@ section h2 {
     margin: 4px 2px;
     border: none;
     border-radius: 12px;
+    transition: all 0.3s ease;
+
 }
 
 .generic-drop-downs:hover {
@@ -285,6 +293,8 @@ section h2 {
     margin: 4px 2px;
     border: none;
     border-radius: 12px;
+    transition: all 0.3s ease;
+
 }
 
 #about-us-text {
@@ -359,19 +369,26 @@ a.social-link-icons:active {
     color: var(--primary-color);
 }
 
-.generic-form input[type="submit"]:hover,
-.generic-form input[type="button"]:hover {
+.generic-form input[type="submit"]:hover {
     background-color: var(--secondary-color);
+    transition: all 0.3s ease;
 }
+
 
 .generic-form input[type="submit"],
 .generic-form input[type="button"] {
     border: 2px solid var(--text-color);
 }
 
+.admin-cancel-button:hover {
+    background-color: var(--fourth-color);
+    transition: all 0.3s ease;
+    color: #17252A;
+}
+
 #admin-pop-up-form-section {
     background-color: red;
-
+    transition: all 0.3s ease;
 }
 
 #form-section {
@@ -438,6 +455,7 @@ a.social-link-icons:active {
 .dashboard-wrapper .item:hover {
     background-color: var(--primary-color);
     color: var(--secondary-color);
+    transition: all 0.3s ease;
 
 }
 
@@ -502,6 +520,8 @@ a.social-link-icons:active {
 
     #nav-menu :hover {
         color: var(--third-color);
+        transition: all 0.3s ease;
+
     }
 
     #nav img {
@@ -526,6 +546,8 @@ a.social-link-icons:active {
 
     #hamburger-form {
         display: flex;
+        transition: all 0.3s ease;
+
     }
 
     #hamburger-section-header {
@@ -542,6 +564,8 @@ a.social-link-icons:active {
     #hamburger-section-header :hover {
         color: var(--third-color);
         text-decoration: underline;
+        transition: all 0.3s ease;
+
     }
 
     #nav-menu {
@@ -840,11 +864,17 @@ tr:nth-child(even) {
     border-color: transparent;
 }
 
-#admin-cancel-button {
-    background-color: salmon;
+.admin-cancel-button {
+    background-color: var(--danger-color);
     color: white;
-    padding: 10px;
+    padding: 20px;
     margin-top: 10px;
     border-radius: 10px;
     border-color: transparent;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
 }
