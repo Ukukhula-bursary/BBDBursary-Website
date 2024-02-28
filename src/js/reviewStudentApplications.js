@@ -1,30 +1,3 @@
-// const listApplications = () => {
-//   return new Promise((resolve, reject) => {
-//     $.ajax({
-//       url: "/applications",
-//       method: "GET",
-//       dataType: "json",
-//       success: function (response_data) {
-//         resolve(response_data);
-//       },
-//     });
-//   });
-// };
-
-// const viewApplications = (id) => {
-//   return new Promise((resolve, reject) => {
-//     $.ajax({
-//       url: `/applications/${id}`,
-//       method: "GET",
-//       dataType: "json",
-//       success: function (response_data) {
-//         resolve(response_data);
-//       },
-//     });
-//   });
-// };
-
-
 const listApplicationsTesting = () => {
   return [
     {
@@ -57,7 +30,6 @@ const listApplicationsTesting = () => {
       "universityStaffReviewerName": "Bob",
       "universityStaffReviewerComment": "Something Bob Said",
     },
-    // Continue adding more records following the same structure...
     {
       "applicationID": 10,
       "universityName": "University Of Johannesburg",
@@ -106,8 +78,6 @@ async function loadTable() {
 };
 
 
-loadTable();
-
 
 function populateRow(...args) {
   const tableRow = document.createElement("tr");
@@ -150,7 +120,6 @@ function populateRow(...args) {
     handleUpdate(confirmUpdate(applicationsId), applicationsId);
   };
 
-
   viewDetailsButton.onclick = async (event) => {
     const clickedButton = event.target;
     const applicationsId = parseInt(clickedButton.value);
@@ -168,7 +137,9 @@ function populateRow(...args) {
 };
 
 function handleViewDetails(applicationsId) {
-
+  //show form a with user documents
+  console.log(applicationsId)
+  showApplicationDetailsPopUp(applicationsId);
 }
 
 const confirmUpdate = (applicationsId) => {
@@ -180,13 +151,55 @@ const confirmUpdate = (applicationsId) => {
 const handleUpdate = async (updateApplications, applicationsId) => {
   if (updateApplications) {
     showUpdateApplicationPopUp(applicationsId);
-    await loadTable();
   }
 };
 
-function showUpdateApplicationPopUp(applicationsId) {
-  document.getElementById("admin-student-application-form").style.display = 'flex';
+const handleCancel = async () => {
+  if (updateApplications) {
+    hideUpdateApplicationPopUp();
+    // loadTable();
+  }
+};
+
+const handleViewDetailsCancel = async () => {
+  if (updateApplications) {
+    hideApplicationViewDetailsPopUp();
+    // loadTable();
+  }
+};
+
+function showApplicationDetailsPopUp(applicationsId) {
   document.getElementById("admin-student-application-table-section").style.display = 'none';
+  document.getElementById("admin-student-application-view-details-section").style.display = 'flex';
+  const backButton = document.getElementById("admin-back-button");
+
+  backButton.addEventListener("click", () => {
+    hideApplicationViewDetailsPopUp();
+  })
+}
+
+
+function hideApplicationViewDetailsPopUp(applicationsId) {
+  document.getElementById("admin-student-application-view-details-section").style.display = 'none';
+  document.getElementById("admin-student-application-table-section").style.display = '';
+  // loadTable();
+}
+
+
+function showUpdateApplicationPopUp(applicationsId) {
+  document.getElementById("admin-student-application-table-section").style.display = 'none';
+  document.getElementById("admin-student-application-form-section").style.display = 'flex';
+  const cancelButton = document.getElementById("admin-cancel-button");
+
+  cancelButton.addEventListener("click", () => {
+    hideUpdateApplicationPopUp();
+  })
+}
+
+function hideUpdateApplicationPopUp(applicationsId) {
+  document.getElementById("admin-student-application-form-section").style.display = 'none';
+  document.getElementById("admin-student-application-table-section").style.display = '';
+  loadTable();
 }
 
 document.getElementById('approval-status').addEventListener('change', function () {
@@ -199,3 +212,6 @@ document.getElementById('approval-status').addEventListener('change', function (
     rejectionReasonContainer.style.display = 'none';
   }
 });
+
+loadTable();
+
