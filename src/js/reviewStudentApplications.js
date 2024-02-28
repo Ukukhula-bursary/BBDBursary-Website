@@ -76,20 +76,6 @@ const listApplicationsTesting = () => {
   ];
 };
 
-// const updateApplications = (id) => {
-//   return new Promise((resolve, reject) => {
-//     $.ajax({
-//       url: `/applications/${id}`,
-//       method: "update",
-//       dataType: "json",
-//       success: function (response_data) {
-//         resolve(response_data);
-//       },
-//     });
-//   });
-// };
-
-
 async function loadTable() {
   const applications = listApplicationsTesting();
   const tableBody = document.getElementById("tbodyID");
@@ -137,18 +123,18 @@ function populateRow(...args) {
   });
 
   cell = document.createElement("td");
-  updateSection = document.createElement("section");
-  // viewDetailsSection = document.createElement("section");
-  updateSection.setAttribute("class", "action-button-section");
-  // viewDetailsSection.setAttribute("class", "view-details-button-section");
+  actionsSection = document.createElement("section");
+  actionsSection.setAttribute("class", "action-button-section");
 
   updateButton = document.createElement("button");
   viewDetailsButton = document.createElement("button");
 
   const applicationsId = args[0];
+  updateButton.setAttribute("id", "update-action-button");
   updateButton.setAttribute("type", "button");
   updateButton.setAttribute("class", "action-button");
 
+  viewDetailsButton.setAttribute("id", "view-details-action-button");
   viewDetailsButton.setAttribute("type", "button");
   viewDetailsButton.setAttribute("class", "action-button");
 
@@ -172,10 +158,10 @@ function populateRow(...args) {
   };
 
 
-  updateSection.appendChild(updateButton);
-  updateSection.appendChild(viewDetailsButton);
+  actionsSection.appendChild(updateButton);
+  actionsSection.appendChild(viewDetailsButton);
 
-  cell.appendChild(updateSection);
+  cell.appendChild(actionsSection);
   tableRow.appendChild(cell);
 
   return tableRow;
@@ -185,15 +171,6 @@ function handleViewDetails(applicationsId) {
 
 }
 
-// const loadExistingApplicationsTable = () => {
-//   $(document).ready(function () {
-//     loadTable();
-//   });
-// };
-// loadExistingApplicationsTable();
-
-
-
 const confirmUpdate = (applicationsId) => {
   return window.confirm(
     `Your are about to update this Application: ID = ${applicationsId}?`
@@ -202,10 +179,15 @@ const confirmUpdate = (applicationsId) => {
 
 const handleUpdate = async (updateApplications, applicationsId) => {
   if (updateApplications) {
-    await updateApplications(applicationsId);
+    showUpdateApplicationPopUp(applicationsId);
     await loadTable();
   }
 };
+
+function showUpdateApplicationPopUp(applicationsId) {
+  document.getElementById("admin-student-application-form").style.display = 'flex';
+  document.getElementById("admin-student-application-table-section").style.display = 'none';
+}
 
 document.getElementById('approval-status').addEventListener('change', function () {
   var selectedOptionText = this.options[this.selectedIndex].text;
@@ -217,12 +199,3 @@ document.getElementById('approval-status').addEventListener('change', function (
     rejectionReasonContainer.style.display = 'none';
   }
 });
-
-// const addapplicationsButton = document.getElementById("add-a-applications-button");
-// addapplicationsButton.onclick = () => {
-//   showapplicationsContainer();
-// };
-
-
-// document.getElementById("applications-cancel-button").onclick = () => {
-// };
