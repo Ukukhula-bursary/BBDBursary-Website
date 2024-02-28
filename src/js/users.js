@@ -95,13 +95,10 @@ addNewUserButton.addEventListener("click", (e) => {
       userRoleId: userRoleId,
       phoneNumber: phoneNumber,
       email: email,
-      aisActiveID: activeID,
+      isActiveID: activeID,
     }),
   })
-    .then((res) => {
-      console.log(res.json());
-      res.json();
-    })
+    .then((res) => res.json())
     .then(() => {
       console.log("user added");
     })
