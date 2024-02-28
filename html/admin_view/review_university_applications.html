@@ -33,14 +33,6 @@
                                 method="POST"
                             >
                                 <h3 id="successMessage"></h3>
-                                <label for="university-names">University Name:</label>
-                                <select id="university-names" name="university-names" class="generic-drop-downs">
-                                    <!-- to be populated by the database -->
-                                    <option value="" selected disabled>Select University</option>
-                                    <option value="UCT">UCT</option>
-                                    <option value="UP">UP</option>
-                                    <option value="UKZN">UKZN</option>
-                                </select>
                                 <label for="is-active-status">Choose Active Status:</label>
                                 <select id="is-active-status" name="is-active-status" class="generic-drop-downs">
                                     <option value="" selected disabled>Choose Status</option>
@@ -72,20 +64,38 @@
                     <h1 id="application-table-heading">Applications Table</h1>
                     <!-- Filtering -->
                     <section id="filter-section">
-                        <label for="filter-section-status">Filter By: Approval Status</label>
-                        <select id="filter-section-status" name="filter-section" class="generic-drop-downs">
-                            <option value="" selected disabled>Status</option>
-                            <option value="1">Accepted</option>
-                            <option value="2">Rejected</option>
-                            <option value="3">Submitted</option>
-                            <option value="4">Under Review</option>
-                        </select>
-                        <button
-                            type="button"
-                            id="filter-button"
-                            class="buttons"
-                            value="Search"
-                        >Search</button>
+                        <section>
+                            <label for="university-names">Filter By University Name:</label>
+                            <select id="university-names" name="university-names" class="generic-drop-downs">
+                                <!-- to be populated by the database -->
+                                <option value="" selected disabled>Select University</option>
+                                <option value="UCT">UCT</option>
+                                <option value="UP">UP</option>
+                                <option value="UKZN">UKZN</option>
+                            </select>
+                            <button
+                                type="button"
+                                id="filter-by-university-button"
+                                class="buttons"
+                                value="Search"
+                            >Search</button>
+                        </section>
+                        <section>
+                            <label for="filter-section-status">Filter By: Approval Status</label>
+                            <select id="filter-section-status" name="filter-section" class="generic-drop-downs">
+                                <option value="" selected disabled>Status</option>
+                                <option value="1">Accepted</option>
+                                <option value="2">Rejected</option>
+                                <option value="3">Submitted</option>
+                                <option value="4">Under Review</option>
+                            </select>
+                            <button
+                                type="button"
+                                id="filter-by-status-button"
+                                class="buttons"
+                                value="Search"
+                            >Search</button>
+                        </section>
                     </section>
                     <!-- Table -->
                     <section id="application-table-container">
