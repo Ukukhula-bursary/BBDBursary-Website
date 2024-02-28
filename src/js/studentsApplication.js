@@ -1,3 +1,4 @@
+const studentByIdInput = document.getElementById("student-by-id");
 const getStudentByIdButton = document.getElementById("get-student-by-id");
 const getAllStudentApplicationsButton = document.getElementById(
   "get-student-applications"
@@ -19,15 +20,17 @@ const updateStudentApplicationColumnValue = document.getElementById(
 getStudentByIdButton.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const url = "/student/{studentId}";
+  const id = studentByIdInput.value;
+  const url = `https://bursary-api-1709020026838.azurewebsites.net/student/${id}`;
   fetch(url, {
     method: "GET",
+    mode: "cors",
     headers: {
       "Content-Type": "application/json",
     },
   })
     .then((res) => res.json())
-    .then((data) => data.studentId)
+    .then((data) => console.log(data))
     .catch((err) => console.log(err));
 });
 
