@@ -787,6 +787,7 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
+
 .update-button {
     background-color: var(--third-color);
     color: white;
@@ -795,13 +796,24 @@ tr:nth-child(even) {
     border-color: transparent;
 }
 
-.update-button:hover {
+.action-button {
+    background-color: var(--third-color);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    border-color: var(--primary-color);
+    /* margin: ; */
+}
+
+
+.action-button:hover {
     background-color: var(--fourth-color);
     color: var(--primary-color)
 }
 
 .action-button-section {
     display: flex;
+    gap: 0.5rem;
 }
 
 #add-a-admin-button-section {

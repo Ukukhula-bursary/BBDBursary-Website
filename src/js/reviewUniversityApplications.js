@@ -128,7 +128,7 @@ function populateRow(...args) {
   updateButton = document.createElement("button");
   const applicationsId = args[0];
   updateButton.setAttribute("type", "button");
-  updateButton.setAttribute("class", "update-button");
+  updateButton.setAttribute("class", "action-button");
   updateButton.setAttribute("value", applicationsId);
   updateButton.textContent = "update";
   updateButton.onclick = async (event) => {

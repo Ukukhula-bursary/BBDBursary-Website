@@ -147,10 +147,10 @@ function populateRow(...args) {
 
   const applicationsId = args[0];
   updateButton.setAttribute("type", "button");
-  updateButton.setAttribute("class", "update-button");
+  updateButton.setAttribute("class", "action-button");
 
   viewDetailsButton.setAttribute("type", "button");
-  viewDetailsButton.setAttribute("class", "update-button");
+  viewDetailsButton.setAttribute("class", "action-button");
 
   updateButton.setAttribute("value", applicationsId);
   viewDetailsButton.setAttribute("value", applicationsId);
