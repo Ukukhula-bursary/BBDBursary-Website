@@ -1,81 +1,90 @@
-const studentByIdInput = document.getElementById("student-by-id");
-const getStudentByIdButton = document.getElementById("get-student-by-id");
-const getAllStudentApplicationsButton = document.getElementById(
-  "get-student-applications"
-);
-const studentApplicationsSection = document.getElementById(
-  "student-applications"
-);
+//commented out because id's arent correct
 
-const studentStatusOutcomeSection = document.getElementById(
-  "student-status-outcome"
-);
-const updateStudentApplicationStatusButton = document.getElementById(
-  "update-student-application-status"
-);
-const updateStudentApplicationColumnValue = document.getElementById(
-  "update-student-application-column-value"
-);
+// const studentByIdInput = document.getElementById("student-by-id");
+// const getStudentByIdButton = document.getElementById("get-student-by-id");
+// const getAllStudentApplicationsButton = document.getElementById(
+//   "get-student-applications"
+// );
+// const studentApplicationsSection = document.getElementById(
+//   "student-applications"
+// );
 
-getStudentByIdButton.addEventListener("click", (e) => {
-  e.preventDefault();
+// const studentStatusOutcomeSection = document.getElementById(
+//   "student-status-outcome"
+// );
 
-  const id = studentByIdInput.value;
-  const url = `https://bursary-api-1709020026838.azurewebsites.net/studentapplication/student/${id}`;
-  fetch(url, {
-    method: "GET",
-    mode: "cors",
-    headers: {
-      "Content-Type": "Application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
-});
+// const updateStudentApplicationStatusButton = document.getElementById(
+//   "update-student-application-status"
+// );
+// const approvalStatusSelect = document.getElementById("approval-status");
 
-getAllStudentApplicationsButton.addEventListener("click", (e) => {
-  e.preventDefault();
+// const updateStudentApplicationColumnValue = document.getElementById(
+//   "update-student-application-column-value"
+// );
 
-  const url =
-    "https://bursary-api-1709020026838.azurewebsites.net/studentapplication/students";
-  fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      studentApplicationsSection.innerHTML += `${data}`;
+// getStudentByIdButton.addEventListener("click", (e) => {
+//   e.preventDefault();
+
+//   const id = studentByIdInput.value;
+//   const url = `https://bursary-api-1709020026838.azurewebsites.net/studentapplication/student/${id}`;
+//   fetch(url, {
+//     method: "GET",
+//     mode: "cors",
+//     headers: {
+//       "Content-Type": "Application/json",
+//     },
+//   })
+//     .then((res) => res.json())
+//     .then((data) => console.log(data))
+//     .catch((err) => console.log(err));
+// });
+
+// getAllStudentApplicationsButton.addEventListener("click", (e) => {
+//   e.preventDefault();
+
+//   const url =
+//     "https://bursary-api-1709020026838.azurewebsites.net/studentapplication/students";
+//   fetch(url, {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       console.log(data);
+//       studentApplicationsSection.innerHTML += `${data}`;
+//     })
+//     .catch((err) => console.log(err));
+// });
+
+document
+  .getElementById("update-status-submit-button")
+  .addEventListener("click", () => {
+    // e.preventDefault();
+    const updatedStatus =
+      approvalStatusSelect.options[approvalStatusSelect.selectedIndex].value;
+    const url = `https://bursary-api-1709020026838.azurewebsites.net/studentapplication/status/${orange}`;
+    fetch(url, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ Status: updatedStatus }),
     })
-    .catch((err) => console.log(err));
-});
-
-updateStudentApplicationStatusButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  const url =
-    "https://bursary-api-1709020026838.azurewebsites.net/status/{studentID}";
-  fetch(url, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ Status: updatedStatus }),
-  })
-    .then((res) => res.json())
-    .then(() => location.reload())
-    .catch((err) => console.log(err));
-});
+      .then((res) => res.json())
+      .then(() => location.reload())
+      .catch((err) => console.log(err));
+  });
 
 // ******not sure
-updateStudentApplicationColumnValue.addEventListener("click", (e) => {
-  e.preventDefault();
-  const url = "/student/updateColumn/{studentID}";
-  fetch(url, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    //body: JSON.stringify({})
-  })
-    .then((res) => res.json())
-    .then(() => location.reload());
-});
+// updateStudentApplicationColumnValue.addEventListener("click", (e) => {
+// e.preventDefault();
+// const url = "/student/updateColumn/{studentID}";
+// fetch(url, {
+// method: "PATCH",
+// headers: { "Content-Type": "application/json" },
+body: JSON.stringify({});
+// })
+// .then((res) => res.json())
+// .then(() => location.reload());
+// });
+//

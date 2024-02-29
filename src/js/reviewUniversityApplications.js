@@ -24,46 +24,49 @@
 //   });
 // };
 
-
 const listApplicationsTesting = () => {
-  return [{
-    "applicationID": 1,
-    "universityName": "University Of Pretoria",
-    "fundsRequested" : "R100,000.00",
-    "status": "Approved",
-    "motivation": "I love it here!",
-    "dateOfApplication": "2024-01-01",
-    "reviewerName": "John",
-    "reviewerComment": "Something John Said",
-  }, {
-    "applicationID": 2,
-    "universityName": "University Of Limpopo",
-    "fundsRequested" : "R100,000.00",
-    "status": "Approved",
-    "motivation": "I love it also here!",
-    "dateOfApplication": "2023-01-01",
-    "reviewerName": "John",
-    "reviewerComment": "Something John Said",
-  }, {
-    "applicationID": 3,
-    "universityName": "University Of Free State",
-    "fundsRequested" : "R100,000.00",
-    "status": "Rejected",
-    "motivation": "We would like to be funded",
-    "dateOfApplication": "2020-01-01",
-    "reviewerName": "John",
-    "reviewerComment": "Sorry Not Meeting Quotas",
-  }
-    , {
-    "applicationID": 4,
-    "universityName": "University Of The Cape",
-    "fundsRequested" : "R100,000.00",
-    "status": "Under Review",
-    "motivation": "We would like to be funded",
-    "dateOfApplication": "2019-01-01",
-    "reviewerName": "John",
-    "reviewerComment": "N/A",
-  }]
+  return [
+    {
+      applicationID: 1,
+      universityName: "University Of Pretoria",
+      fundsRequested: "R100,000.00",
+      status: "Approved",
+      motivation: "I love it here!",
+      dateOfApplication: "2024-01-01",
+      reviewerName: "John",
+      reviewerComment: "Something John Said",
+    },
+    {
+      applicationID: 2,
+      universityName: "University Of Limpopo",
+      fundsRequested: "R100,000.00",
+      status: "Approved",
+      motivation: "I love it also here!",
+      dateOfApplication: "2023-01-01",
+      reviewerName: "John",
+      reviewerComment: "Something John Said",
+    },
+    {
+      applicationID: 3,
+      universityName: "University Of Free State",
+      fundsRequested: "R100,000.00",
+      status: "Rejected",
+      motivation: "We would like to be funded",
+      dateOfApplication: "2020-01-01",
+      reviewerName: "John",
+      reviewerComment: "Sorry Not Meeting Quotas",
+    },
+    {
+      applicationID: 4,
+      universityName: "University Of The Cape",
+      fundsRequested: "R100,000.00",
+      status: "Under Review",
+      motivation: "We would like to be funded",
+      dateOfApplication: "2019-01-01",
+      reviewerName: "John",
+      reviewerComment: "N/A",
+    },
+  ];
 };
 
 // const updateApplications = (id) => {
@@ -79,12 +82,14 @@ const listApplicationsTesting = () => {
 //   });
 // };
 
-
 async function loadTable() {
   const applications = listApplicationsTesting();
   const tableBody = document.getElementById("tbodyID");
 
-  while (tableBody.lastElementChild && tableBody.lastElementChild.id !== "theadings") {
+  while (
+    tableBody.lastElementChild &&
+    tableBody.lastElementChild.id !== "theadings"
+  ) {
     tableBody.removeChild(tableBody.lastElementChild);
   }
 
@@ -97,16 +102,14 @@ async function loadTable() {
       application.motivation,
       application.dateOfApplication,
       application.reviewerName,
-      application.reviewerComment,
+      application.reviewerComment
     );
 
     tableBody.appendChild(tableRow);
   }
-};
-
+}
 
 loadTable();
-
 
 function populateRow(...args) {
   const tableRow = document.createElement("tr");
@@ -141,7 +144,7 @@ function populateRow(...args) {
   tableRow.appendChild(cell);
 
   return tableRow;
-};
+}
 
 // const loadExistingApplicationsTable = () => {
 //   $(document).ready(function () {
@@ -150,12 +153,12 @@ function populateRow(...args) {
 // };
 // loadExistingApplicationsTable();
 
-
-
 const confirmUpdate = (applicationsId) => {
-  return window.confirm(
+  window.confirm(
     `Your are about to update this Application: ID = ${applicationsId}?`
   );
+  console.log(applicationsId);
+  return applicationsId;
 };
 
 const handleUpdate = async (updateApplications, applicationsId) => {
@@ -165,22 +168,25 @@ const handleUpdate = async (updateApplications, applicationsId) => {
   }
 };
 
-document.getElementById('approval-status').addEventListener('change', function () {
-  var selectedOptionText = this.options[this.selectedIndex].text;
-  var rejectionReasonContainer = document.getElementById('rejection-reason-container');
+document
+  .getElementById("approval-status")
+  .addEventListener("change", function () {
+    var selectedOptionText = this.options[this.selectedIndex].text;
+    var rejectionReasonContainer = document.getElementById(
+      "rejection-reason-container"
+    );
 
-  if (selectedOptionText === 'Rejected') {
-    rejectionReasonContainer.style.display = 'flex';
-  } else {
-    rejectionReasonContainer.style.display = 'none';
-  }
-});
+    if (selectedOptionText === "Rejected") {
+      rejectionReasonContainer.style.display = "flex";
+    } else {
+      rejectionReasonContainer.style.display = "none";
+    }
+  });
 
 // const addapplicationsButton = document.getElementById("add-a-applications-button");
 // addapplicationsButton.onclick = () => {
 //   showapplicationsContainer();
 // };
-
 
 // document.getElementById("applications-cancel-button").onclick = () => {
 // };
