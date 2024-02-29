@@ -7,7 +7,7 @@ const addUniversityStaffButton = document.getElementById(
   "add-university-staff-button"
 );
 
-const universitySstaffByIdButton = document.getElementById(
+const universityStaffByIdButton = document.getElementById(
   "university-staff-by-id-button"
 );
 const universityStaffId = document.getElementById("university-staff-by-id");
