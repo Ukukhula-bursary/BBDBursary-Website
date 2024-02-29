@@ -14,7 +14,21 @@
 
 
     <!-- @PostMapping("/add") addUniversityStaff-->
-    <input type="text">
+    <form action="/action_page.php">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+        <label for="phone-number">Phone number:</label><br>
+        <input type="text" id="phone-number" name="phone-number"><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+        <input type="submit" value="Submit">
+    </form> 
     <button id="add-university-staff-button"></button>
 
     <!-- @GetMapping("/id={id}") getUniversityStaffById -->
