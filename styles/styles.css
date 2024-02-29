@@ -400,6 +400,7 @@ a.social-link-icons:active {
 
 .generic-form input[type="text"],
 .generic-form input[type="email"],
+.generic-form input[type="tel"],
 .generic-form textarea {
     background-color: var(--text-color);
     padding: 1rem 1rem 1rem 1rem;
