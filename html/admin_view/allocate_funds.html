@@ -10,59 +10,52 @@
   font-family: Arial, sans-serif;
 }
 
-#budget-section, #distribution-section, #universities-table, #allocation-section {
+.main-section{
   margin: 20px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
-
-#progress-bar {
-  width: 50%;
-  height: 20px;
-  background-color: lightblue;
-}
-
-#universities-table {
-  display: none; /* Initially hide the universities table */
-}
-
-#allocation-section {
-  display: none; /* Initially hide the allocation section */
-}
         </style>
     </head>
     <body>
-        <div id="budget-section">
-            <h2>Budget Section</h2>
+        <section id="allocate-bbd-yearly-budget-section" class="main-section">
+            <h2>Allocate BBD Yearly Budget Section</h2>
             <p>
                 Total Budget:
-                <span id="total-budget">10000</span>
+                <span id="bbd-yearly-total-budget">10000</span>
             </p>
             <p>
                 Spent So Far:
-                <span id="spent-so-far">5000</span>
+                <span id="bbd-yearly-spent-so-far">5000</span>
             </p>
             <p>
-                Remaining Budget:
-                <span id="remaining-budget">5000</span>
+                Commit Amount To Allocate
             </p>
-            <div id="progress-bar"></div>
-        </div>
-        <div id="distribution-section">
+            <input
+                type="number"
+                id="amount-to-allocate"
+                placeholder="Enter amount"
+                min="0"
+            >
+            <button id="commit-funding">Commit Funding</button>
+            <button id="cancel-funding">Cancel</button>
+        </section>
+        <section id="distribution-section" class="main-section">
             <h2>Distribution Section</h2>
-            <button id="view-universities">View Approved Universities</button>
+            <p>
+                Number Of Approved Universities:
+                <span id="hypothetical-amount">6</span>
+            </p>
             <p>
                 Hypothetical Information: Each approved university would get:
-                <span id="hypothetical-amount">0</span>
+                R
+                <span id="hypothetical-amount">166.67</span>
             </p>
             <button id="allocate-funds">Allocate Funds Evenly</button>
-        </div>
-        <div id="universities-table">
-            <!-- Table of Approved Universities -->
-            <!-- Each row should have a select button to choose a university --></div>
-        <div id="allocation-section">
-            <h2>Allocation Section</h2>
+        </section>
+        <section id="allocation-section" class="main-section">
+            <h2>University Allocation Section</h2>
             <p>
                 Current Selected University:
                 <span id="selected-university">None selected</span>
@@ -70,7 +63,11 @@
             <input type="number" id="amount-to-allocate" placeholder="Enter amount">
             <button id="commit-funding">Commit Funding</button>
             <button id="cancel-funding">Cancel</button>
-        </div>
-        <script src="script.js"></script>
+        </section>
+        <section id="universities-table" class="main-section">
+            <h2>Approved Universities Table Can go Here</h2>
+            <!-- Table of Approved Universities -->
+            <!-- Each row should have a select button to choose a university -->
+        </section>
     </body>
 </html>
