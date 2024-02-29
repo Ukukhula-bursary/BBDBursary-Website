@@ -45,3 +45,16 @@ addUniversityStaffButton.addEventListener("click", () => {
     .then((data) => console.log(data))
     .catch((err) => console.log(err));
 });
+
+universityStaffByIdButton.addEventListener("click", () => {
+  const staffId = document.getElementById("staff-id");
+  const url = `https://bursary-api-1709020026838.azurewebsites.net/universitystaff/${staffId}`;
+
+  fetch(url, {
+    method: "GET",
+    mode: "cors",
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+});
