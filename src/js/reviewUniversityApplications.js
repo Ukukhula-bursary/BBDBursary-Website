@@ -1,35 +1,8 @@
-// const listApplications = () => {
-//   return new Promise((resolve, reject) => {
-//     $.ajax({
-//       url: "/applications",
-//       method: "GET",
-//       dataType: "json",
-//       success: function (response_data) {
-//         resolve(response_data);
-//       },
-//     });
-//   });
-// };
-
-// const viewApplications = (id) => {
-//   return new Promise((resolve, reject) => {
-//     $.ajax({
-//       url: `/applications/${id}`,
-//       method: "GET",
-//       dataType: "json",
-//       success: function (response_data) {
-//         resolve(response_data);
-//       },
-//     });
-//   });
-// };
-
-
 const listApplicationsTesting = () => {
   return [{
     "applicationID": 1,
     "universityName": "University Of Pretoria",
-    "fundsRequested" : "R100,000.00",
+    "fundsRequested": "R100,000.00",
     "status": "Approved",
     "motivation": "I love it here!",
     "dateOfApplication": "2024-01-01",
@@ -38,7 +11,7 @@ const listApplicationsTesting = () => {
   }, {
     "applicationID": 2,
     "universityName": "University Of Limpopo",
-    "fundsRequested" : "R100,000.00",
+    "fundsRequested": "R100,000.00",
     "status": "Approved",
     "motivation": "I love it also here!",
     "dateOfApplication": "2023-01-01",
@@ -47,7 +20,7 @@ const listApplicationsTesting = () => {
   }, {
     "applicationID": 3,
     "universityName": "University Of Free State",
-    "fundsRequested" : "R100,000.00",
+    "fundsRequested": "R100,000.00",
     "status": "Rejected",
     "motivation": "We would like to be funded",
     "dateOfApplication": "2020-01-01",
@@ -57,7 +30,7 @@ const listApplicationsTesting = () => {
     , {
     "applicationID": 4,
     "universityName": "University Of The Cape",
-    "fundsRequested" : "R100,000.00",
+    "fundsRequested": "R100,000.00",
     "status": "Under Review",
     "motivation": "We would like to be funded",
     "dateOfApplication": "2019-01-01",
@@ -65,20 +38,6 @@ const listApplicationsTesting = () => {
     "reviewerComment": "N/A",
   }]
 };
-
-// const updateApplications = (id) => {
-//   return new Promise((resolve, reject) => {
-//     $.ajax({
-//       url: `/applications/${id}`,
-//       method: "update",
-//       dataType: "json",
-//       success: function (response_data) {
-//         resolve(response_data);
-//       },
-//     });
-//   });
-// };
-
 
 async function loadTable() {
   const applications = listApplicationsTesting();
@@ -127,6 +86,8 @@ function populateRow(...args) {
 
   updateButton = document.createElement("button");
   const applicationsId = args[0];
+  // admin-student-application-view-details-section
+  updateButton.setAttribute("id", `update-action-button-${applicationsId}`);
   updateButton.setAttribute("type", "button");
   updateButton.setAttribute("class", "action-button");
   updateButton.setAttribute("value", applicationsId);
@@ -143,15 +104,6 @@ function populateRow(...args) {
   return tableRow;
 };
 
-// const loadExistingApplicationsTable = () => {
-//   $(document).ready(function () {
-//     loadTable();
-//   });
-// };
-// loadExistingApplicationsTable();
-
-
-
 const confirmUpdate = (applicationsId) => {
   return window.confirm(
     `Your are about to update this Application: ID = ${applicationsId}?`
@@ -160,10 +112,28 @@ const confirmUpdate = (applicationsId) => {
 
 const handleUpdate = async (updateApplications, applicationsId) => {
   if (updateApplications) {
-    await updateApplications(applicationsId);
+    showUpdateApplicationPopUp(applicationsId);
     await loadTable();
   }
 };
+
+
+function showUpdateApplicationPopUp(applicationsId) {
+  document.getElementById("university-application-form-section").style.display = 'flex';
+  document.getElementById("admin-university-application-table-section").style.display = 'none';
+  const cancelButton = document.getElementById("admin-cancel-button");
+
+  cancelButton.addEventListener("click", () => {
+    hideUpdateApplicationPopUp();
+  })
+}
+
+
+function hideUpdateApplicationPopUp(applicationsId) {
+  document.getElementById("university-application-form-section").style.display = 'none';
+  document.getElementById("admin-university-application-table-section").style.display = '';
+}
+
 
 document.getElementById('approval-status').addEventListener('change', function () {
   var selectedOptionText = this.options[this.selectedIndex].text;
@@ -176,11 +146,9 @@ document.getElementById('approval-status').addEventListener('change', function (
   }
 });
 
-// const addapplicationsButton = document.getElementById("add-a-applications-button");
-// addapplicationsButton.onclick = () => {
-//   showapplicationsContainer();
-// };
-
-
-// document.getElementById("applications-cancel-button").onclick = () => {
-// };
+const handleCancel = async () => {
+  if (updateApplications) {
+    hideUpdateApplicationPopUp();
+    // loadTable();
+  }
+};
