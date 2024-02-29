@@ -63,7 +63,7 @@ async function loadTable() {
   }
 };
 
-
+  
 loadTable();
 
 
@@ -86,7 +86,6 @@ function populateRow(...args) {
 
   selectButton = document.createElement("button");
   const applicationsId = args[0];
-  // admin-student-application-view-details-section
   selectButton.setAttribute("id", `select-action-button-${applicationsId}`);
   selectButton.setAttribute("type", "button");
   selectButton.setAttribute("class", "action-button");
@@ -120,12 +119,6 @@ const handleSelect = async (updateApplications, applicationsId, universityName) 
   }
 };
 
-
-function showUpdateApplicationPopUp(applicationsId) {
-  document.getElementById("university-application-form-section").style.display = 'flex';
-  document.getElementById("admin-university-application-table-section").style.display = 'none';
-}
-
 const cancelButton = document.getElementById("cancel-student-funding-button");
 
 cancelButton.addEventListener("click", () => {
@@ -137,9 +130,3 @@ function hideUpdateApplicationPopUp(applicationsId) {
   document.getElementById("admin-university-application-table-section").style.display = '';
 }
 
-const handleCancel = async () => {
-  if (updateApplications) {
-    hideUpdateApplicationPopUp();
-    // loadTable();
-  }
-};
