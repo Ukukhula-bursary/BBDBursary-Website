@@ -17,6 +17,8 @@
     padding: 0;
     margin: 0;
     line-height: 1;
+    font-family: Arial, sans-serif;
+
 }
 
 body {
@@ -249,7 +251,7 @@ section h2 {
 
 .download-buttons {
     background-color: var(--third-color);
-    color:var(--text-color);
+    color: var(--text-color);
     padding: 20px;
     text-align: center;
     text-decoration: none;
@@ -261,7 +263,7 @@ section h2 {
 }
 
 
-.download-buttons:hover{
+.download-buttons:hover {
     background-color: var(--secondary-color);
     color: var(--fourth-color);
     padding: 20px;
@@ -398,6 +400,7 @@ a.social-link-icons:active {
 
 .generic-form input[type="text"],
 .generic-form input[type="email"],
+.generic-form input[type="tel"],
 .generic-form textarea {
     background-color: var(--text-color);
     padding: 1rem 1rem 1rem 1rem;
@@ -647,12 +650,19 @@ tr:nth-child(even) {
     display: flex;
 }
 
-#admin-student-application-view-details-section {
+#admin-student-application-view-details-section,
+#university-application-form-section {
     display: none;
-
 }
 
 
+
+.main-section {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
 
 /* @media (max-width : 768px) {
     #home-body {

@@ -21,7 +21,7 @@ const listApplicationsTesting = () => {
     "applicationID": 3,
     "universityName": "University Of Free State",
     "fundsRequested": "R100,000.00",
-    "status": "Rejected",
+    "status": "Approved",
     "motivation": "We would like to be funded",
     "dateOfApplication": "2020-01-01",
     "reviewerName": "John",
@@ -31,7 +31,7 @@ const listApplicationsTesting = () => {
     "applicationID": 4,
     "universityName": "University Of The Cape",
     "fundsRequested": "R100,000.00",
-    "status": "Under Review",
+    "status": "Approved",
     "motivation": "We would like to be funded",
     "dateOfApplication": "2019-01-01",
     "reviewerName": "John",
@@ -63,7 +63,7 @@ async function loadTable() {
   }
 };
 
-
+  
 loadTable();
 
 
@@ -84,20 +84,22 @@ function populateRow(...args) {
   updateSection = document.createElement("section");
   updateSection.setAttribute("class", "action-button-section");
 
-  updateButton = document.createElement("button");
+  selectButton = document.createElement("button");
   const applicationsId = args[0];
-  // admin-student-application-view-details-section
-  updateButton.setAttribute("id", `update-action-button-${applicationsId}`);
-  updateButton.setAttribute("type", "button");
-  updateButton.setAttribute("class", "action-button");
-  updateButton.setAttribute("value", applicationsId);
-  updateButton.textContent = "update";
-  updateButton.onclick = async (event) => {
+  selectButton.setAttribute("id", `select-action-button-${applicationsId}`);
+  selectButton.setAttribute("type", "button");
+  selectButton.setAttribute("class", "action-button");
+  selectButton.setAttribute("value", applicationsId);
+  selectButton.textContent = "Select";
+
+  selectButton.onclick = async (event) => {
     const clickedButton = event.target;
-    const applicationsId = parseInt(clickedButton.value);
-    handleUpdate(confirmUpdate(applicationsId), applicationsId);
+    const userApplicationsID = parseInt(clickedButton.value);
+    const universityName = listApplicationsTesting().find(({ applicationID }) => userApplicationsID === applicationID).universityName;
+    console.log(universityName)
+    handleSelect(confirmUpdate(applicationsId), applicationsId, universityName);
   };
-  updateSection.appendChild(updateButton);
+  updateSection.appendChild(selectButton);
   cell.appendChild(updateSection);
   tableRow.appendChild(cell);
 
@@ -110,45 +112,21 @@ const confirmUpdate = (applicationsId) => {
   );
 };
 
-const handleUpdate = async (updateApplications, applicationsId) => {
+const handleSelect = async (updateApplications, applicationsId, universityName) => {
   if (updateApplications) {
-    showUpdateApplicationPopUp(applicationsId);
+    document.getElementById("selected-university").textContent = universityName;
     await loadTable();
   }
 };
 
+const cancelButton = document.getElementById("cancel-student-funding-button");
 
-function showUpdateApplicationPopUp(applicationsId) {
-  document.getElementById("university-application-form-section").style.display = 'flex';
-  document.getElementById("admin-university-application-table-section").style.display = 'none';
-  const cancelButton = document.getElementById("admin-cancel-button");
-
-  cancelButton.addEventListener("click", () => {
-    hideUpdateApplicationPopUp();
-  })
-}
-
+cancelButton.addEventListener("click", () => {
+  document.getElementById("amount-to-allocate-student").value = '';
+})
 
 function hideUpdateApplicationPopUp(applicationsId) {
   document.getElementById("university-application-form-section").style.display = 'none';
   document.getElementById("admin-university-application-table-section").style.display = '';
 }
 
-
-document.getElementById('approval-status').addEventListener('change', function () {
-  var selectedOptionText = this.options[this.selectedIndex].text;
-  var rejectionReasonContainer = document.getElementById('rejection-reason-container');
-
-  if (selectedOptionText === 'Rejected') {
-    rejectionReasonContainer.style.display = 'flex';
-  } else {
-    rejectionReasonContainer.style.display = 'none';
-  }
-});
-
-const handleCancel = async () => {
-  if (updateApplications) {
-    hideUpdateApplicationPopUp();
-    // loadTable();
-  }
-};

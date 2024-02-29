@@ -138,7 +138,6 @@ function populateRow(...args) {
 
 function handleViewDetails(applicationsId) {
   //show form a with user documents
-  console.log(applicationsId)
   showApplicationDetailsPopUp(applicationsId);
 }
 
