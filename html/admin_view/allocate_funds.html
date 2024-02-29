@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Allocate Funds And Distribution</title>
+        <style>
+    body {
+  font-family: Arial, sans-serif;
+}
+
+#budget-section, #distribution-section, #universities-table, #allocation-section {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+#progress-bar {
+  width: 50%;
+  height: 20px;
+  background-color: lightblue;
+}
+
+#universities-table {
+  display: none; /* Initially hide the universities table */
+}
+
+#allocation-section {
+  display: none; /* Initially hide the allocation section */
+}
+        </style>
+    </head>
+    <body>
+        <div id="budget-section">
+            <h2>Budget Section</h2>
+            <p>
+                Total Budget:
+                <span id="total-budget">10000</span>
+            </p>
+            <p>
+                Spent So Far:
+                <span id="spent-so-far">5000</span>
+            </p>
+            <p>
+                Remaining Budget:
+                <span id="remaining-budget">5000</span>
+            </p>
+            <div id="progress-bar"></div>
+        </div>
+        <div id="distribution-section">
+            <h2>Distribution Section</h2>
+            <button id="view-universities">View Approved Universities</button>
+            <p>
+                Hypothetical Information: Each approved university would get:
+                <span id="hypothetical-amount">0</span>
+            </p>
+            <button id="allocate-funds">Allocate Funds Evenly</button>
+        </div>
+        <div id="universities-table">
+            <!-- Table of Approved Universities -->
+            <!-- Each row should have a select button to choose a university --></div>
+        <div id="allocation-section">
+            <h2>Allocation Section</h2>
+            <p>
+                Current Selected University:
+                <span id="selected-university">None selected</span>
+            </p>
+            <input type="number" id="amount-to-allocate" placeholder="Enter amount">
+            <button id="commit-funding">Commit Funding</button>
+            <button id="cancel-funding">Cancel</button>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
