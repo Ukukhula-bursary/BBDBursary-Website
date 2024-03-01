@@ -13,24 +13,6 @@ const getUniverityByIdButton = document.getElementById(
 );
 const displayUniversityById = document.getElementById("university-by-id");
 
-getAllUniversitiesButton.addEventListener("click", () => {
-  //const url1 = window.location.href;
-  const url =
-    "https://bursary-api-1709020026838.azurewebsites.net/university/all";
-  fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      displayAllUniversities.innerHTML += `${data}`;
-    })
-    .catch((err) => console.log(err));
-});
-
 addNewUniversityButton.addEventListener("click", (e) => {
   e.preventDefault();
   const value = newUniversityInput.value;
