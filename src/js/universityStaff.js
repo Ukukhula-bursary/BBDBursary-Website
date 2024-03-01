@@ -41,7 +41,11 @@ addUniversityStaffButton.addEventListener("click", () => {
       departmentName: document.getElementById("department-name").value,
     }),
   })
-    .then((res) => res.json())
+    .then((res) => {
+      res.json();
+      console.log(res.json());
+      //return res.json();
+    })
     .then((data) => console.log(data))
     .catch((err) => console.log(err));
 });
