@@ -99,54 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     
-    function fillInUniversityList() {
-        let select = document.getElementById("select-university");
-        
-        for (let i = 0; i < university_choices.length; i++) {
-            let opt = university_choices[i];
-            let el = document.createElement("option");
-            el.textContent = opt;
-            el.value = opt;
-            select.appendChild(el);
-        }
-        let el = document.createElement("option");
-        el.textContent = "Other";
-        el.value = "Other";
-        select.appendChild(el);
-    }
-    fillInUniversityList();
-    
-    
-    const selectElement = document.getElementById('select-university');
-    selectElement.addEventListener('change', (event) => {
-        
-        
-        console.log(selectElement.value);
-        
-        if (university_choices.includes(selectElement.value) && selectElement.value) {
-            document.getElementById("generic-form").style.display = 'flex';
-        }
-        else {
-            document.getElementById("generic-form").style.display = 'none';
-        }
-        
-        
-    });
-    
-    function fillInHodDepartmentList() {
-        let select = document.getElementById("hod-department");
-        
-        
-        for (let i = 0; i < department_choices.length; i++) {
-            console.log(i);
-            let opt = department_choices[i];
-            let el = document.createElement("option");
-            el.textContent = opt;
-            el.value = opt;
-            select.appendChild(el);
-        }
-    }
-    fillInHodDepartmentList();
+   
     fillInEthnicityRadioButtons();
 
     
