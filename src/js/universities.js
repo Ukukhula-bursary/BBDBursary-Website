@@ -13,10 +13,10 @@ const getUniverityByIdButton = document.getElementById(
 );
 const displayUniversityById = document.getElementById("university-by-id");
 
-getAllUniversitiesButton.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  const url = "/universities";
+getAllUniversitiesButton.addEventListener("click", () => {
+  //const url1 = window.location.href;
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/university/all";
   fetch(url, {
     method: "GET",
     headers: {
@@ -24,7 +24,10 @@ getAllUniversitiesButton.addEventListener("click", (e) => {
     },
   })
     .then((res) => res.json())
-    .then((data) => (displayAllUniversities.innerHTML += `${data}`))
+    .then((data) => {
+      console.log(data);
+      displayAllUniversities.innerHTML += `${data}`;
+    })
     .catch((err) => console.log(err));
 });
 
