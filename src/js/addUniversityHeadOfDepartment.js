@@ -9,13 +9,12 @@ async function getAllUniversities() {
   })
     .then((res) => res.json())
     .then((data) => {
-      //console.log(data);
       return data;
     })
     .catch((err) => console.log(err));
 }
 
-const universityStatusSelect = document.getElementById("university-status");
+const universityStatusSelect = document.getElementById("university-name-drop-down");
 
 async function populateUniversityDropdown() {
   universityStatusSelect.disabled = true;
