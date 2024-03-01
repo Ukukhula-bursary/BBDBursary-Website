@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles/styles.css" defer>
+        <title>Allocate Funds And Distribution</title>
+        <script src="../../src/js/navbarLogic.js" defer></script>
+        <script src="../../src/js/adminAllocateFunds.js" defer></script>
+    </head>
+    <body>
+        <main id="home-body">
+            <section id="allocate-bbd-yearly-budget-section" class="main-section">
+                <h2>
+                    Allocate BBD Yearly Budget Section
+                    <span>(2024)</span>
+                </h2>
+                <p>
+                    Total Budget:
+                    <span id="bbd-yearly-total-budget">10000</span>
+                </p>
+                <p>
+                    Spent So Far:
+                    <span id="bbd-yearly-spent-so-far">5000</span>
+                </p>
+                <p>
+                    Commit Amount To Allocate
+                </p>
+                <input
+                    type="number"
+                    id="amount-to-allocate"
+                    placeholder="Enter amount"
+                    min="0"
+                >
+                <button type="button" id="commit-bbd-funding-button">Commit Funding</button>
+                <button type="button" id="cancel-bbd-funding-button">Cancel</button>
+            </section>
+            <section id="distribution-section" class="main-section">
+                <h2>Distribution Section</h2>
+                <p>
+                    Number Of Approved Universities:
+                    <span id="hypothetical-amount">6</span>
+                </p>
+                <p>
+                    Hypothetical Information: Each approved university would get:
+                R
+                    <span id="hypothetical-amount">166.67</span>
+                </p>
+                <button id="allocate-funds">Allocate Funds Evenly</button>
+            </section>
+            <section id="allocation-section" class="main-section">
+                <h2>University Allocation Section</h2>
+                <p>
+                    Current Selected University (from Allocations Table Below):
+                    <b>
+                        <span id="selected-university">
+                            None selected
+                        </span>
+                    </b>
+                </p>
+                <input type="number" id="amount-to-allocate-student" placeholder="Enter amount">
+                <button type="button" id="commit-student-funding-button">Commit Funding</button>
+                <button type="button" id="cancel-student-funding-button">Cancel</button>
+            </section>
+            <section id="universities-table" class="main-section">
+                <h2>Approved Universities Table Can Go Here</h2>
+                <!-- Table of Approved Universities -->
+                <!-- Each row should have a select button to choose a university -->
+                <!-- Table Section -->
+                <section id="admin-university-application-table-section">
+                    <!-- Table -->
+                    <h1 id="application-table-heading">Allocations Table</h1>
+                    <!-- Filtering -->
+                    <section id="filter-section">
+                        <section>
+                            <label for="university-names">Filter By University Name:</label>
+                            <select id="university-names" name="university-names" class="generic-drop-downs">
+                                <!-- to be populated by the database -->
+                                <option value="" selected disabled>Select University</option>
+                                <option value="UCT">UCT</option>
+                                <option value="UP">UP</option>
+                                <option value="UKZN">UKZN</option>
+                            </select>
+                            <button
+                                type="button"
+                                id="filter-by-university-button"
+                                class="buttons"
+                                value="Search"
+                            >Search</button>
+                        </section>
+                        <section>
+                            <label for="filter-section-status">Filter By: Year</label>
+                            <select id="filter-section-status" name="filter-section" class="generic-drop-downs">
+                                <option value="" selected disabled>Select Year</option>
+                                <option value="1">2024</option>
+                                <option value="2">2023</option>
+                                <option value="3">2022</option>
+                                <option value="4">2021</option>
+                            </select>
+                            <button
+                                type="button"
+                                id="filter-by-status-button"
+                                class="buttons"
+                                value="Search"
+                            >Search</button>
+                        </section>
+                    </section>
+                    <!-- Table -->
+                    <section id="application-table-container">
+                        <section id="application-list">
+                            <table id="tableID">
+                                <tbody id="tbodyID">
+                                    <tr id="theadings">
+                                        <th>Application ID</th>
+                                        <th>University Name</th>
+                                        <th>Budget Requested</th>
+                                        <th>Status</th>
+                                        <th>Motivation</th>
+                                        <th>Date of Application</th>
+                                        <th>Reviewer Name</th>
+                                        <th>Reviewer Comment</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </main>
+    </body>
+</html>

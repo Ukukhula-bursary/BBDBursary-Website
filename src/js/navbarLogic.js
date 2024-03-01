@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <li><a href="/html/admin_view/add_an_admin.html">Add An Admin</a></li>
                 <li><a href="/html/admin_view/review_university_applications.html">Review University Applications</a></li>
                 <li><a href="/html/admin_view/review_a_student_application.html">Review A Student Application</a></li>
-                <li><a href="#">Allocate Funds</a></li>
+                <li><a href="/html/admin_view/allocate_funds.html">Allocate Funds</a></li>
                 <li>
                     <button id="logInButton" type="button" title="Log In">Log In</button>
                     <button id="logOutButton" type="button" title="Log Out">Log Out</button>
@@ -36,7 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.body.insertAdjacentHTML('afterbegin', navHtml);
 }
-
+//save as html
+//insert xml
+// xml http requests ( pass )
 
 createAdminNav();
   

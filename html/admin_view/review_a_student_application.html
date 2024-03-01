@@ -7,10 +7,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <!-- Download fonts locally -->
         <link rel="shortcut icon" href="">
-        <title>BBD Ukukhula Bursary - Review An Application</title>
+        <title>BBD Ukukhula Bursary - Review Student Application(s)</title>
     </head>
     <script src="../../src/js/navbarLogic.js" defer></script>
-    <script src="../../src/js/review_a_university_application.js" defer></script>
+    <script src="../../src/js/reviewStudentApplications.js" defer></script>
     <body>
         <main id="home-body">
             <section id="home-section-add-institution" class="home-section">
@@ -23,72 +23,157 @@
                     >
                     Review An Application
                 </h2>
-                <section id="add-institution-section">
-                    <section id="home-section-generic" class="home-section">
-                        <section id="form-section" id="home-contact-section" class="home-section">
-                            <form
-                                id="generic-form"
-                                action="#"
-                                method="POST"
-                                
+            </section>
+            <section id="admin-student-application-section" class="home-section">
+                <!-- student application form section -->
+                <section id="admin-student-application-form-section" class="form-section">
+                    <form
+                        id="admin-student-application-form"
+                        class="generic-form"
+                        action="#"
+                        method="POST"
+                    >
+                        <h3 id="successMessage"></h3>
+                        <label for="is-active-status">Choose Active Status:</label>
+                        <select id="is-active-status" name="is-active-status" class="generic-drop-downs">
+                            <option value="" selected disabled>Choose Status</option>
+                            <option value="No">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                        <label for="approval-status">Choose Approval Status:</label>
+                        <select id="approval-status" name="approval-status" class="generic-drop-downs">
+                            <option value="" selected disabled>Choose Approval Status:</option>
+                            <option value="1">Accepted</option>
+                            <option value="2">Rejected</option>
+                            <option value="3">Under Review</option>
+                        </select>
+                        <section id="rejection-reason-container">
+                            <label for="rejection-reason">Give Rejection Reason</label>
+                            <input type="text" id="rejection-reason" name="rejection-reason"></input>
+                            <label for="admin-comment">Reviewer Comment (optional)</label>
+                            <input type="text" id="admin-comment" name="admin-comment"></input>
+                        </section>
+                        <input
+                            type="submit"
+                            id="submit-button"
+                            class="buttons"
+                            value="Submit (Update)"
+                        >
+                        <input
+                            type="button"
+                            id="admin-cancel-button"
+                            class="admin-cancel-button"
+                            value="Cancel"
+                        >
+                    </form>
+                </section>
+                <!-- View Details Section -->
+                <section id="admin-student-application-view-details-section" class="form-section">
+                    <form
+                        id="admin-student-view-details-application-form"
+                        class="generic-form"
+                        action="#"
+                        method="POST"
+                    >
+                        <label for="download-certified-id-copy">Certified ID Copy:</label>
+                        <button
+                            id="download-certified-id-copy"
+                            type="button"
+                            value="StudentID"
+                            class="download-buttons"
+                        >Download Certified ID</button>
+                        <label for="download-accedemic-transcript">Academic Transcript:</label>
+                        <button
+                            id="download-accedemic-transcript"
+                            type="button"
+                            value="StudentID"
+                            class="download-buttons"
+                        >Download Academic Transcript</button>
+                        <label for="download-accedemic-vitae-transcript">Curriculum Vitae:</label>
+                        <button
+                            id="download-curriculum-transcript"
+                            type="button"
+                            value="StudentID"
+                            class="download-buttons"
+                        >Download Curriculum Vitae</button>
+                        <input
+                            type="button"
+                            id="admin-back-button"
+                            class="admin-back-button"
+                            value="Back"
+                        >
+                    </form>
+                </section>
+                <!-- Table Section -->
+                <section id="admin-student-application-table-section">
+                    <!-- Table -->
+                    <h1 id="application-table-heading">Applications Table</h1>
+                    <!-- Filtering -->
+                    <section id="filter-section">
+                        <section>
+                            <label for="searchByName" id="generic-form-search-by-name-label">
+                                Search By Name:
+                            </label
+                        >
+                            <input
+                                pattern="[a-zA-Z\s]{2,256}$"
+                                title="Name: Only alphabets and space allowed."
+                                type="text"
+                                id="searchByName"
+                                name="searchByName"
+                                required
+                                placeholder="Student Name"
                             >
-                                <h3 id="successMessage"></h3>
-                                <label for="university-name">University Name:</label>
-                                <select id="university-name" name="university-status" class="buttons">
-                                    <!-- to be populated by the database -->
-                                    <option value="" selected disabled>Select University</option>
-                                    <option value="UCT">UCT</option>
-                                    <option value="UP">UP</option>
-                                    <option value="UKZN">UKZN</option>
-                                </select>
-                                <label for="searchByName" id="generic-form-search-by-name-label">
-                                    Search By Name:
-                                </label
-                            >
-                                <input
-                                    pattern="[a-zA-Z\s]{2,256}$"
-                                    title="Name: Only alphabets and space allowed."
-                                    type="text"
-                                    id="searchByName"
-                                    name="searchByName"
-                                    required
-                                    placeholder="Student Name"
-                                >
-                                <label for="is-active-status">Choose Active Status:</label>
-                                <select id="is-active-status" name="is-active-status" class="buttons">
-                                    <option value="" selected disabled>Choose Status</option>
-                                    <option value="No">No</option>
-                                    <option value="yes">Yes</option>
-                                </select>
-                                <section id="student-form"></section>
-                                <h1 id="application-table-heading">Applications Table</h1>
-                                <section id="application-table-container">
-                                    <section id="application-list">
-                                        <table id="tableID">
-                                            <tbody id="tbodyID">
-                                                <tr id="theadings">
-                                                    <th>ID</th>
-                                                    <th>Full Name</th>
-                                                    <th>Assistance</th>
-                                                    <th>Age</th>
-                                                    <th>Date of Visit</th>
-                                                    <th>Time of Visit</th>
-                                                    <th>Comments</th>
-                                                    <th></th>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </section>
-                                </section>
-                                <input
-                                    type="submit"
-                                    id="submit-button"
-                                    class="buttons"
-                                    value="Add"
-                                >
-                            </form>
+                            <button
+                                type="button"
+                                id="filter-by-student-button"
+                                class="buttons"
+                                value="Search"
+                            >Search</button>
+                        </section>
+                        <section>
+                            <label for="filter-section-status">Filter By: Approval Status</label>
+                            <select id="filter-section-status" name="filter-section" class="generic-drop-downs">
+                                <option value="" selected disabled>Status</option>
+                                <option value="1">Accepted</option>
+                                <option value="2">Rejected</option>
+                                <option value="3">Submitted</option>
+                                <option value="4">Under Review</option>
+                            </select>
+                            <button
+                                type="button"
+                                id="filter-button"
+                                class="buttons"
+                                value="Search"
+                            >Search</button>
                         </section>
                     </section>
-                </main>
-            </body>
-        </html>
+                    <section id="application-table-container">
+                        <section id="application-list">
+                            <table id="tableID">
+                                <tbody id="tbodyID">
+                                    <tr id="theadings">
+                                        <th>Application ID</th>
+                                        <th>University Name</th>
+                                        <th>Department</th>
+                                        <th>Student Name</th>
+                                        <th>Ethnicity</th>
+                                        <th>Bursary Amount</th>
+                                        <th>Status</th>
+                                        <th>Motivation</th>
+                                        <th>Date Of Application</th>
+                                        <th>BBD Reviewer Name</th>
+                                        <th>BBD Reviewer Comment</th>
+                                        <th>University Staff Reviewer Name</th>
+                                        <th>University Staff Reviewer Comment</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </main>
+    </body>
+</html>

@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="styles/styles.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <!-- Download fonts locally -->
-    <link rel="shortcut icon" href="" />
-
-    <title>BBD Ukukhula Bursary</title>
-  </head>
-  <script src="/src/js/navbarLogic.js" defer></script>
-  <script src="/index.js" defer></script>
-  <body>
-    <main id="home-body">
-      <section id="home-section-about-us" class="home-section">
-        <h2>
-          <img
-            alt="graduation-cap"
-            src="src/assets/icons/graduation-cap.jfif"
-            id="about-us-icon"
-            class="section-icons"
-          />
-          About Fund
-        </h2>
-        <section id="about-us-text">
-          <p>
-            BBD’s Bursary Programme strives to support and grow talented
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles/styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <!-- Download fonts locally -->
+        <link rel="shortcut icon" href="">
+        <title>BBD Ukukhula Bursary</title>
+    </head>
+    <script src="/src/js/navbarLogic.js" defer></script>
+    <script src="/index.js" defer></script>
+    <body>
+        <main id="home-body">
+            <section id="home-section-about-us" class="home-section">
+                <h2>
+                    <img
+                        alt="graduation-cap"
+                        src="src/assets/icons/graduation-cap.jfif"
+                        id="about-us-icon"
+                        class="section-icons"
+                    >
+                    About Fund
+                </h2>
+                <section id="about-us-text">
+                    <p>
+                        BBD’s Bursary Programme strives to support and grow talented
             students working towards their degree in mechanical engineering,
             electrical engineering, BSc, BCom informatics and game design. The
             Programme is designed around creating opportunities for you to have
@@ -42,119 +38,113 @@
             have the opportunity to join our exciting Grad Programme where
             you’ll dive into your career, working on real project teams and
             quickly upskill within BBD’s unique company culture.
-          </p>
-        </section>
-      </section>
-
-      <section id="home-section-generic" class="home-section">
-        <section
-          id="form-section"
-          id="home-contact-section"
-          class="home-section"
-        >
-          <form
-            id="generic-form"
-            action="/submit"
-            method="POST"
-            
-          >
-            <h3 id="successMessage"></h3>
-            <label for="firstName" id="generic-form-first-name-label"
-              >First Name</label
+                    </p>
+                </section>
+            </section>
+            <section id="home-section-generic" class="home-section">
+                <section id="form-section" id="home-contact-section" class="home-section">
+                    <form
+                        id="generic-form"
+                        class="generic-form"
+                        action="/submit"
+                        method="POST"
+                    >
+                        <h3 id="successMessage"></h3>
+                        <label for="firstName" class="generic-form-first-name-label">
+                            First Name
+                        </label
             >
-            <input
-              pattern="[a-zA-Z]{2,256}$"
-              title="FirstName: Must be filled, only one name allowed."
-              type="text"
-              id="firstName"
-              name="firstName"
-              required
-              placeholder="Enter Your Name"
-            />
-            <label for="lastName">Last Name</label>
-            <input
-              pattern="[a-zA-Z]{2,256}$"
-              title="Last Name: Must be filled, only one surname allowed."
-              type="text"
-              id="lastName"
-              name="lastName"
-              required
-              placeholder="Enter Your Last Name"
-            />
-            <label for="emailAddress">Email</label>
-            <input
-              pattern="[A-Za-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,320}$"
-              title="Email: Must be in the following order: 'characters@characters.domain'"
-              type="email"
-              id="emailAddress"
-              name="emailAddress"
-              required
-              placeholder="Enter Your Email Address"
-            />
-            <label for="message">Message</label>
-            <textarea
-              name="message"
-              rows="5"
-              cols="30"
-              placeholder="Please write your message here. (optional)"
-              maxlength="256"
-              title="Message: May not be empty, and can not exceed 256 characters."
-              id="message"
-            ></textarea>
-            <input
-              type="submit"
-              id="submit-button"
-              class="buttons"
-              value="Submit"
-            />
-            <input
-              type="button"
-              value="Clear Fields"
-              id="clear-fields-button"
-              class="buttons"
-            />
-          </form>
-        </section>
-
-        <section id="home-section-socials" class="home-section">
-          <article>
-            <h3 class="social-contact">Address</h3>
-            <p>Gauteng, South Africa</p>
-          </article>
-
-          <article>
-            <h3 class="social-contact">Email</h3>
-            <p>
-              <a href="mailto:bbdFakeLink@bbdsoftware.co.za"
-                >bbd@bbdsoftware.co.za</a
+                        <input
+                            pattern="[a-zA-Z]{2,256}$"
+                            title="FirstName: Must be filled, only one name allowed."
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            required
+                            placeholder="Enter Your Name"
+                        >
+                        <label for="lastName">Last Name</label>
+                        <input
+                            pattern="[a-zA-Z]{2,256}$"
+                            title="Last Name: Must be filled, only one surname allowed."
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            required
+                            placeholder="Enter Your Last Name"
+                        >
+                        <label for="emailAddress">Email</label>
+                        <input
+                            pattern="[A-Za-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,320}$"
+                            title="Email: Must be in the following order: 'characters@characters.domain'"
+                            type="email"
+                            id="emailAddress"
+                            name="emailAddress"
+                            required
+                            placeholder="Enter Your Email Address"
+                        >
+                        <label for="message">Message</label>
+                        <textarea
+                            name="message"
+                            rows="5"
+                            cols="30"
+                            placeholder="Please write your message here. (optional)"
+                            maxlength="256"
+                            title="Message: May not be empty, and can not exceed 256 characters."
+                            id="message"
+                        ></textarea>
+                        <input
+                            type="submit"
+                            id="submit-button"
+                            class="buttons"
+                            value="Submit"
+                        >
+                        <input
+                            type="button"
+                            value="Clear Fields"
+                            id="clearFieldsButton"
+                            class="buttons"
+                        >
+                    </form>
+                </section>
+                <section id="home-section-socials" class="home-section">
+                    <article>
+                        <h3 class="social-contact">Address</h3>
+                        <p>Gauteng, South Africa</p>
+                    </article>
+                    <article>
+                        <h3 class="social-contact">Email</h3>
+                        <p>
+                            <a href="mailto:bbdFakeLink@bbdsoftware.co.za">
+                                bbd@bbdsoftware.co.za
+                            </a
               >
-            </p>
-          </article>
-
-          <article>
-            <h3 class="social-contact">Social</h3>
-          </article>
-          <ul class="social-icons">
-            <li>
-              <a
-                href="https://za.linkedin.com/company/bbd"
-                target="_blank"
-                rel="noopener"
-                class="social-link-icons"
-                aria-label="LinkedIn"
-              >
-                <img
-                  src="src/assets/icons/linkedin-icon-mobile.png"
-                  alt="LinkedIn"
-                  class="social-link-icon-image"
-                  id="linkedIn-icon"
-                />
-                LinkedIn
-              </a>
-            </li>
-          </ul>
-        </section>
-      </section>
-    </main>
-  </body>
+                        </p>
+                    </article>
+                    <article>
+                        <h3 class="social-contact">Social</h3>
+                    </article>
+                    <ul class="social-icons">
+                        <li>
+                            <a
+                                href="https://za.linkedin.com/company/bbd"
+                                target="_blank"
+                                rel="noopener"
+                                class="social-link-icons"
+                                aria-label="LinkedIn"
+                            >
+                                <img
+                                    src="src/assets/icons/linkedin-icon-mobile.png"
+                                    alt="LinkedIn"
+                                    class="social-link-icon-image"
+                                    id="linkedIn-icon"
+                                >
+                                LinkedIn
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+        </main>
+    </body>
 </html>
