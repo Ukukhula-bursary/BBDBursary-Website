@@ -10,7 +10,7 @@
         <title>BBD Ukukhula Bursary - Add Admin</title>
     </head>
     <script src="../../src/js/navbarLogic.js" defer></script>
-    <script src="../../src/js/addAnAdmin.js"></script>
+    <script src="../../src/js/addAnAdmin.js" defer></script>
     <body>
         <main id="home-body">
             <section id="home-section-add-institution" class="home-section">
@@ -33,12 +33,12 @@
                                 method="POST"
                             >
                                 <h3 id="successMessage"></h3>
-                                <label for="admin-role">Admin Role:</label>
+                                <label for="admin-role-dropdown">Admin Role:</label>
                                 <select id="admin-role-dropdown" name="university-status" class="buttons">
                                     <!-- to be populated by the database -->
                                     <option value="" selected disabled>Select Role</option>
-                                    <!-- should only be accessible by super admin -->
-                                    <option value="BBDAdmin_Finance">BBDAdmin_Finance</option>
+                                    should only be accessible by super admin -->
+                                    <!-- <option value="BBDAdmin_Finance">BBDAdmin_Finance</option>
                                     <option value="BBDAdmin_Reviewers">BBDAdmin_Reviewers</option>
                                     <option value="BBDSuperAdmin">BBDSuperAdmin</option>
                                 </select>

@@ -1,5 +1,3 @@
-const select = document.getElementById("admin-role-dropdown");
-
 async function addAnAdmin() {
   const url = "https://bursary-api-1709020026838.azurewebsites.net/roles/";
   return fetch(url, {
@@ -16,18 +14,20 @@ async function addAnAdmin() {
     .catch((err) => console.log(err)); //alert
 }
 
-async function populateUniversityDropdown() {
-  universityStatusSelect.disabled = true;
-  const universities = await getAllUniversities();
+const selectDropdown = document.getElementById("admin-role-dropdown");
 
-  if (universities.length) {
-    universityStatusSelect.disabled = false;
-    for (const university of universities) {
+async function populateRolesDropdown() {
+  selectDropdown.disabled = true;
+  const roles = await addAnAdmin();
+
+  if (roles.length) {
+    selectDropdown.disabled = false;
+    for (const role of roles) {
       const newOption = document.createElement("option");
-      newOption.text = university.universityName;
-      newOption.value = university.universityId;
-      universityStatusSelect.add(newOption);
+      newOption.text = role.role;
+      newOption.value = role.id;
+      selectDropdown.add(newOption);
     }
   }
 }
-populateUniversityDropdown();
+populateRolesDropdown();
