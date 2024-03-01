@@ -4,6 +4,7 @@
     --third-color: #3AAFA9;
     --fourth-color: #DEF2F1;
     --text-color: #FEFFFF;
+    --danger-color: salmon;
 }
 
 
@@ -16,6 +17,8 @@
     padding: 0;
     margin: 0;
     line-height: 1;
+    font-family: Arial, sans-serif;
+
 }
 
 body {
@@ -36,7 +39,7 @@ body {
     display: flex;
     top: 0;
     width: 100%;
-    transition: top 0.3s;
+    transition: all 0.3s;
     z-index: 1;
     padding: 1rem;
     justify-content: space-between;
@@ -52,11 +55,12 @@ body {
 
 #nav-menu :hover {
     color: var(--third-color);
+    transition: all 0.3s ease;
+
 }
 
 #nav-menu {
     margin: 1px;
-    background-color: rgb(5, 224, 67);
 }
 
 #nav ul {
@@ -144,10 +148,20 @@ body {
 #hamburger-section-header :hover {
     color: var(--third-color);
     text-decoration: underline;
+    transition: all 0.3s ease;
+
 }
 
 #home-contact-section h2 {
     background-color: rgb(104, 186, 100);
+}
+
+#admin-student-application-form-section h2 {
+    background-color: rgb(104, 186, 100);
+}
+
+#admin-student-application-form-section {
+    display: none;
 }
 
 form label {
@@ -235,7 +249,77 @@ section h2 {
 
 }
 
+.download-buttons {
+    background-color: var(--third-color);
+    color: var(--text-color);
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+}
+
+
+.download-buttons:hover {
+    background-color: var(--secondary-color);
+    color: var(--fourth-color);
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.generic-drop-downs {
+    background-color: var(--third-color);
+    color: #FEFFFF;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+#rejection-reason-container {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+}
+
+
+#filter-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--fourth-color)
+}
+
 .buttons:hover {
+    background-color: var(--third-color);
+    color: #FEFFFF;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.generic-drop-downs:hover {
     background-color: var(--secondary-color);
     color: #FEFFFF;
     padding: 20px;
@@ -246,6 +330,8 @@ section h2 {
     margin: 4px 2px;
     border: none;
     border-radius: 12px;
+    transition: all 0.3s ease;
+
 }
 
 #about-us-text {
@@ -294,43 +380,63 @@ a.social-link-icons:active {
     color: black;
 }
 
-#contact-us-form {
+.generic-form {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 70%;
     border-radius: 1rem;
     margin-top: 1rem;
 }
 
-#contact-us-form label {
+.generic-form label {
     background-color: var(--primary-color);
     padding: 1rem 1rem 1rem 1rem;
     color: var(--text-color);
 }
 
-#contact-us-form-first-name-label {
+.generic-form-first-name-label {
     border-radius: 1rem 1rem 0 0;
 }
 
-#contact-us-form input[type="text"],
-#contact-us-form input[type="email"],
-#contact-us-form textarea {
+.generic-form input[type="text"],
+.generic-form input[type="email"],
+.generic-form input[type="tel"],
+.generic-form textarea {
     background-color: var(--text-color);
     padding: 1rem 1rem 1rem 1rem;
     color: var(--primary-color);
 }
 
-#contact-us-form input[type="submit"]:hover,
-#contact-us-form input[type="button"]:hover {
+.generic-form input[type="submit"]:hover {
     background-color: var(--secondary-color);
+    transition: all 0.3s ease;
 }
 
-#contact-us-form input[type="submit"],
-#contact-us-form input[type="button"] {
+
+.generic-form input[type="submit"],
+.generic-form input[type="button"] {
     border: 2px solid var(--text-color);
 }
 
+.admin-cancel-button,
+.admin-back-button:hover {
+    background-color: var(--fourth-color);
+    transition: all 0.3s ease;
+    color: #17252A;
+}
+
+#admin-pop-up-form-section {
+    transition: all 0.3s ease;
+}
+
 #form-section {
+    background-color: rgb(18, 45, 54);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-section {
     background-color: rgb(18, 45, 54);
     display: flex;
     align-items: center;
@@ -346,19 +452,219 @@ a.social-link-icons:active {
     padding: 0.5rem;
 }
 
-/* Admin Dashboard */
+.close {
+    display: none;
+    background-color: rgb(255, 113, 113);
+}
+
+.open {
+    display: block;
+    background-color: rgb(114, 245, 114);
+}
+
+.dashboard a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* Dashboard */
 
 
-#admin-dashboard {
+.dashboard {
     background-color: chocolate;
+}
+
+.dashboard-wrapper {
+    background-color: rgb(218, 206, 197);
     display: flex;
-    flex: 3;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4rem;
+}
+
+.dashboard-wrapper .item {
+    background-color: var(--secondary-color);
+    display: flex;
+    width: 30%;
+    height: auto;
+    flex-wrap: wrap;
+    margin: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-color);
+    padding: 2rem;
+}
+
+.dashboard-wrapper .item:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
 
 }
 
-.home-section-add-institution {}
 
-@media (max-width : 768px) {
+/* Admin - add an institution */
+
+#add-institution-section {
+    background-color: orange;
+}
+
+
+/* Tables */
+
+
+#admin-fields-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-field {
+    margin-right: auto;
+    width: 100%;
+}
+
+.admin-field label {
+    background-color: rgb(213, 213, 213);
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.form-control {
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+#application-table-container {
+    background-color: aliceblue;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#application-table-heading {
+    display: flex;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    color: var(--text-color);
+    background-color: var(--third-color);
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+.update-action-button {
+    background-color: var(--third-color);
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+.action-button {
+    background-color: var(--third-color);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    border-color: var(--primary-color);
+    /* margin: ; */
+}
+
+
+.action-button:hover {
+    background-color: var(--fourth-color);
+    color: var(--primary-color)
+}
+
+.action-button-section {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#add-a-admin-button-section {
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+#add-a-admin-button {
+    background-color: rgb(172, 231, 123);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+#admin-submit-button {
+    background-color: rgb(172, 231, 123);
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+.admin-cancel-button,
+.admin-back-button {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border-color: transparent;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+}
+
+#admin-student-application-view-details-section,
+#university-application-form-section {
+    display: none;
+}
+
+
+
+.main-section {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* @media (max-width : 768px) {
     #home-body {
         background-color: var(--text-color);
         text-decoration: none;
@@ -409,6 +715,8 @@ a.social-link-icons:active {
 
     #nav-menu :hover {
         color: var(--third-color);
+        transition: all 0.3s ease;
+
     }
 
     #nav img {
@@ -424,14 +732,6 @@ a.social-link-icons:active {
         background-color: var(--text-color);
     }
 
-    .close {
-        display: none;
-    }
-
-    .open {
-        display: block;
-    }
-
     #hamburger-section {
         display: flex;
         flex-direction: row;
@@ -441,6 +741,8 @@ a.social-link-icons:active {
 
     #hamburger-form {
         display: flex;
+        transition: all 0.3s ease;
+
     }
 
     #hamburger-section-header {
@@ -457,6 +759,8 @@ a.social-link-icons:active {
     #hamburger-section-header :hover {
         color: var(--third-color);
         text-decoration: underline;
+        transition: all 0.3s ease;
+
     }
 
     #nav-menu {
@@ -469,6 +773,10 @@ a.social-link-icons:active {
     }
 
     #home-contact-section h2 {
+        background-color: rgb(104, 186, 100);
+    }
+
+    #admin-student-application-form-section h2 {
         background-color: rgb(104, 186, 100);
     }
 
@@ -597,7 +905,7 @@ a.social-link-icons:active {
         color: black;
     }
 
-    #contact-us-form {
+    .generic-form {
         display: flex;
         flex-direction: column;
         width: 80vw;
@@ -605,26 +913,27 @@ a.social-link-icons:active {
         margin-top: 1rem;
     }
 
-    #contact-us-form label {
+    .generic-form label {
         background-color: var(--primary-color);
         padding: 1rem 1rem 1rem 1rem;
         color: var(--text-color);
     }
 
-    #contact-us-form-first-name-label {
+    .generic-form-first-name-label {
         border-radius: 1rem 1rem 0 0;
     }
 
-    #contact-us-form input[type="text"],
-    #contact-us-form input[type="email"],
-    #contact-us-form textarea {
+    .generic-form input[type="text"],
+    .generic-form input[type="email"],
+    .generic-form input[type="tel"],
+    .generic-form textarea {
         background-color: var(--text-color);
         padding: 1rem 1rem 1rem 1rem;
         color: var(--primary-color);
     }
 
-    #contact-us-form input[type="submit"]:hover,
-    #contact-us-form input[type="button"]:hover {
+    .generic-form input[type="submit"]:hover,
+    .generic-form input[type="button"]:hover {
         background-color: var(--secondary-color);
     }
 
@@ -639,4 +948,4 @@ a.social-link-icons:active {
         width: 80vw;
     }
 
-}
+} */
