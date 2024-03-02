@@ -1,7 +1,6 @@
 
 async function loadTable() {
   const applications = await getAllStudentApplications();
-  console.log(applications);
   const tableBody = document.getElementById("tbodyID");
 
   while (tableBody.lastElementChild && tableBody.lastElementChild.id !== "theadings") {
