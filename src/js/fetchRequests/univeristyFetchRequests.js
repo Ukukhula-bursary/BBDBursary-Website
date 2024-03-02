@@ -1,4 +1,7 @@
-const addNewUniversityButton = document.getElementById("add-new-submit-button");
+const addNewUniversityButton = document.getElementById(
+  "add-new-university-button"
+);
+const universityIdInput = document.getElementById("university-by-id");
 const getUniverityByIdButton = document.getElementById(
   "get-univerity-by-id-button"
 );
@@ -21,10 +24,10 @@ async function getAllUniversities() {
     .catch((err) => console.log(err)); //alert
 }
 
-addNewUniversityButton.addEventListener("click", () => {
-  const universityName = document.getElementById("university-name");
-  const select = document.getElementById("university-status");
-  const selectedStatus = select.options[select.selectedIndex].value;
+addNewUniversityButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const universityName = document.getElementById("university-name").value;
+  const isActive = document.getElementById("is-active-recipient").value;
 
   const url =
     "https://bursary-api-1709020026838.azurewebsites.net/university/add";
@@ -33,18 +36,18 @@ addNewUniversityButton.addEventListener("click", () => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       universityName: universityName,
-      isActiveRecipient: selectedStatus,
+      isActiveRecipient: isActive,
     }),
   })
     .then((res) => res.json())
-    .then(() => location.reload()) //should get all after posted
+    .then((data) => console.log(data)) //should get all after posted
     .catch((err) => console.log(err));
 });
 
 getUniverityByIdButton.addEventListener("click", (e) => {
   e.preventDefault();
-
-  const url = "/universities/{id}";
+  const universityId = universityIdInput.value;
+  const url = `https://bursary-api-1709020026838.azurewebsites.net/universities/${universityId}`;
   fetch(url, {
     method: "GET",
     headers: {

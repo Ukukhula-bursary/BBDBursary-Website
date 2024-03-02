@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>universities</title>
+    <script src = "../src/js/fetchRequests/univeristyFetchRequests.js" defer></script>
+
 </head>
 <body>
-     <!-- @GetMapping("/universities") all -->
-<section id="all-universities"></section>
-<button id="all-universities-button">get all universities</button>
 
 <!-- @PostMapping("/universities") newUniversity -->
-<input type="text" id="new-university">
-<button id="add-new-university-button">add new university</button>
+<form>
+    <label for="uni-name">University name:</label><br>
+    <input type="text" id="university-name"><br>
+    <label for="is-active">Is active:</label><br>
+    <input type="text" id="is-active-recipient"><br><br>
+    <button id="add-new-university-button">add new university</button>
+</form> 
 
 <!-- @GetMapping("/universities/{id}") universityById -->
-<section id="university-by-id"></section>
+<input type="text" id="uni-id">
 <button id="get-univerity-by-id-button">get uni by id</button>
+<section id="university-by-id"></section>
     
 
-<script src = "../src/js/fetchRequests/univeristyFetchRequests.js"></script>
 </body>
 </html>
