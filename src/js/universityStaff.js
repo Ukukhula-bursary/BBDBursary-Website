@@ -11,9 +11,15 @@ const universityStaffByIdButton = document.getElementById(
   "university-staff-by-id-button"
 );
 const universityStaffId = document.getElementById("university-staff-by-id");
+
 const universityNameSelect = document.getElementById(
   "university-name-dropdown"
 );
+
+const departmentNameSelect = document.getElementById(
+  "department-name-dropdown"
+);
+
 async function getAllUniversities() {
   const url =
     "https://bursary-api-1709020026838.azurewebsites.net/university/all";
@@ -46,6 +52,38 @@ async function populateUniversityDropdown() {
 }
 populateUniversityDropdown();
 
+async function getAllDepartments() {
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/department/all";
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => console.log(err));
+}
+
+async function populateDepartmentsDropdown() {
+  departmentNameSelect.disabled = true;
+  const departments = await getAllDepartments();
+
+  if (departments.length) {
+    departmentNameSelect.disabled = false;
+    for (const department of departments) {
+      const newOption = document.createElement("option");
+      newOption.text = department.departmentName;
+      newOption.value = department.departmentId;
+      departmentNameSelect.add(newOption);
+    }
+  }
+}
+populateDepartmentsDropdown();
+
 // allUniversitiesStaffButton.addEventListener("click", () => {
 //   const url =
 //     "https://bursary-api-1709020026838.azurewebsites.net/universitystaff/all";
@@ -59,30 +97,30 @@ populateUniversityDropdown();
 //     .catch((err) => console.log(err));
 // });
 
-// addUniversityStaffButton.addEventListener("click", () => {
-//   const url =
-//     "https://bursary-api-1709020026838.azurewebsites.net/universitystaff/add";
+addUniversityStaffButton.addEventListener("click", () => {
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/universitystaff/add";
 
-//   fetch(url, {
-//     method: "POST",
-//     mode: "cors",
-//     body: JSON.stringify({
-//       firstName: document.getElementById("fname").value,
-//       lastName: document.getElementById("lname").value,
-//       phoneNumber: document.getElementById("phone-number").value,
-//       email: document.getElementById("email").value,
-//       universityName: document.getElementById("university-name").value,
-//       departmentName: document.getElementById("department-name").value,
-//     }),
-//   })
-//     .then((res) => {
-//       res.json();
-//       console.log(res.json());
-//       //return res.json();
-//     })
-//     .then((data) => console.log(data))
-//     .catch((err) => console.log(err));
-// });
+  fetch(url, {
+    method: "POST",
+    mode: "cors",
+    body: JSON.stringify({
+      firstName: document.getElementById("firstName").value,
+      lastName: document.getElementById("lastName").value,
+      phoneNumber: document.getElementById("phone-number").value,
+      email: document.getElementById("email").value,
+      universityName: document.getElementById("university-name").value,
+      departmentName: document.getElementById("department-name").value,
+    }),
+  })
+    .then((res) => {
+      res.json();
+      console.log(res.json());
+      //return res.json();
+    })
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+});
 
 // universityStaffByIdButton.addEventListener("click", () => {
 //   const staffId = document.getElementById("staff-id");
