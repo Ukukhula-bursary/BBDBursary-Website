@@ -101,6 +101,11 @@ addUniversityStaffButton.addEventListener("click", () => {
   const url =
     "https://bursary-api-1709020026838.azurewebsites.net/universitystaff/add";
 
+  const universityName =
+    universityNameSelect.options[universityNameSelect.selectedIndex].value;
+  const departmentName =
+    departmentNameSelect.options[departmentNameSelect.selectedIndex].value;
+
   fetch(url, {
     method: "POST",
     mode: "cors",
@@ -109,8 +114,8 @@ addUniversityStaffButton.addEventListener("click", () => {
       lastName: document.getElementById("lastName").value,
       phoneNumber: document.getElementById("phone-number").value,
       email: document.getElementById("email").value,
-      universityName: document.getElementById("university-name").value,
-      departmentName: document.getElementById("department-name").value,
+      universityName: universityName,
+      departmentName: departmentName,
     }),
   })
     .then((res) => {
