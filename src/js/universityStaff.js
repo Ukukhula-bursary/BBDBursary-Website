@@ -52,7 +52,7 @@ addUniversityStaffButton.addEventListener("click", () => {
 
 universityStaffByIdButton.addEventListener("click", () => {
   const staffId = document.getElementById("staff-id");
-  const url = `https://bursary-api-1709020026838.azurewebsites.net/universitystaff/${staffId}`;
+  const url = `https://bursary-api-1709020026838.azurewebsites.net/universitystaff/id=${staffId}`;
 
   fetch(url, {
     method: "GET",
