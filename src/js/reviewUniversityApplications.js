@@ -44,6 +44,8 @@ const listApplicationsTesting = () => {
 };
 
 async function loadTable() {
+  populateStatusDropDownByID("filter-approval-status");
+
   const applications = listApplicationsTesting();
   const tableBody = document.getElementById("tbodyID");
 
@@ -118,7 +120,7 @@ const confirmUpdate = (applicationsId) => {
 const handleUpdate = async (updateApplications, applicationsId) => {
   if (updateApplications) {
     showUpdateApplicationPopUp(applicationsId);
-    await loadTable();
+    // await loadTable();
   }
 };
 
@@ -128,6 +130,7 @@ function showUpdateApplicationPopUp(applicationsId) {
   document.getElementById(
     "admin-university-application-table-section"
   ).style.display = "none";
+
   const cancelButton = document.getElementById("admin-cancel-button");
 
   cancelButton.addEventListener("click", () => {
@@ -141,6 +144,8 @@ function showUpdateApplicationPopUp(applicationsId) {
 }
 
 function hideUpdateApplicationPopUp(applicationsId) {
+  document.getElementById("is-active-status-drop-down").selectedIndex = 0;
+  document.getElementById("approval-status-drop-down").selectedIndex = 0;
   document.getElementById("university-application-form-section").style.display =
     "none";
   document.getElementById(
@@ -200,13 +205,12 @@ async function populateUniversityDropdown() {
       const newOption = document.createElement("option");
       newOption.text = university.universityName;
       newOption.value = university.universityId;
-      universityStatusSelect.add(newOption); 
+      universityStatusSelect.add(newOption);
     }
   }
 }
 
 populateUniversityDropdown();
-populateStatusDropdownById("filter-approval-status");
 
 document
   .getElementById("is-active-status-drop-down")
@@ -225,7 +229,7 @@ document
       document.getElementById("approval-status-drop-down").disabled = true;
     } else {
       document.getElementById("approval-status-drop-down").disabled = false;
-      populateStatusDropdownById();
+      populateStatusDropDownByID("approval-status-drop-down");
     }
   });
 
@@ -245,13 +249,14 @@ async function getAllStatuses() {
     .catch((err) => console.log(err));
 }
 
-async function populateStatusDropdownById(selectElementId) {
+async function populateStatusDropDownByID(selectElementId) {
   const selectElement = document.getElementById(selectElementId);
-
+  selectElement.disabled = true;
   const statuses = await getAllStatuses();
 
   if (statuses.length) {
     selectElement.disabled = false;
+
     for (const status of statuses) {
       const newOption = document.createElement("option");
       newOption.text = status.status;
