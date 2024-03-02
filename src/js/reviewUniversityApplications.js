@@ -200,3 +200,17 @@ async function populateUniversityDropdown() {
   }
 }
 populateUniversityDropdown();
+
+document
+  .getElementById("is-active-status")
+  .addEventListener("change", (event) => {
+    const isActiveDropDown = event.target;
+    if (
+      isActiveDropDown.options[isActiveDropDown.selectedIndex].textContent ===
+      "No"
+    ) {
+      document.getElementById("approval-status").disabled = true;
+    } else {
+      document.getElementById("approval-status").disabled = false;
+    }
+  });
