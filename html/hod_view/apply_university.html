@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../styles/hod/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Download fonts locally -->
+    <link rel="shortcut icon" href="">
+    <title>BBD Ukukhula Bursary - Apply for university</title>
+</head>
+<script src="../../src/js/hod/hod_js.js" defer></script>
+
+<body>
+    <main id="home-body">
+        <section id="home-section-request-access" class="home-section">
+            <h2>
+                <img alt="graduation-cap" src="../../src/assets/icons/graduation-cap.jfif" id="request-access-icon"
+                    class="section-icons">
+                Apply for university
+            </h2>
+            <section id="apply-university-section">
+                <section id="home-section-generic" class="home-section">
+                    <section id="form-section" id="home-contact-section" class="home-section">
+                        <form id="generic-form" action="#" method="POST">
+                            <h3 id="successMessage"></h3>
+                            <label for="universityName" id="generic-form-university-name-label">
+                                Enter the name of the university
+                            </label>
+                            <input pattern="[a-zA-Z\s]{2,256}$"
+                                title="University Name: Must be filled, only alphabets and space allowed." type="text"
+                                id="universityName" name="University Name" required placeholder="Enter University Name">
+                            <label for="universityName-name" id="generic-form-first-name-label">
+                                First Name
+                            </label>
+                            <input pattern="[a-zA-Z\s]{2,256}$"
+                                title="First Name: Must be filled, only alphabets and space allowed." type="text"
+                                id="firstName" name="First Name" required placeholder="Enter First Name">
+                            <label for="lastName" id="generic-form-last-name-label">
+                                Last Name
+                            </label>
+                            <input pattern="[a-zA-Z\s]{2,256}$"
+                                title="Last Name: Must be filled, only alphabets and space allowed." type="text"
+                                id="lastName" name="Last Name" required placeholder="Enter Last Name">
+                            <label for="emailAddress">Email</label>
+                            <input pattern="[A-Za-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,320}$"
+                                title="Email: Must be in the following order: 'characters@characters.domain'"
+                                type="email" id="emailAddress" name="emailAddress" required
+                                placeholder="Enter Your Email Address">
+                            <label for="phone-number">Phone Number</label>
+                            <input pattern="^0[0-9]{9}$"
+                                title="Phone Number: Must start with  0 and be followed by  9 digits." type="tel"
+                                id="phone-number" name="phone-number" required placeholder="Enter Your Phone Number">
+                            <label for="w3review">Write a few sentences on why your university should be part of the bursary system</label>
+                            <textarea id="w3review" name="w3review" rows="4" cols="50">
+                            </textarea>
+                        </form>
+                    </section>
+                </section>
+    </main>
+</body>
+
+</html>

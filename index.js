@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   document
-    .getElementById("contact-us-form")
+    .getElementById("generic-form")
     .addEventListener("submit", function (event) {
       event.preventDefault();
       submitForm();
@@ -70,15 +70,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   homeBody.style.top = homeMenuHeight + "px";
 
-  const visitorClearFieldsButton = document.getElementById(
-    "visitorClearFieldsButton"
+  const clearFieldsButton = document.getElementById(
+    "clearFieldsButton"
   );
 
-  visitorClearFieldsButton.onclick = () => {
+  clearFieldsButton.onclick = () => {
     resetFormFields();
   };
 
   function resetFormFields() {
-    document.getElementById("contact-us-form").reset();
+    document.getElementById("generic-form").reset();
   }
 });
