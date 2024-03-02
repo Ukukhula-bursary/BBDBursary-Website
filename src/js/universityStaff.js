@@ -20,6 +20,8 @@ const departmentNameSelect = document.getElementById(
   "department-name-dropdown"
 );
 
+const form = document.getElementById("generic-form");
+
 async function getAllUniversities() {
   const url =
     "https://bursary-api-1709020026838.azurewebsites.net/university/all";
@@ -45,7 +47,7 @@ async function populateUniversityDropdown() {
     for (const university of universities) {
       const newOption = document.createElement("option");
       newOption.text = university.universityName;
-      newOption.value = university.universityId;
+      newOption.value = university.universityName;
       universityNameSelect.add(newOption);
     }
   }
@@ -77,7 +79,7 @@ async function populateDepartmentsDropdown() {
     for (const department of departments) {
       const newOption = document.createElement("option");
       newOption.text = department.departmentName;
-      newOption.value = department.departmentId;
+      newOption.value = department.departmentName;
       departmentNameSelect.add(newOption);
     }
   }
@@ -98,6 +100,7 @@ populateDepartmentsDropdown();
 // });
 
 addUniversityStaffButton.addEventListener("click", () => {
+  //e.preventDefault();
   const url =
     "https://bursary-api-1709020026838.azurewebsites.net/universitystaff/add";
 
@@ -105,10 +108,12 @@ addUniversityStaffButton.addEventListener("click", () => {
     universityNameSelect.options[universityNameSelect.selectedIndex].value;
   const departmentName =
     departmentNameSelect.options[departmentNameSelect.selectedIndex].value;
+  console.log(universityName, departmentName);
 
   fetch(url, {
     method: "POST",
     mode: "cors",
+    //headers: { "Content-Type": "Application/json" },
     body: JSON.stringify({
       firstName: document.getElementById("firstName").value,
       lastName: document.getElementById("lastName").value,
@@ -117,9 +122,10 @@ addUniversityStaffButton.addEventListener("click", () => {
       universityName: universityName,
       departmentName: departmentName,
     }),
+    //body: formData,
   })
     .then((res) => {
-      res.json();
+      //res.json();
       console.log(res.json());
       //return res.json();
     })

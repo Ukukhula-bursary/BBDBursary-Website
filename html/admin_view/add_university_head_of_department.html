@@ -30,13 +30,8 @@
                             <form
                                 id="generic-form"
                                 class="generic-form"
-                                action="#"
-                                method="POST"
+                               
                             >
-                                <label for="university-name-dropdown">University Name:</label>
-                                <select id="university-name-dropdown" name="university-name-dropdown" class="buttons">
-                                    <option value="" selected disabled>Select University</option>
-                                </select>
                                 <label for="firstName" class="generic-form-first-name-label">
                                     First Name
                                 </label>
@@ -82,16 +77,20 @@
                                     required
                                     placeholder="Enter Your Email Address"
                                 >
-                                <label for="department-name-dropdown">Department Name:</label>
-                                <select id="department-name-dropdown" name="department-name-dropdown" class="buttons">
+                                <label for="university-name">University Name:</label>
+                                <select id="university-name-dropdown" name="university-name" class="buttons">
+                                    <option value="" selected disabled>Select University</option>
+                                </select>
+                                <label for="department-name">Department Name:</label>
+                                <select id="department-name-dropdown" name="department-name" class="buttons">
                                     <option value="" selected disabled>Select Department</option>
                                 </select>
-                                <input
+                                <button
                                     type="submit"
                                     id="add-university-staff-button"
                                     class="buttons"
-                                    value="Add"
-                                >
+                                    
+                                >Submit</button>
                             </form>
                         </section>
                     </section>
