@@ -86,18 +86,18 @@ async function populateDepartmentsDropdown() {
 }
 populateDepartmentsDropdown();
 
-// allUniversitiesStaffButton.addEventListener("click", () => {
-//   const url =
-//     "https://bursary-api-1709020026838.azurewebsites.net/universitystaff/all";
+allUniversitiesStaffButton.addEventListener("click", () => {
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/universitystaff/all";
 
-//   fetch(url, {
-//     method: "GET",
-//     mode: "cors",
-//   })
-//     .then((res) => res.json())
-//     .then((data) => console.log(data))
-//     .catch((err) => console.log(err));
-// });
+  fetch(url, {
+    method: "GET",
+    mode: "cors",
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+});
 
 addUniversityStaffButton.addEventListener("click", () => {
   //e.preventDefault();
@@ -133,15 +133,15 @@ addUniversityStaffButton.addEventListener("click", () => {
     .catch((err) => console.log(err));
 });
 
-// universityStaffByIdButton.addEventListener("click", () => {
-//   const staffId = document.getElementById("staff-id");
-//   const url = `https://bursary-api-1709020026838.azurewebsites.net/universitystaff/id=${staffId}`;
+universityStaffByIdButton.addEventListener("click", () => {
+  const staffId = document.getElementById("staff-id");
+  const url = `https://bursary-api-1709020026838.azurewebsites.net/universitystaff/id=${staffId}`;
 
-//   fetch(url, {
-//     method: "GET",
-//     mode: "cors",
-//   })
-//     .then((res) => res.json())
-//     .then((data) => console.log(data))
-//     .catch((err) => console.log(err));
-// });
+  fetch(url, {
+    method: "GET",
+    mode: "cors",
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+});
