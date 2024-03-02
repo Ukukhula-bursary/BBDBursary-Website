@@ -33,18 +33,15 @@
                             method="POST"
                         >
                             <h3 id="successMessage"></h3>
-                            <label for="is-active-status">Choose Active Status:</label>
-                            <select id="is-active-status" name="is-active-status" class="generic-drop-downs">
+                            <label for="is-active-status-drop-down">Choose Active Status:</label>
+                            <select id="is-active-status-drop-down" name="is-active-status-drop-down" class="generic-drop-downs">
                                 <option value="" selected disabled>Choose Status</option>
                                 <option value="No">No</option>
                                 <option value="yes">Yes</option>
                             </select>
-                            <label for="approval-status">Choose Approval Status:</label>
-                            <select id="approval-status" name="approval-status" class="generic-drop-downs">
+                            <label for="approval-status-drop-down">Choose Approval Status:</label>
+                            <select id="approval-status-drop-down" name="approval-status-drop-down" class="generic-drop-downs">
                                 <option value="" selected disabled>Choose Approval Status:</option>
-                                <option value="1">Accepted</option>
-                                <option value="2">Rejected</option>
-                                <option value="3">Under Review</option>
                             </select>
                             <section id="rejection-reason-container">
                                 <label for="rejection-reason">Give Rejection Reason</label>
@@ -78,7 +75,6 @@
                                 <select id="university-name-drop-down" name="university-names" class="generic-drop-downs">
                                     <!-- to be populated by the database -->
                                     <option value="" selected disabled>Select University</option>
-                                    
                                 </select>
                                 <button
                                     type="button"
@@ -88,17 +84,13 @@
                                 >Search</button>
                             </section>
                             <section>
-                                <label for="filter-section-status">Filter By: Approval Status</label>
-                                <select id="filter-section-status" name="filter-section" class="generic-drop-downs">
+                                <label for="filter-approval-status">Filter By: Approval Status</label>
+                                <select id="filter-approval-status" name="filter-section" class="generic-drop-downs">
                                     <option value="" selected disabled>Status</option>
-                                    <option value="1">Accepted</option>
-                                    <option value="2">Rejected</option>
-                                    <option value="3">Submitted</option>
-                                    <option value="4">Under Review</option>
                                 </select>
                                 <button
                                     type="button"
-                                    id="filter-by-status-button"
+                                    id="filter-by-approval-status-button"
                                     class="buttons"
                                     value="Search"
                                 >Search</button>
