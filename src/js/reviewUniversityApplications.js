@@ -44,6 +44,8 @@ const listApplicationsTesting = () => {
 };
 
 async function loadTable() {
+  populateStatusDropDownByID("filter-approval-status");
+
   const applications = listApplicationsTesting();
   const tableBody = document.getElementById("tbodyID");
 
@@ -118,7 +120,7 @@ const confirmUpdate = (applicationsId) => {
 const handleUpdate = async (updateApplications, applicationsId) => {
   if (updateApplications) {
     showUpdateApplicationPopUp(applicationsId);
-    await loadTable();
+    // await loadTable();
   }
 };
 
@@ -128,14 +130,22 @@ function showUpdateApplicationPopUp(applicationsId) {
   document.getElementById(
     "admin-university-application-table-section"
   ).style.display = "none";
+
   const cancelButton = document.getElementById("admin-cancel-button");
 
   cancelButton.addEventListener("click", () => {
     hideUpdateApplicationPopUp();
   });
+
+  const approvalStatusDropDown = document.getElementById(
+    "approval-status-drop-down"
+  );
+  approvalStatusDropDown.disabled = true;
 }
 
 function hideUpdateApplicationPopUp(applicationsId) {
+  document.getElementById("is-active-status-drop-down").selectedIndex = 0;
+  document.getElementById("approval-status-drop-down").selectedIndex = 0;
   document.getElementById("university-application-form-section").style.display =
     "none";
   document.getElementById(
@@ -144,10 +154,10 @@ function hideUpdateApplicationPopUp(applicationsId) {
 }
 
 document
-  .getElementById("approval-status")
+  .getElementById("approval-status-drop-down")
   .addEventListener("change", function () {
-    var selectedOptionText = this.options[this.selectedIndex].text;
-    var rejectionReasonContainer = document.getElementById(
+    const selectedOptionText = this.options[this.selectedIndex].text;
+    const rejectionReasonContainer = document.getElementById(
       "rejection-reason-container"
     );
 
@@ -199,4 +209,59 @@ async function populateUniversityDropdown() {
     }
   }
 }
+
 populateUniversityDropdown();
+
+document
+  .getElementById("is-active-status-drop-down")
+  .addEventListener("change", (event) => {
+    const isActiveDropDown = event.target;
+    if (
+      isActiveDropDown.options[isActiveDropDown.selectedIndex].textContent ===
+      "No"
+    ) {
+      const rejectionReasonContainer = document.getElementById(
+        "rejection-reason-container"
+      );
+
+      rejectionReasonContainer.style.display = "";
+
+      document.getElementById("approval-status-drop-down").disabled = true;
+    } else {
+      document.getElementById("approval-status-drop-down").disabled = false;
+      populateStatusDropDownByID("approval-status-drop-down");
+    }
+  });
+
+async function getAllStatuses() {
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/statuses/all";
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => console.log(err));
+}
+
+async function populateStatusDropDownByID(selectElementId) {
+  const selectElement = document.getElementById(selectElementId);
+  selectElement.disabled = true;
+  const statuses = await getAllStatuses();
+
+  if (statuses.length) {
+    selectElement.disabled = false;
+
+    for (const status of statuses) {
+      const newOption = document.createElement("option");
+      newOption.text = status.status;
+      newOption.value = status.statusID;
+      selectElement.add(newOption);
+    }
+  }
+}
