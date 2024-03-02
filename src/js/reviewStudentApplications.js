@@ -1,53 +1,6 @@
-const listApplicationsTesting = () => {
-  return [
-    {
-      "applicationID": 1,
-      "universityName": "University Of Pretoria",
-      "department": "Computer Science",
-      "studentName": "John Doe",
-      "ethnicity": "Black",
-      "bursaryAmount": "R10,000.00",
-      "status": "Approved",
-      "motivation": "I love it here!",
-      "dateOfApplication": "2024-01-01",
-      "bbdReviewerName": "John",
-      "bbdReviewerComment": "Something John Said",
-      "HOD": "Jane Doe",
-    },
-    {
-      "applicationID": 2,
-      "universityName": "University Of Cape Town",
-      "department": "Marketing",
-      "studentName": "Jane Smith",
-      "ethnicity": "White",
-      "bursaryAmount": "R8,000.00",
-      "status": "Pending",
-      "motivation": "I want to make a difference.",
-      "dateOfApplication": "2024-01-02",
-      "bbdReviewerName": "Alice",
-      "bbdReviewerComment": "Something Alice Said",
-      "HOD": "Hank Poe",
-    },
-    {
-      "applicationID": 10,
-      "universityName": "University Of Johannesburg",
-      "department": "Engineering",
-      "studentName": "Mary Johnson",
-      "ethnicity": "Asian",
-      "bursaryAmount": "R12,000.00",
-      "status": "Rejected",
-      "motivation": "I'm dedicated to my studies.",
-      "dateOfApplication": "2024-01-10",
-      "bbdReviewerName": "Charlie",
-      "bbdReviewerComment": "Something Charlie Said",
-      "HOD": "Vuyo Doe",
-    }
-  ];
-};
 
 async function loadTable() {
-  // const applications = getAllStudentApplications();
-  const applications = listApplicationsTesting();
+  const applications = await getAllStudentApplications();
   const tableBody = document.getElementById("tbodyID");
 
   while (tableBody.lastElementChild && tableBody.lastElementChild.id !== "theadings") {
@@ -57,24 +10,22 @@ async function loadTable() {
   for (const application of applications) {
     let tableRow = populateRow(
       application.applicationID,
-      application.universityName,
-      application.department,
+      application.universityID,
+      application.university,
       application.studentName,
-      application.ethnicity,
-      application.bursaryAmount,
+      application.ethinity,
       application.status,
       application.motivation,
-      application.dateOfApplication,
-      application.bbdReviewerName,
-      application.bbdReviewerComment,
-      application.HOD,
+      application.bursaryAmount,
+      application.date,
+      application.reviewer,
+      application.reviewerComment,
     );
 
     tableBody.appendChild(tableRow);
   }
+
 };
-
-
 
 function populateRow(...args) {
   const tableRow = document.createElement("tr");
@@ -208,16 +159,14 @@ document.getElementById('approval-status').addEventListener('change', function (
   }
 });
 
-loadTable();
-
 
 //Fetch student applications
-
-function getAllStudentApplications() {
+async function getAllStudentApplications() {
 
   const url =
     "https://bursary-api-1709020026838.azurewebsites.net/studentapplication/students";
-  fetch(url, {
+
+  return fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -225,8 +174,10 @@ function getAllStudentApplications() {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       return data;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err))
+    .finally(() => document.getElementById('spinner-section').style.display = 'none')
 }
+
+loadTable();
