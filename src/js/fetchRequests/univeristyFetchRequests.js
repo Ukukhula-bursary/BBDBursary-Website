@@ -1,7 +1,7 @@
 const addNewUniversityButton = document.getElementById(
   "add-new-university-button"
 );
-const universityIdInput = document.getElementById("university-by-id");
+const universityIdInput = document.getElementById("uni-id");
 const getUniverityByIdButton = document.getElementById(
   "get-univerity-by-id-button"
 );
@@ -44,10 +44,9 @@ addNewUniversityButton.addEventListener("click", (e) => {
     .catch((err) => console.log(err));
 });
 
-getUniverityByIdButton.addEventListener("click", (e) => {
-  e.preventDefault();
+getUniverityByIdButton.addEventListener("click", () => {
   const universityId = universityIdInput.value;
-  const url = `https://bursary-api-1709020026838.azurewebsites.net/universities/${universityId}`;
+  const url = `https://bursary-api-1709020026838.azurewebsites.net/university/${universityId}`;
   fetch(url, {
     method: "GET",
     headers: {
@@ -55,6 +54,9 @@ getUniverityByIdButton.addEventListener("click", (e) => {
     },
   })
     .then((res) => res.json())
-    .then((data) => (displayUniversityById.innerHTML += `${data}`))
+    .then((data) => {
+      displayUniversityById.innerHTML += `${data}`;
+      console.log(data);
+    })
     .catch((err) => console.log(err));
 });
