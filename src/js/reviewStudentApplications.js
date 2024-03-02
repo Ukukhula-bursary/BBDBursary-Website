@@ -12,8 +12,7 @@ const listApplicationsTesting = () => {
       "dateOfApplication": "2024-01-01",
       "bbdReviewerName": "John",
       "bbdReviewerComment": "Something John Said",
-      "universityStaffReviewerName": "Jane",
-      "universityStaffReviewerComment": "Something Jane Said",
+      "HOD": "Jane Doe",
     },
     {
       "applicationID": 2,
@@ -27,8 +26,7 @@ const listApplicationsTesting = () => {
       "dateOfApplication": "2024-01-02",
       "bbdReviewerName": "Alice",
       "bbdReviewerComment": "Something Alice Said",
-      "universityStaffReviewerName": "Bob",
-      "universityStaffReviewerComment": "Something Bob Said",
+      "HOD": "Hank Poe",
     },
     {
       "applicationID": 10,
@@ -42,13 +40,13 @@ const listApplicationsTesting = () => {
       "dateOfApplication": "2024-01-10",
       "bbdReviewerName": "Charlie",
       "bbdReviewerComment": "Something Charlie Said",
-      "universityStaffReviewerName": "Dana",
-      "universityStaffReviewerComment": "Something Dana Said",
+      "HOD": "Vuyo Doe",
     }
   ];
 };
 
 async function loadTable() {
+  // const applications = getAllStudentApplications();
   const applications = listApplicationsTesting();
   const tableBody = document.getElementById("tbodyID");
 
@@ -65,12 +63,11 @@ async function loadTable() {
       application.ethnicity,
       application.bursaryAmount,
       application.status,
-      application.dateOfApplication,
       application.motivation,
+      application.dateOfApplication,
       application.bbdReviewerName,
       application.bbdReviewerComment,
-      application.universityStaffReviewerName,
-      application.universityStaffReviewerComment,
+      application.HOD,
     );
 
     tableBody.appendChild(tableRow);
@@ -181,7 +178,6 @@ function showApplicationDetailsPopUp(applicationsId) {
 function hideApplicationViewDetailsPopUp(applicationsId) {
   document.getElementById("admin-student-application-view-details-section").style.display = 'none';
   document.getElementById("admin-student-application-table-section").style.display = '';
-  // loadTable();
 }
 
 
@@ -214,3 +210,23 @@ document.getElementById('approval-status').addEventListener('change', function (
 
 loadTable();
 
+
+//Fetch student applications
+
+function getAllStudentApplications() {
+
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/studentapplication/students";
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    })
+    .catch((err) => console.log(err));
+}
