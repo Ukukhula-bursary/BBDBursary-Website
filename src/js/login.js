@@ -105,9 +105,15 @@ const YOUR_REDIRECT_URI = "http://localhost:8080";
         }
     })
     .then(data => {
-        // Handle the JWT token received from the API
-        console.log('JWT Token:', data.token);
-        // You can store the token or perform further actions with it
+        const responseData = data.responseData;
+        const token = responseData.token;
+        const email = responseData.email;
+        const userRole = responseData.userRole;
+
+        // Store the JWT token, email, and user role in local storage
+        localStorage.setItem('jwtToken', token);
+        localStorage.setItem('email', email);
+        localStorage.setItem('userRole', userRole);
     })
     .catch(error => {
         console.error('Error while sending data to API:', error);
