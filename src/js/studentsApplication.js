@@ -31,6 +31,30 @@ const addNewStudentApplicationButton = document.getElementById(
 
 addNewStudentApplicationButton.addEventListener("click", (e) => {
   e.preventDefault();
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/studentapplication/apply/new";
+
+  fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "Application/json" },
+    mode: "cors",
+    body: JSON.stringify({
+      firstName: document.getElementById("firstName").value,
+      lastName: document.getElementById("lastName").value,
+      phoneNumber: document.getElementById("phone-number").value,
+      email: document.getElementById("emailAddress").value,
+      idNumber: document.getElementById("id-number").value,
+      ethnicity: document.getElementById("ethnicity").value,
+      universityName: "University of Cape Town",
+      departmentName: "Computer Science",
+      motivation: document.getElementById("motivation"),
+      bursaryAmount: document.getElementById("bursary-amount"),
+      universityStaffID: 1,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 });
 
 //   const id = studentByIdInput.value;
