@@ -418,8 +418,14 @@ a.social-link-icons:active {
     border: 2px solid var(--text-color);
 }
 
-.admin-cancel-button,
+
 .admin-back-button:hover {
+    background-color: var(--fourth-color);
+    transition: all 0.3s ease;
+    color: #17252A;
+}
+
+.admin-cancel-button:hover {
     background-color: var(--fourth-color);
     transition: all 0.3s ease;
     color: #17252A;
