@@ -1,3 +1,5 @@
+//import { login, sendToAPI, oauth2SignIn } from "./src/js/login";
+
 document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("generic-form")
@@ -70,9 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   homeBody.style.top = homeMenuHeight + "px";
 
-  const clearFieldsButton = document.getElementById(
-    "clearFieldsButton"
-  );
+  const clearFieldsButton = document.getElementById("clearFieldsButton");
 
   clearFieldsButton.onclick = () => {
     resetFormFields();
