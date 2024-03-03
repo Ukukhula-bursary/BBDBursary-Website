@@ -11,9 +11,13 @@ const getAllocationsForYearButton = document.getElementById(
 
 const nameInput = document.getElementById("uni-name");
 const getAllocationByNameButton = document.getElementById(
-  "get-uni-allocation-button"
+  "get-allocation-by-name-button"
 );
 const universityNameSpan = document.getElementById("uni-allocation-by-name");
+
+const getRemainingAllocationButton = document.getElementById(
+  "get-remaining-allocation-button"
+);
 
 getAllUniversityAllocationsButton.addEventListener("click", () => {
   const url =
@@ -57,6 +61,27 @@ getAllocationByNameButton.addEventListener("click", () => {
   })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
+      universityNameSpan.innerHTML += data;
+    })
+    .catch((err) => console.log(err));
+});
+
+const remainingYearInput = document.getElementById("uni-year");
+
+//getRemainingAmountInFundForYear
+getRemainingAllocationButton.addEventListener("click", () => {
+  const name = nameInput.value;
+  const year = remainingYearInput.value;
+  const url = `https://bursary-api-1709020026838.azurewebsites.net/university_allocations/remaining_fund/university_name=${name}/year=${year}`;
+
+  fetch(url, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
       universityNameSpan.innerHTML += data;
     })
     .catch((err) => console.log(err));
