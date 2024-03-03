@@ -1,7 +1,7 @@
 async function loadTable() {
   populateStatusDropDownByID("filter-section-status");
 
-  const applications = await getAllStudentApplications(); 
+  const applications = await getAllStudentApplications();
   const tableBody = document.getElementById("tbodyID");
 
   while (
@@ -101,14 +101,48 @@ const confirmUpdate = (applicationsId) => {
 
 const handleUpdate = async (updateApplications, applicationsId) => {
   if (updateApplications) {
-    showUpdateApplicationPopUp(applicationsId);
+    populateStatusDropDownByID("approval-status-drop-down");
+    document.getElementById(
+      "admin-student-application-table-section"
+    ).style.display = "none";
+    document.getElementById(
+      "admin-student-application-form-section"
+    ).style.display = "flex";
+
+    document
+      .getElementById("submit-application-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        submitTheStudentApplication(applicationsId);
+      });
+
+    const cancelButton = document.getElementById("admin-cancel-button");
+
+    cancelButton.addEventListener("click", () => {
+      hideUpdateApplicationPopUp();
+    });
   }
 };
+
+function submitTheStudentApplication(applicationsId) {
+  const chosenStatusValue = document.getElementById(
+    "approval-status-drop-down"
+  ).value;
+
+  if (chosenStatusValue === "") {
+    document.getElementById("successMessage").textContent =
+      "Application must have a status.";
+  } else {
+    const reviewerComment =
+      document.getElementById("admin-comment").textContent;
+    updateStatus(applicationsId, chosenStatusValue, reviewerComment);
+  }
+}
 
 const handleCancel = async () => {
   if (updateApplications) {
     hideUpdateApplicationPopUp();
-    // loadTable();
+    loadTable();
   }
 };
 
@@ -142,45 +176,16 @@ function hideApplicationViewDetailsPopUp(applicationsId) {
   ).style.display = "";
 }
 
-function showUpdateApplicationPopUp(applicationsId) {
-  populateStatusDropDownByID("approval-status-drop-down");
-  document.getElementById(
-    "admin-student-application-table-section"
-  ).style.display = "none";
-  document.getElementById(
-    "admin-student-application-form-section"
-  ).style.display = "flex";
-  const cancelButton = document.getElementById("admin-cancel-button");
-
-  cancelButton.addEventListener("click", () => {
-    hideUpdateApplicationPopUp();
-  });
-}
-
 function hideUpdateApplicationPopUp() {
   document.getElementById("approval-status-drop-down").selectedIndex = 0;
 
-  document.getElementById("admin-student-application-form-section").style.display =
-    "none";
+  document.getElementById(
+    "admin-student-application-form-section"
+  ).style.display = "none";
   document.getElementById(
     "admin-student-application-table-section"
   ).style.display = "";
 }
-
-document
-  .getElementById("approval-status-drop-down")
-  .addEventListener("change", function () {
-    const selectedOptionText = this.options[this.selectedIndex].text;
-    const rejectionReasonContainer = document.getElementById(
-      "rejection-reason-container"
-    );
-
-    if (selectedOptionText === "Rejected") {
-      rejectionReasonContainer.style.display = "flex";
-    } else {
-      rejectionReasonContainer.style.display = "none";
-    }
-  });
 
 //Fetch student applications
 async function getAllStudentApplications() {
@@ -236,3 +241,34 @@ async function populateStatusDropDownByID(selectElementID) {
   }
 }
 loadTable();
+
+async function updateStatus(applicationID, statusID, reviewerComment) {
+  const url = `https://bursary-api-1709020026838.azurewebsites.net/studentapplication/student/update/status`;
+  const message = (document.getElementById("successMessage").textContent =
+    "Please be patient while we update...");
+
+  return fetch(url, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      applicationID: applicationID,
+      statusID: statusID,
+      reviewerComment: reviewerComment,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data === 1) {
+        document.getElementById("successMessage").textContent =
+          "Update Successful!";
+      } else {
+        document.getElementById("successMessage").textContent =
+          "Update Not Successful!";
+      }
+      return data;
+    })
+    .catch((err) => console.log(err));
+}

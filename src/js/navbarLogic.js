@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.body.insertAdjacentHTML("afterbegin", navHtml);
   }
+
   //save as html
   //insert xml
   // xml http requests ( pass )
@@ -86,11 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
   homeBody.style.top = homeMenuHeight + "px";
 
   // Save data to sessionStorage
-  sessionStorage.setItem("isSessionActive", "true");
+  sessionStorage.setItem("isSessionActive", "false");
   sessionStorage.setItem("userRole", "none");
 
   // Get saved data from sessionStorage
   let isSessionActive = sessionStorage.getItem("isSessionActive");
+
   let logInButton = document.querySelector("#logInButton");
   let logOutButton = document.querySelector("#logOutButton");
 
@@ -111,6 +113,10 @@ document.addEventListener("DOMContentLoaded", function () {
     logInButton.classList.add("open");
     logInButton.classList.remove("close");
   }
+
+  logInButton.addEventListener("click", function () {
+    login();
+  });
 });
 
 // This function should be called when the user is redirected back to your application with the token
@@ -151,7 +157,7 @@ if (Object.keys(params).length > 0) {
 // If there's an access token, try an API request.
 // Otherwise, start OAuth 2.0 flow.
 function login() {
-  var params = JSON.parse(localStorage.getItem("oauth2-test-params"));
+  const  params = JSON.parse(localStorage.getItem("oauth2-test-params"));
   if (params && params["access_token"]) {
     var xhr = new XMLHttpRequest();
     xhr.open(
@@ -239,3 +245,15 @@ function sendToAPI(data) {
 }
 
 //////////////////////////////////////
+
+console.log(`Current user role = {${localStorage.getItem("userRole")}}`);
+
+if (localStorage.getItem("userRole") === "admin") {
+  console.log("show admin view");
+} else if (localStorage.getItem("userRole") === "HOD") {
+  console.log("show HOD view");
+} else if (localStorage.getItem("userRole") === "Student") {
+  console.log("show Student view");
+} else {
+  console.log("show Home view");
+}
