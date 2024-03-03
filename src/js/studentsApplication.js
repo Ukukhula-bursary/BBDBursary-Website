@@ -36,7 +36,7 @@ addNewStudentApplicationButton.addEventListener("click", (e) => {
 
   fetch(url, {
     method: "POST",
-    headers: { "Content-Type": "Application/json" },
+    headers: new Headers({ "Content-Type": "Application/json" }),
     mode: "cors",
     body: JSON.stringify({
       firstName: document.getElementById("firstName").value,
@@ -47,14 +47,20 @@ addNewStudentApplicationButton.addEventListener("click", (e) => {
       ethnicity: document.getElementById("ethnicity").value,
       universityName: "University of Cape Town",
       departmentName: "Computer Science",
-      motivation: document.getElementById("motivation"),
-      bursaryAmount: document.getElementById("bursary-amount"),
+      motivation: document.getElementById("motivation").value,
+      bursaryAmount: document.getElementById("bursary-amount").value,
       universityStaffID: 1,
     }),
   })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+    .then((res) => console.log(res.json()))
+    .then((data) => {
+      console.log(data);
+      return data;
+    })
+    .catch((err) => {
+      console.log("hi");
+      console.log(err);
+    });
 });
 
 //   const id = studentByIdInput.value;
