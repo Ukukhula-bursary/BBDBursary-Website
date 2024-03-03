@@ -192,8 +192,8 @@ const YOUR_REDIRECT_URI = ;
     form.setAttribute('action', oauth2Endpoint);
 
     // Parameters to pass to OAuth 2.0 endpoint.
-    var params = {'client_id': "509502634606-7bcfbabbs4mmfiphg8ae4tn4djvom8rv.apps.googleusercontent.com",
-                  'redirect_uri': "http://localhost:8080",
+    var params = {'client_id': YOUR_CLIENT_ID,
+                  'redirect_uri': YOUR_REDIRECT_URI,
                   'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
                   'state': 'try_sample_request',
                   'include_granted_scopes': 'true',
@@ -214,27 +214,31 @@ const YOUR_REDIRECT_URI = ;
   }
 
   function sendToAPI(data) {
-    fetch('http://localhost:8090/Oauth/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ responseData: data }) // Assuming data needs parsing
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json(); // Parse response JSON
-        } else {
-            console.error('Failed to send data to API.');
-        }
-    })
-    .then(data => {
-        // Handle the JWT token received from the API
-        console.log('JWT Token:', data.token);
-        // You can store the token or perform further actions with it
-    })
-    .catch(error => {
-        console.error('Error while sending data to API:', error);
-    });
+fetch('http://localhost:8090/Oauth/login', {
+  method: 'POST',
+  mode: 'cors',
+  // headers: {
+  //     'Content-Type': 'application/json'
+  // },
+  body: JSON.stringify({ responseData: data }) // Assuming data needs parsing
+})
+.then(response => {
+// alert(response.json());
+  if (response.ok) {
+      return response.json(); // Parse response JSON
+  } else {
+      console.error('Failed to send data to API.');
+  }
+})
+.then(data => {
+  localStorage.setItem('jwtToken', data.token);
+  localStorage.setItem('email', data.email);
+  localStorage.setItem('userRole', data.userRole);
+})
+.catch(error => {
+  console.error('Error while sending data to API:', error);
+});
 }
+
+//////////////////////////////////////
 
