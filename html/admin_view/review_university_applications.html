@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../../styles/styles.css" rel="stylesheet">
+        <link href="../../styles/mobile_styles.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <!-- Download fonts locally -->
         <link rel="shortcut icon" href="">
@@ -36,8 +37,8 @@
                             <label for="is-active-status-drop-down">Choose Active Status:</label>
                             <select id="is-active-status-drop-down" name="is-active-status-drop-down" class="generic-drop-downs">
                                 <option value="" selected disabled>Choose Status</option>
-                                <option value="No">No</option>
-                                <option value="yes">Yes</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
                             </select>
                             <label for="approval-status-drop-down">Choose Approval Status:</label>
                             <select id="approval-status-drop-down" name="approval-status-drop-down" class="generic-drop-downs">
@@ -82,6 +83,12 @@
                                     class="buttons"
                                     value="Search"
                                 >Search</button>
+                                <button
+                                    type="button"
+                                    id="clear-filter--by-name-button"
+                                    class="clear-filter-buttons"
+                                    value="Clear"
+                                >Clear</button>
                             </section>
                             <section>
                                 <label for="filter-approval-status">Filter By: Approval Status</label>
@@ -94,6 +101,12 @@
                                     class="buttons"
                                     value="Search"
                                 >Search</button>
+                                <button
+                                    type="button"
+                                    id="clear-filter--by-name-button"
+                                    class="clear-filter-buttons"
+                                    value="Clear"
+                                >Clear</button>
                             </section>
                         </section>
                         <!-- Table -->
@@ -104,7 +117,7 @@
                                         <tr id="theadings">
                                             <th>Application ID</th>
                                             <th>University Name</th>
-                                            <th>Budget Requested</th>
+                                            <th>Budget Requested (ZAR)</th>
                                             <th>Status</th>
                                             <th>Motivation</th>
                                             <th>Date of Application</th>
@@ -115,6 +128,11 @@
                                     </tbody>
                                 </table>
                             </section>
+                        </section>
+                        <!-- Loading -->
+                        <section id="spinner-section">
+                            <section id="loading-spinner" class="spinner"></section>
+                            <p>Loading Table...</p>
                         </section>
                     </section>
                 </section>

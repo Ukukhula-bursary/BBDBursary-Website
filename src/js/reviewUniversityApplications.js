@@ -1,52 +1,7 @@
-const listApplicationsTesting = () => {
-  return [
-    {
-      applicationID: 1,
-      universityName: "University Of Pretoria",
-      fundsRequested: "R100,000.00",
-      status: "Approved",
-      motivation: "I love it here!",
-      dateOfApplication: "2024-01-01",
-      reviewerName: "John",
-      reviewerComment: "Something John Said",
-    },
-    {
-      applicationID: 2,
-      universityName: "University Of Limpopo",
-      fundsRequested: "R100,000.00",
-      status: "Approved",
-      motivation: "I love it also here!",
-      dateOfApplication: "2023-01-01",
-      reviewerName: "John",
-      reviewerComment: "Something John Said",
-    },
-    {
-      applicationID: 3,
-      universityName: "University Of Free State",
-      fundsRequested: "R100,000.00",
-      status: "Rejected",
-      motivation: "We would like to be funded",
-      dateOfApplication: "2020-01-01",
-      reviewerName: "John",
-      reviewerComment: "Sorry Not Meeting Quotas",
-    },
-    {
-      applicationID: 4,
-      universityName: "University Of The Cape",
-      fundsRequested: "R100,000.00",
-      status: "Under Review",
-      motivation: "We would like to be funded",
-      dateOfApplication: "2019-01-01",
-      reviewerName: "John",
-      reviewerComment: "N/A",
-    },
-  ];
-};
-
 async function loadTable() {
   populateStatusDropDownByID("filter-approval-status");
 
-  const applications = listApplicationsTesting();
+  const applications = await getAllUniversityApplications();
   const tableBody = document.getElementById("tbodyID");
 
   while (
@@ -59,11 +14,11 @@ async function loadTable() {
   for (const application of applications) {
     let tableRow = populateRow(
       application.applicationID,
-      application.universityName,
-      application.fundsRequested,
+      application.university,
+      application.budget,
       application.status,
       application.motivation,
-      application.dateOfApplication,
+      application.date,
       application.reviewerName,
       application.reviewerComment
     );
@@ -264,4 +219,23 @@ async function populateStatusDropDownByID(selectElementId) {
       selectElement.add(newOption);
     }
   }
+}
+
+async function getAllUniversityApplications() {
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/universities/application/all";
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => console.log(err))
+    .finally(
+      () => (document.getElementById("spinner-section").style.display = "none")
+    );
 }
