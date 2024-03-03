@@ -25,6 +25,14 @@
 // getStudentByIdButton.addEventListener("click", (e) => {
 //   e.preventDefault();
 
+const addNewStudentApplicationButton = document.getElementById(
+  "add-new-student-application"
+);
+
+addNewStudentApplicationButton.addEventListener("click", (e) => {
+  e.preventDefault();
+});
+
 //   const id = studentByIdInput.value;
 //   const url = `https://bursary-api-1709020026838.azurewebsites.net/studentapplication/student/${id}`;
 //   fetch(url, {
@@ -58,22 +66,22 @@
 //     .catch((err) => console.log(err));
 // });
 
-document
-  .getElementById("update-status-submit-button")
-  .addEventListener("click", () => {
-    // e.preventDefault();
-    const updatedStatus =
-      approvalStatusSelect.options[approvalStatusSelect.selectedIndex].value;
-    const url = `https://bursary-api-1709020026838.azurewebsites.net/studentapplication/status/${orange}`;
-    fetch(url, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ Status: updatedStatus }),
-    })
-      .then((res) => res.json())
-      .then(() => location.reload())
-      .catch((err) => console.log(err));
-  });
+// document
+//   .getElementById("update-status-submit-button")
+//   .addEventListener("click", () => {
+//     // e.preventDefault();
+//     const updatedStatus =
+//       approvalStatusSelect.options[approvalStatusSelect.selectedIndex].value;
+//     const url = `https://bursary-api-1709020026838.azurewebsites.net/studentapplication/status/${orange}`;
+//     fetch(url, {
+//       method: "PATCH",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ Status: updatedStatus }),
+//     })
+//       .then((res) => res.json())
+//       .then(() => location.reload())
+//       .catch((err) => console.log(err));
+//   });
 
 // ******not sure
 // updateStudentApplicationColumnValue.addEventListener("click", (e) => {
@@ -82,7 +90,7 @@ document
 // fetch(url, {
 // method: "PATCH",
 // headers: { "Content-Type": "application/json" },
-body: JSON.stringify({});
+//body: JSON.stringify({});
 // })
 // .then((res) => res.json())
 // .then(() => location.reload());
