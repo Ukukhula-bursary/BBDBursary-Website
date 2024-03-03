@@ -11,6 +11,8 @@
     </head>
     <script src="/src/js/navbarLogic.js" defer></script>
     <script src="/index.js" defer></script>
+    <script src="./src//js/login.js" defer></script>
+
     <body>
         <main id="home-body">
             <section id="home-section-about-us" class="home-section">
@@ -42,71 +44,7 @@
                 </section>
             </section>
             <section id="home-section-generic" class="home-section">
-                <section id="form-section" id="home-contact-section" class="home-section">
-                    <form
-                        id="generic-form"
-                        class="generic-form"
-                        action="/submit"
-                        method="POST"
-                    >
-                        <h3 id="successMessage"></h3>
-                        <label for="firstName" class="generic-form-first-name-label">
-                            First Name
-                        </label
-            >
-                        <input
-                            pattern="[a-zA-Z]{2,256}$"
-                            title="FirstName: Must be filled, only one name allowed."
-                            type="text"
-                            id="firstName"
-                            name="firstName"
-                            required
-                            placeholder="Enter Your Name"
-                        >
-                        <label for="lastName">Last Name</label>
-                        <input
-                            pattern="[a-zA-Z]{2,256}$"
-                            title="Last Name: Must be filled, only one surname allowed."
-                            type="text"
-                            id="lastName"
-                            name="lastName"
-                            required
-                            placeholder="Enter Your Last Name"
-                        >
-                        <label for="emailAddress">Email</label>
-                        <input
-                            pattern="[A-Za-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,320}$"
-                            title="Email: Must be in the following order: 'characters@characters.domain'"
-                            type="email"
-                            id="emailAddress"
-                            name="emailAddress"
-                            required
-                            placeholder="Enter Your Email Address"
-                        >
-                        <label for="message">Message</label>
-                        <textarea
-                            name="message"
-                            rows="5"
-                            cols="30"
-                            placeholder="Please write your message here. (optional)"
-                            maxlength="256"
-                            title="Message: May not be empty, and can not exceed 256 characters."
-                            id="message"
-                        ></textarea>
-                        <input
-                            type="submit"
-                            id="submit-button"
-                            class="buttons"
-                            value="Submit"
-                        >
-                        <input
-                            type="button"
-                            value="Clear Fields"
-                            id="clearFieldsButton"
-                            class="buttons"
-                        >
-                    </form>
-                </section>
+                <section id="form-section" id="home-contact-section" class="home-section"></section>
                 <section id="home-section-socials" class="home-section">
                     <article>
                         <h3 class="social-contact">Address</h3>

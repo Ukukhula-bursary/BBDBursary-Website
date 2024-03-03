@@ -1,84 +1,83 @@
 const listApplicationsTesting = () => {
   return [
     {
-      applicationID: 1,
-      universityName: "University Of Pretoria",
-      department: "Computer Science",
-      studentName: "John Doe",
-      ethnicity: "Black",
-      bursaryAmount: "R10,000.00",
-      status: "Approved",
-      motivation: "I love it here!",
-      dateOfApplication: "2024-01-01",
-      bbdReviewerName: "John",
-      bbdReviewerComment: "Something John Said",
-      universityStaffReviewerName: "Jane",
-      universityStaffReviewerComment: "Something Jane Said",
+      "applicationID": 1,
+      "universityName": "University Of Pretoria",
+      "department": "Computer Science",
+      "studentName": "John Doe",
+      "ethnicity": "Black",
+      "bursaryAmount": "R10,000.00",
+      "status": "Approved",
+      "motivation": "I love it here!",
+      "dateOfApplication": "2024-01-01",
+      "bbdReviewerName": "John",
+      "bbdReviewerComment": "Something John Said",
+      "universityStaffReviewerName": "Jane",
+      "universityStaffReviewerComment": "Something Jane Said",
     },
     {
-      applicationID: 2,
-      universityName: "University Of Cape Town",
-      department: "Marketing",
-      studentName: "Jane Smith",
-      ethnicity: "White",
-      bursaryAmount: "R8,000.00",
-      status: "Pending",
-      motivation: "I want to make a difference.",
-      dateOfApplication: "2024-01-02",
-      bbdReviewerName: "Alice",
-      bbdReviewerComment: "Something Alice Said",
-      universityStaffReviewerName: "Bob",
-      universityStaffReviewerComment: "Something Bob Said",
+      "applicationID": 2,
+      "universityName": "University Of Cape Town",
+      "department": "Marketing",
+      "studentName": "Jane Smith",
+      "ethnicity": "White",
+      "bursaryAmount": "R8,000.00",
+      "status": "Pending",
+      "motivation": "I want to make a difference.",
+      "dateOfApplication": "2024-01-02",
+      "bbdReviewerName": "Alice",
+      "bbdReviewerComment": "Something Alice Said",
+      "universityStaffReviewerName": "Bob",
+      "universityStaffReviewerComment": "Something Bob Said",
     },
     {
-      applicationID: 10,
-      universityName: "University Of Johannesburg",
-      department: "Engineering",
-      studentName: "Mary Johnson",
-      ethnicity: "Asian",
-      bursaryAmount: "R12,000.00",
-      status: "Rejected",
-      motivation: "I'm dedicated to my studies.",
-      dateOfApplication: "2024-01-10",
-      bbdReviewerName: "Charlie",
-      bbdReviewerComment: "Something Charlie Said",
-      universityStaffReviewerName: "Dana",
-      universityStaffReviewerComment: "Something Dana Said",
-    },
+      "applicationID": 10,
+      "universityName": "University Of Johannesburg",
+      "department": "Engineering",
+      "studentName": "Mary Johnson",
+      "ethnicity": "Asian",
+      "bursaryAmount": "R12,000.00",
+      "status": "Rejected",
+      "motivation": "I'm dedicated to my studies.",
+      "dateOfApplication": "2024-01-10",
+      "bbdReviewerName": "Charlie",
+      "bbdReviewerComment": "Something Charlie Said",
+      "universityStaffReviewerName": "Dana",
+      "universityStaffReviewerComment": "Something Dana Said",
+    }
   ];
 };
 
 async function loadTable() {
-  const applications = listApplicationsTesting();
+  populateStatusDropDownByID("filter-section-status");
+
+  const applications = await getAllStudentApplications(); 
   const tableBody = document.getElementById("tbodyID");
 
-  while (
-    tableBody.lastElementChild &&
-    tableBody.lastElementChild.id !== "theadings"
-  ) {
+  while (tableBody.lastElementChild && tableBody.lastElementChild.id !== "theadings") {
     tableBody.removeChild(tableBody.lastElementChild);
   }
 
   for (const application of applications) {
     let tableRow = populateRow(
       application.applicationID,
-      application.universityName,
-      application.department,
+      application.universityID,
+      application.university,
       application.studentName,
-      application.ethnicity,
-      application.bursaryAmount,
+      application.ethinity,
       application.status,
-      application.dateOfApplication,
       application.motivation,
       application.bbdReviewerName,
       application.bbdReviewerComment,
       application.universityStaffReviewerName,
-      application.universityStaffReviewerComment
+      application.universityStaffReviewerComment,
     );
 
     tableBody.appendChild(tableRow);
   }
-}
+};
+
+
 
 function populateRow(...args) {
   const tableRow = document.createElement("tr");
@@ -138,7 +137,7 @@ function populateRow(...args) {
 
 function handleViewDetails(applicationsId) {
   //show form a with user documents
-  console.log(applicationsId);
+  console.log(applicationsId)
   showApplicationDetailsPopUp(applicationsId);
 }
 
@@ -169,68 +168,103 @@ const handleViewDetailsCancel = async () => {
 };
 
 function showApplicationDetailsPopUp(applicationsId) {
-  document.getElementById(
-    "admin-student-application-table-section"
-  ).style.display = "none";
-  document.getElementById(
-    "admin-student-application-view-details-section"
-  ).style.display = "flex";
+  document.getElementById("admin-student-application-table-section").style.display = 'none';
+  document.getElementById("admin-student-application-view-details-section").style.display = 'flex';
   const backButton = document.getElementById("admin-back-button");
 
   backButton.addEventListener("click", () => {
     hideApplicationViewDetailsPopUp();
-  });
+  })
 }
 
+
 function hideApplicationViewDetailsPopUp(applicationsId) {
-  document.getElementById(
-    "admin-student-application-view-details-section"
-  ).style.display = "none";
-  document.getElementById(
-    "admin-student-application-table-section"
-  ).style.display = "";
+  document.getElementById("admin-student-application-view-details-section").style.display = 'none';
+  document.getElementById("admin-student-application-table-section").style.display = '';
   // loadTable();
 }
-let orange;
+
+
 function showUpdateApplicationPopUp(applicationsId) {
-  document.getElementById(
-    "admin-student-application-table-section"
-  ).style.display = "none";
-  document.getElementById(
-    "admin-student-application-form-section"
-  ).style.display = "flex";
+  document.getElementById("admin-student-application-table-section").style.display = 'none';
+  document.getElementById("admin-student-application-form-section").style.display = 'flex';
   const cancelButton = document.getElementById("admin-cancel-button");
   orange = applicationsId;
   cancelButton.addEventListener("click", () => {
     hideUpdateApplicationPopUp();
-  });
-
-  return applicationsId;
+  })
 }
 
 function hideUpdateApplicationPopUp(applicationsId) {
-  document.getElementById(
-    "admin-student-application-form-section"
-  ).style.display = "none";
-  document.getElementById(
-    "admin-student-application-table-section"
-  ).style.display = "";
+  document.getElementById("admin-student-application-form-section").style.display = 'none';
+  document.getElementById("admin-student-application-table-section").style.display = '';
   loadTable();
 }
 
-document
-  .getElementById("approval-status")
-  .addEventListener("change", function () {
-    var selectedOptionText = this.options[this.selectedIndex].text;
-    var rejectionReasonContainer = document.getElementById(
-      "rejection-reason-container"
+document.getElementById('approval-status').addEventListener('change', function () {
+  var selectedOptionText = this.options[this.selectedIndex].text;
+  var rejectionReasonContainer = document.getElementById('rejection-reason-container');
+
+  if (selectedOptionText === 'Rejected') {
+    rejectionReasonContainer.style.display = 'flex';
+  } else {
+    rejectionReasonContainer.style.display = 'none';
+  }
+});
+
+//Fetch student applications
+async function getAllStudentApplications() {
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/studentapplication/students";
+
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => console.log(err))
+    .finally(
+      () => (document.getElementById("spinner-section").style.display = "none")
     );
+}
 
-    if (selectedOptionText === "Rejected") {
-      rejectionReasonContainer.style.display = "flex";
-    } else {
-      rejectionReasonContainer.style.display = "none";
+async function getAllStatuses() {
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/statuses/all";
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => console.log(err));
+}
+
+async function populateStatusDropDownByID(selectElementID) {
+  const selectElement = document.getElementById(selectElementID);
+  selectElement.disabled = true;
+
+  const statuses = await getAllStatuses();
+  if (statuses.length) {
+    selectElement.disabled = false;
+
+    for (const status of statuses) {
+      const newOption = document.createElement("option");
+      newOption.text = status.status;
+      newOption.value = status.statusID;
+      selectElement.add(newOption);
     }
-  });
-
+  }
+}
+>>>>>>> main
 loadTable();
+

@@ -4,12 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../../styles/styles.css" rel="stylesheet">
+        <link href="../../styles/mobile_styles.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <!-- Download fonts locally -->
         <link rel="shortcut icon" href="">
         <title>BBD Ukukhula Bursary - Add Institution</title>
     </head>
     <script src="../../src/js/navbarLogic.js" defer></script>
+    <script src="../../src/js/addInstutution.js" defer></script>
     <body>
         <main id="home-body">
             <section id="home-section-add-institution" class="home-section">
@@ -26,11 +28,10 @@
                     <section id="home-section-generic" class="home-section">
                         <section id="form-section" id="home-contact-section" class="home-section">
                             <form
-                            id="generic-form"
+                                id="generic-form"
                                 class="generic-form"
                                 action="#"
                                 method="POST"
-                                
                             >
                                 <h3 id="successMessage"></h3>
                                 <label for="university-name" class="generic-form-first-name-label">
@@ -46,15 +47,9 @@
                                     required
                                     placeholder="Enter University Name"
                                 >
-                                <label for="university-status">Choose Active Status:</label>
-                                <select id="university-status" name="university-status" class="buttons">
-                                    <option value="" selected disabled>Choose Status</option>
-                                    <option value="No">No</option>
-                                    <option value="yes">Yes</option>
-                                </select>
                                 <input
                                     type="submit"
-                                    id="submit-button"
+                                    id="add-new-submit-button"
                                     class="buttons"
                                     value="Add"
                                 >

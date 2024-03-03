@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../../styles/styles.css" rel="stylesheet">
+        <link href="../../styles/mobile_styles.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <!-- Download fonts locally -->
         <link rel="shortcut icon" href="">
@@ -35,18 +36,10 @@
                         action="#"
                         method="POST"
                     >
-                        <label for="is-active-status">Choose Active Status:</label>
-                        <select id="is-active-status" name="is-active-status" class="generic-drop-downs">
-                            <option value="" selected disabled>Choose Status</option>
-                            <option value="No">No</option>
-                            <option value="yes">Yes</option>
-                        </select>
-                        <label for="approval-status">Choose Approval Status:</label>
-                        <select id="approval-status" name="approval-status" class="generic-drop-downs">
+                        <h3 id="successMessage"></h3>
+                        <label for="approval-status-drop-down">Choose Approval Status:</label>
+                        <select id="approval-status-drop-down" name="approval-status" class="generic-drop-downs">
                             <option value="" selected disabled>Choose Approval Status:</option>
-                            <option value="1">Accepted</option>
-                            <option value="2">Rejected</option>
-                            <option value="3">Under Review</option>
                         </select>
                         <section id="rejection-reason-container">
                             <label for="rejection-reason">Give Rejection Reason</label>
@@ -54,7 +47,6 @@
                             <label for="admin-comment">Reviewer Comment (optional)</label>
                             <input type="text" id="admin-comment" name="admin-comment"></input>
                         </section>
-                        <section id="student-form"></section>
                         <input
                             type="submit"
                             id="update-status-submit-button"
@@ -69,6 +61,7 @@
                         >
                     </form>
                 </section>
+
                 <!-- View Details Section -->
                 <section id="admin-student-application-view-details-section" class="form-section">
                     <form
@@ -84,7 +77,6 @@
                             value="StudentID"
                             class="download-buttons"
                         >Download Certified ID</button>
-                       
                         <label for="download-accedemic-transcript">Academic Transcript:</label>
                         <button
                             id="download-accedemic-transcript"
@@ -92,7 +84,6 @@
                             value="StudentID"
                             class="download-buttons"
                         >Download Academic Transcript</button>
-                       
                         <label for="download-accedemic-vitae-transcript">Curriculum Vitae:</label>
                         <button
                             id="download-curriculum-transcript"
@@ -100,7 +91,6 @@
                             value="StudentID"
                             class="download-buttons"
                         >Download Curriculum Vitae</button>
-                        
                         <input
                             type="button"
                             id="admin-back-button"
@@ -110,7 +100,7 @@
                     </form>
                 </section>
                 <!-- Table Section -->
-                <section id="admin-student-application-table-section">
+                <section id="admin-student-application-table-section" class="table-section">
                     <!-- Table -->
                     <h1 id="application-table-heading">Applications Table</h1>
                     <!-- Filtering -->
@@ -135,15 +125,17 @@
                                 class="buttons"
                                 value="Search"
                             >Search</button>
+                            <button
+                            type="button"
+                            id="clear-filter--by-name-button"
+                            class="clear-filter-buttons"
+                            value="Clear"
+                        >Clear</button>
                         </section>
                         <section>
                             <label for="filter-section-status">Filter By: Approval Status</label>
                             <select id="filter-section-status" name="filter-section" class="generic-drop-downs">
                                 <option value="" selected disabled>Status</option>
-                                <option value="1">Accepted</option>
-                                <option value="2">Rejected</option>
-                                <option value="3">Submitted</option>
-                                <option value="4">Under Review</option>
                             </select>
                             <button
                                 type="button"
@@ -151,6 +143,12 @@
                                 class="buttons"
                                 value="Search"
                             >Search</button>
+                            <button
+                                type="button"
+                                id="clear-filter-by-status-button"
+                                class="clear-filter-buttons"
+                                value="Clear"
+                            >Clear</button>
                         </section>
                     </section>
                     <section id="application-table-container">
@@ -159,23 +157,26 @@
                                 <tbody id="tbodyID">
                                     <tr id="theadings">
                                         <th>Application ID</th>
+                                        <th>University ID</th>
                                         <th>University Name</th>
-                                        <th>Department</th>
                                         <th>Student Name</th>
                                         <th>Ethnicity</th>
-                                        <th>Bursary Amount</th>
                                         <th>Status</th>
                                         <th>Motivation</th>
+                                        <th>Bursary Amount (ZAR)</th>
                                         <th>Date Of Application</th>
                                         <th>BBD Reviewer Name</th>
                                         <th>BBD Reviewer Comment</th>
-                                        <th>University Staff Reviewer Name</th>
-                                        <th>University Staff Reviewer Comment</th>
                                         <th>Actions</th>
                                     </tr>
                                 </tbody>
                             </table>
                         </section>
+                    </section>
+                    <!-- Loading -->
+                    <section id="spinner-section">
+                        <section id="loading-spinner" class="spinner"></section>
+                        <p>Loading Table...</p>
                     </section>
                 </section>
             </section>

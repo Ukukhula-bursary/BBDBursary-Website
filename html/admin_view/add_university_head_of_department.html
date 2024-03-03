@@ -4,12 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../../styles/styles.css" rel="stylesheet">
+        <link href="../../styles/mobile_styles.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <!-- Download fonts locally -->
         <link rel="shortcut icon" href="">
         <title>BBD Ukukhula Bursary - Add Head Of Department</title>
     </head>
     <script src="../../src/js/navbarLogic.js" defer></script>
+    <script src="../../src/js/addUniversityHeadOfDepartment.js" defer></script>
     <body>
         <main id="home-body">
             <section id="home-section-add-institution" class="home-section">
@@ -32,12 +34,9 @@
                                 method="POST"
                             >
                                 <h3 id="successMessage"></h3>
-                                <label for="university-status">University Name:</label>
-                                <select id="university-status" name="university-status" class="buttons">
+                                <label for="university-name-drop-down">University Name:</label>
+                                <select id="university-name-drop-down" name="university-name-drop-down" class="buttons">
                                     <option value="" selected disabled>Select University</option>
-                                    <option value="UCT">UCT</option>
-                                    <option value="UP">UP</option>
-                                    <option value="BC">BC</option>
                                 </select>
                                 <label for="firstName" class="generic-form-first-name-label">
                                     First Name
