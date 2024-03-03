@@ -699,7 +699,7 @@ tr:nth-child(even) {
     transition: all 0.3s ease;
 }
 
-/* @media (max-width : 768px) {
+@media (max-width : 768px) {
     #home-body {
         background-color: var(--text-color);
         text-decoration: none;
@@ -983,4 +983,4 @@ tr:nth-child(even) {
         width: 80vw;
     }
 
-} */
+}
