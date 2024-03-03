@@ -7,10 +7,17 @@
         <title>Allocate Funds And Distribution</title>
         <script src="../../src/js/navbarLogic.js" defer></script>
         <script src="../../src/js/adminAllocateFunds.js" defer></script>
+        <script src="../../src/js/fetchRequests/allocateFunds.js" defer></script>
     </head>
     <body>
         <main id="home-body">
             <section id="allocate-bbd-yearly-budget-section" class="main-section">
+                <h2>All university allocations</h2>
+                <button id="get-all-uni-allocations">get all university allocations</button>
+                <section id="all-uni-allocations">
+                    <!-- <table></table> -->
+                </section>
+                <br>
                 <h2>
                     Allocate BBD Yearly Budget Section
                     <span>(2024)</span>
@@ -19,10 +26,14 @@
                     Total Budget:
                     <span id="bbd-yearly-total-budget">10000</span>
                 </p>
+                <br>
                 <p>
                     Spent So Far:
-                    <span id="bbd-yearly-spent-so-far">5000</span>
+                    <input type="number" id="year-input" placeholder="Enter year">
+                    <button id="get-allocations-for-year">get yearly spent so far</button>
+                    <span id="bbd-yearly-spent-so-far"></span>
                 </p>
+                <br>
                 <p>
                     Commit Amount To Allocate
                 </p>
@@ -37,6 +48,13 @@
             </section>
             <section id="distribution-section" class="main-section">
                 <h2>Distribution Section</h2>
+                <br>
+                <input type="text" id="uni-name" placeholder="Enter university name">
+                <input type="text" id="uni-year" placeholder="Enter university year">
+                <button id="get-allocation-by-name-button">get allocation by name</button>
+                <button id="get-remaining-allocation-button">get remaining allocation</button>
+                <span id="uni-allocation-by-name"></span>
+                <br><br>
                 <p>
                     Number Of Approved Universities:
                     <span id="hypothetical-amount">6</span>
@@ -58,7 +76,7 @@
                         </span>
                     </b>
                 </p>
-                <input type="number" id="amount-to-allocate-student" placeholder="Enter amount">
+                <input type="number" id="amount-to-allocate-to-student" placeholder="Enter amount">
                 <button type="button" id="commit-student-funding-button">Commit Funding</button>
                 <button type="button" id="cancel-student-funding-button">Cancel</button>
             </section>
