@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  
   function createAdminNav() {
     const navHtml = `
         <nav id="nav">
@@ -27,21 +26,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 <li><a href="/html/admin_view/review_a_student_application.html">Review A Student Application</a></li>
                 <li><a href="/html/admin_view/allocate_funds.html">Allocate Funds</a></li>
                 <li>
-                    <button id="logInButton" type="button" title="Log In">Log In</button>
-                    <button id="logOutButton" type="button" title="Log Out">Log Out</button>
+                    <button id="logInButton" class="buttons" type="button" title="Log In">Log In</button>
+                    <button id="logOutButton" class="buttons" type="button" title="Log Out">Log Out</button>
                 </li>
             </ul>
         </nav>
     `;
 
-    document.body.insertAdjacentHTML('afterbegin', navHtml);
-}
-//save as html
-//insert xml
-// xml http requests ( pass )
+    document.body.insertAdjacentHTML("afterbegin", navHtml);
+  }
+  //save as html
+  //insert xml
+  // xml http requests ( pass )
 
-createAdminNav();
-  
+  createAdminNav();
+
   const hamburgerBar = document.getElementById("hamburger-bar");
   const hamburgerBarCross = document.getElementById("hamburger-bar-cross");
   const navMenu = document.getElementById("nav-menu");
@@ -51,10 +50,10 @@ createAdminNav();
   navMenu.classList.add("close");
 
   hamburgerBar.onclick = () => {
- hamburgerBar.classList.remove("open");
- hamburgerBar.classList.add("close");
- hamburgerBarCross.classList.add("open");
- navMenu.classList.add("open");
+    hamburgerBar.classList.remove("open");
+    hamburgerBar.classList.add("close");
+    hamburgerBarCross.classList.add("open");
+    navMenu.classList.add("open");
   };
 
   const navMenuHide = () => {
@@ -87,7 +86,7 @@ createAdminNav();
   homeBody.style.top = homeMenuHeight + "px";
 
   // Save data to sessionStorage
-  sessionStorage.setItem("isSessionActive", "false");
+  sessionStorage.setItem("isSessionActive", "true");
   sessionStorage.setItem("userRole", "none");
 
   // Get saved data from sessionStorage
