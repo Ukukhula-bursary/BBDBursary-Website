@@ -44,7 +44,7 @@ addNewStudentApplicationButton.addEventListener("click", (e) => {
       phoneNumber: document.getElementById("phone-number").value,
       email: document.getElementById("emailAddress").value,
       idNumber: document.getElementById("id-number").value,
-      ethnicity: document.getElementById("ethnicity").value,
+      ethnicity: "Indian",
       universityName: "University of Cape Town",
       departmentName: "Computer Science",
       motivation: document.getElementById("motivation").value,
