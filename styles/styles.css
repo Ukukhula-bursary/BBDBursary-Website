@@ -291,9 +291,9 @@ section h2 {
     transition: all 0.3s ease;
 }
 
-#rejection-reason-container {
-    display: none;
+#reviewer-comment-reason-container {
     width: 100%;
+    display: flex;
     flex-direction: column;
 }
 
