@@ -454,7 +454,6 @@ a.social-link-icons:active {
 
 .close {
     display: none;
-    background-color: rgb(255, 113, 113);
 }
 
 .open {
@@ -468,13 +467,8 @@ a.social-link-icons:active {
 
 /* Dashboard */
 
-
-.dashboard {
-    background-color: chocolate;
-}
-
 .dashboard-wrapper {
-    background-color: rgb(218, 206, 197);
+    background-color: var(--text-color);
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -698,6 +692,17 @@ tr:nth-child(even) {
     transition: all 0.3s ease;
 }
 
-.logOutButton {
-    background-color: gray;
+#logOutButton.buttons {
+    background-color: var(--danger-color)
+}
+
+#logInButton.buttons {
+    background-color: var(--secondary-color)
+}
+
+#logInButton:hover,
+#logOutButton:hover {
+    background-color: var(--fourth-color);
+    color: var(--primary-color);
+
 }
