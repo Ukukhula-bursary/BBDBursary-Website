@@ -1,6 +1,4 @@
-const addNewUniversityButton = document.getElementById(
-  "add-new-university-button"
-);
+const addNewUniversityButton = document.getElementById("add-new-submit-button");
 const universityIdInput = document.getElementById("uni-id");
 const getUniverityByIdButton = document.getElementById(
   "get-univerity-by-id-button"
@@ -30,19 +28,16 @@ async function getAllUniversities() {
     .catch((err) => console.log(err)); //alert
 }
 
+const universityName = document.getElementById("university-name").value;
 addNewUniversityButton.addEventListener("click", (e) => {
   e.preventDefault();
-  const universityName = document.getElementById("university-name").value;
-  const isActive = document.getElementById("is-active-recipient").value;
-
   const url =
     "https://bursary-api-1709020026838.azurewebsites.net/university/add";
   fetch(url, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    mode: "cors",
     body: JSON.stringify({
       universityName: universityName,
-      isActiveRecipient: isActive,
     }),
   })
     .then((res) => res.json())
