@@ -504,17 +504,7 @@ a.social-link-icons:active {
 
 }
 
-
-/* Admin - add an institution */
-
-#add-institution-section {
-    background-color: orange;
-}
-
-
 /* Tables */
-
-
 #admin-fields-container {
     display: flex;
     flex-direction: column;
@@ -569,7 +559,7 @@ th {
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #f3f2f2;
 }
 
 
@@ -683,10 +673,30 @@ tr:nth-child(even) {
     }
 }
 
-#spinner-section{
+#spinner-section {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.clear-filter-buttons {
+    background-color: var(--text-color);
+    color: var(--primary-color);
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 12px;
+}
+
+
+.clear-filter-buttons:hover {
+    background-color: var(--third-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
 }
 
 /* @media (max-width : 768px) {

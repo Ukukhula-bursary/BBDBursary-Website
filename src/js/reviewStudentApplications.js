@@ -1,9 +1,13 @@
-
 async function loadTable() {
+  populateStatusDropDownByID("filter-section-status");
+
   const applications = await getAllStudentApplications();
   const tableBody = document.getElementById("tbodyID");
 
-  while (tableBody.lastElementChild && tableBody.lastElementChild.id !== "theadings") {
+  while (
+    tableBody.lastElementChild &&
+    tableBody.lastElementChild.id !== "theadings"
+  ) {
     tableBody.removeChild(tableBody.lastElementChild);
   }
 
@@ -19,13 +23,12 @@ async function loadTable() {
       application.bursaryAmount,
       application.date,
       application.reviewer,
-      application.reviewerComment,
+      application.reviewerComment
     );
 
     tableBody.appendChild(tableRow);
   }
-
-};
+}
 
 function populateRow(...args) {
   const tableRow = document.createElement("tr");
@@ -74,7 +77,6 @@ function populateRow(...args) {
     handleViewDetails(applicationsId);
   };
 
-
   actionsSection.appendChild(updateButton);
   actionsSection.appendChild(viewDetailsButton);
 
@@ -82,7 +84,7 @@ function populateRow(...args) {
   tableRow.appendChild(cell);
 
   return tableRow;
-};
+}
 
 function handleViewDetails(applicationsId) {
   //show form a with user documents
@@ -116,53 +118,74 @@ const handleViewDetailsCancel = async () => {
 };
 
 function showApplicationDetailsPopUp(applicationsId) {
-  document.getElementById("admin-student-application-table-section").style.display = 'none';
-  document.getElementById("admin-student-application-view-details-section").style.display = 'flex';
+  document.getElementById(
+    "admin-student-application-table-section"
+  ).style.display = "none";
+  document.getElementById(
+    "admin-student-application-view-details-section"
+  ).style.display = "flex";
   const backButton = document.getElementById("admin-back-button");
 
   backButton.addEventListener("click", () => {
     hideApplicationViewDetailsPopUp();
-  })
+  });
 }
-
 
 function hideApplicationViewDetailsPopUp(applicationsId) {
-  document.getElementById("admin-student-application-view-details-section").style.display = 'none';
-  document.getElementById("admin-student-application-table-section").style.display = '';
+  document.getElementById(
+    "admin-student-application-view-details-section"
+  ).style.display = "none";
+  document.getElementById(
+    "admin-student-application-table-section"
+  ).style.display = "";
 }
 
-
 function showUpdateApplicationPopUp(applicationsId) {
-  document.getElementById("admin-student-application-table-section").style.display = 'none';
-  document.getElementById("admin-student-application-form-section").style.display = 'flex';
+  populateStatusDropDownByID("approval-status-drop-down");
+  document.getElementById(
+    "admin-student-application-table-section"
+  ).style.display = "none";
+  document.getElementById(
+    "admin-student-application-form-section"
+  ).style.display = "flex";
   const cancelButton = document.getElementById("admin-cancel-button");
 
   cancelButton.addEventListener("click", () => {
     hideUpdateApplicationPopUp();
-  })
+  });
 }
 
 function hideUpdateApplicationPopUp(applicationsId) {
-  document.getElementById("admin-student-application-form-section").style.display = 'none';
-  document.getElementById("admin-student-application-table-section").style.display = '';
+
+  document.getElementById("is-active-status-drop-down").selectedIndex = 0;
+  document.getElementById("approval-status-drop-down").selectedIndex = 0;
+  
+  document.getElementById(
+    "admin-student-application-form-section"
+  ).style.display = "none";
+  document.getElementById(
+    "admin-student-application-table-section"
+  ).style.display = "";
   loadTable();
 }
 
-document.getElementById('approval-status').addEventListener('change', function () {
-  var selectedOptionText = this.options[this.selectedIndex].text;
-  var rejectionReasonContainer = document.getElementById('rejection-reason-container');
+document
+  .getElementById("approval-status-drop-down")
+  .addEventListener("change", function () {
+    const selectedOptionText = this.options[this.selectedIndex].text;
+    const rejectionReasonContainer = document.getElementById(
+      "rejection-reason-container"
+    );
 
-  if (selectedOptionText === 'Rejected') {
-    rejectionReasonContainer.style.display = 'flex';
-  } else {
-    rejectionReasonContainer.style.display = 'none';
-  }
-});
-
+    if (selectedOptionText === "Rejected") {
+      rejectionReasonContainer.style.display = "flex";
+    } else {
+      rejectionReasonContainer.style.display = "none";
+    }
+  });
 
 //Fetch student applications
 async function getAllStudentApplications() {
-
   const url =
     "https://bursary-api-1709020026838.azurewebsites.net/studentapplication/students";
 
@@ -177,7 +200,41 @@ async function getAllStudentApplications() {
       return data;
     })
     .catch((err) => console.log(err))
-    .finally(() => document.getElementById('spinner-section').style.display = 'none')
+    .finally(
+      () => (document.getElementById("spinner-section").style.display = "none")
+    );
 }
 
+async function getAllStatuses() {
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/statuses/all";
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => console.log(err));
+}
+
+async function populateStatusDropDownByID(selectElementID) {
+  const selectElement = document.getElementById(selectElementID);
+  selectElement.disabled = true;
+
+  const statuses = await getAllStatuses();
+  if (statuses.length) {
+    selectElement.disabled = false;
+
+    for (const status of statuses) {
+      const newOption = document.createElement("option");
+      newOption.text = status.status;
+      newOption.value = status.statusID;
+      selectElement.add(newOption);
+    }
+  }
+}
 loadTable();
