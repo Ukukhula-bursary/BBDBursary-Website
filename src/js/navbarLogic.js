@@ -26,20 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 <li><a href="/html/admin_view/review_a_student_application.html">Review A Student Application</a></li>
                 <li><a href="/html/admin_view/allocate_funds.html">Allocate Funds</a></li>
                 <li>
-                    <button id="logInButton" type="button" title="Log In">Log In</button>
-                    <button id="logOutButton" type="button" title="Log Out">Log Out</button>
+                    <button id="logInButton" class="logging-buttons" type="button" title="Log In">Log In</button>
+                    <button id="logOutButton" class="logging-buttons" type="button" title="Log Out">Log Out</button>
                 </li>
             </ul>
         </nav>
     `;
 
     document.body.insertAdjacentHTML("afterbegin", navHtml);
-    logInButton.addEventListener("click", function () {
-      login();
-    });
-    logOutButton.addEventListener("click", function () {
-      login();
-    });
   }
   //save as html
   //insert xml
