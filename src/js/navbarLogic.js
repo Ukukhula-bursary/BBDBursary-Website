@@ -87,7 +87,7 @@ createAdminNav();
   homeBody.style.top = homeMenuHeight + "px";
 
   // Save data to sessionStorage
-  sessionStorage.setItem("isSessionActive", "true");
+  sessionStorage.setItem("isSessionActive", "false");
   sessionStorage.setItem("userRole", "none");
 
   // Get saved data from sessionStorage
