@@ -33,6 +33,7 @@ getStudentAllocationButton.addEventListener("click", (e) => {
     "https://bursary-api-1709020026838.azurewebsites.net/student/allocation";
   fetch(url, {
     method: "GET",
+    method: "cors",
     headers: {
       "Content-Type": "application/json",
     },
