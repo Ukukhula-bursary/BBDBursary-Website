@@ -7,10 +7,17 @@
         <title>Allocate Funds And Distribution</title>
         <script src="../../src/js/navbarLogic.js" defer></script>
         <script src="../../src/js/adminAllocateFunds.js" defer></script>
+        <script src="../../src/js/fetchRequests/allocateFunds.js" defer></script>
     </head>
     <body>
         <main id="home-body">
             <section id="allocate-bbd-yearly-budget-section" class="main-section">
+                <h2>All university allocations</h2>
+                <button id="get-all-uni-allocations">get all university allocations</button>
+                <section id="all-uni-allocations">
+                    <!-- <table></table> -->
+                </section>
+                <br>
                 <h2>
                     Allocate BBD Yearly Budget Section
                     <span>(2024)</span>
@@ -58,7 +65,7 @@
                         </span>
                     </b>
                 </p>
-                <input type="number" id="amount-to-allocate-student" placeholder="Enter amount">
+                <input type="number" id="amount-to-allocate-to-student" placeholder="Enter amount">
                 <button type="button" id="commit-student-funding-button">Commit Funding</button>
                 <button type="button" id="cancel-student-funding-button">Cancel</button>
             </section>
