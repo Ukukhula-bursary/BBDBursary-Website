@@ -1,7 +1,7 @@
 async function loadTable() {
   populateStatusDropDownByID("filter-section-status");
 
-  const applications = await getAllStudentApplications();
+  const applications = await getAllStudentApplications(); 
   const tableBody = document.getElementById("tbodyID");
 
   while (
@@ -28,6 +28,8 @@ async function loadTable() {
 
     tableBody.appendChild(tableRow);
   }
+
+  populateStatusDropDownByID("filter-section-status");
 }
 
 function populateRow(...args) {
@@ -155,18 +157,14 @@ function showUpdateApplicationPopUp(applicationsId) {
   });
 }
 
-function hideUpdateApplicationPopUp(applicationsId) {
-
-  document.getElementById("is-active-status-drop-down").selectedIndex = 0;
+function hideUpdateApplicationPopUp() {
   document.getElementById("approval-status-drop-down").selectedIndex = 0;
-  
-  document.getElementById(
-    "admin-student-application-form-section"
-  ).style.display = "none";
+
+  document.getElementById("admin-student-application-form-section").style.display =
+    "none";
   document.getElementById(
     "admin-student-application-table-section"
   ).style.display = "";
-  loadTable();
 }
 
 document
