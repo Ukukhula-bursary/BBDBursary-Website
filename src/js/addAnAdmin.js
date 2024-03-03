@@ -41,7 +41,7 @@ async function populateRolesDropdown() {
 }
 populateRolesDropdown();
 async function addAdmin(formData) {
-  const url = "http://localhost:8090/users/new";
+  const url = "https://bursary-api-1709020026838.azurewebsites.net/users/new";
   try {
       const response = await fetch(url, {
           method: "POST",
