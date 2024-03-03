@@ -504,17 +504,7 @@ a.social-link-icons:active {
 
 }
 
-
-/* Admin - add an institution */
-
-#add-institution-section {
-    /* background-color: orange; */
-}
-
-
 /* Tables */
-
-
 #admin-fields-container {
     display: flex;
     flex-direction: column;
