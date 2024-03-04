@@ -27,13 +27,13 @@ body {
     border-radius: 2px;
 }
 
-#nav-logo {
+nav-logo {
     background-color: white;
     padding: 0.5rem;
     margin-right: 1rem;
 }
 
-#nav {
+nav {
     background-color: var(--primary-color);
     position: fixed;
     display: flex;
@@ -45,7 +45,7 @@ body {
     justify-content: space-between;
 }
 
-#nav.hide {
+nav.hide {
     top: -65px;
 }
 
@@ -63,7 +63,7 @@ body {
     margin: 1px;
 }
 
-#nav ul {
+nav ul {
     text-decoration: none;
     list-style-type: none;
     text-align: center;
@@ -71,7 +71,7 @@ body {
     flex-direction: row;
 }
 
-#nav ul li {
+nav ul li {
     padding: 0.5rem 0.5rem 0.5rem 0.5rem;
     background-color: var(--primary-color);
 }
@@ -95,7 +95,7 @@ body {
     text-decoration: none;
 }
 
-.nav img {
+nav img {
     width: 2rem;
     margin: 0.2rem;
 }
@@ -127,7 +127,7 @@ body {
     flex-wrap: wrap;
 }
 
-#nav ul li a {
+nav ul li a {
     text-decoration: none;
     color: var(--text-color);
 }
