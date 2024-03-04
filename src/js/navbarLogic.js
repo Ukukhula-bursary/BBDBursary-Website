@@ -9,41 +9,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   const adminNavHTML = await createAdminNav();
   document.body.insertAdjacentHTML("afterbegin", adminNavHTML);
 
-  function createHodNav() {
-    fetch("../../html/nav_bar/nav_bar.html", () => {});
-    //     const navHtml = `
-    //     <nav>
-    //         <section id="hamburger-section">
-    //             <h2 id="hamburger-section-header">
-    //                 <img alt="bbd_logo" src="../../../src/assets/icons/bbd-logo.svg" id="nav-logo">
-    //                 <a href="/">Ukukhula Bursary</a>
-    //             </h2>
-    //             <form id="hamburger-form">
-    //                 <button type="button" id="hamburger-bar">
-    //                     <img alt="hamburger-bar" src="../../src/assets/icons/hamburger-bar.png">
-    //                 </button>
-    //                 <button type="button" id="hamburger-bar-cross">
-    //                     <img alt="hamburger-bar-cross" src="../../src/assets/icons/hamburger-bar-cross.png">
-    //                 </button>
-    //             </form>
-    //         </section>
-    //         <ul id="nav-menu">
-    //             <li><a href="/html/hod_view/apply_student.html">New Applications</a></li>
-    //             <li><a href="/html/hod_view/view_applications.html">View Applications</a></li>
-    //             <li><a href="/html/hod_view/bursary_details.html">Bursary Details</a></li>
-    //             <li>
-    //                 <button id="logInButton" type="button" title="Log In">Log In</button>
-    //                 <button id="logOutButton" type="button" title="Log Out">Log Out</button>
-    //             </li>
-    //         </ul>
-    //     </nav>
-    // `;
-
-    document.body.insertAdjacentHTML("afterbegin", navHtml);
-  }
-
-  // createHodNav();
-
   const hamburgerBar = document.getElementById("hamburger-bar");
   const hamburgerBarCross = document.getElementById("hamburger-bar-cross");
   const navMenu = document.getElementById("nav-menu");
@@ -258,14 +223,14 @@ function sendToAPI(data) {
 
 console.log(`Current user role = {${localStorage.getItem("userRole")}}`);
 
-// if (localStorage.getItem("userRole") === "admin") {
-//   console.log("show admin view");
-//   window.location.href = "html/admin-view/admin_dashboard.html";
-// } else if (localStorage.getItem("userRole") === "HOD") {
-//   console.log("show HOD view");
-//   window.location.href = "html/hod_view/hod_dashboard.html";
-// } else if (localStorage.getItem("userRole") === "Student") {
-//   console.log("show Student view");
-// } else {
-//   window.location.href = "index.html";
-// }
+if (localStorage.getItem("userRole") === "admin") {
+  console.log("show admin view");
+  window.location.href = "html/admin-view/admin_dashboard.html";
+} else if (localStorage.getItem("userRole") === "HOD") {
+  console.log("show HOD view");
+  window.location.href = "html/hod_view/hod_dashboard.html";
+} else if (localStorage.getItem("userRole") === "Student") {
+  console.log("show Student view");
+} else {
+  window.location.href = "index.html";
+}
