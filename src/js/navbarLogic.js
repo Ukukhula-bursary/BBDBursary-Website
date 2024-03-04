@@ -22,24 +22,24 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   const BBD_ADMIN_ROLES = [
-    "BBDAdmin_Finance",
-    "BBDAdmin_Reviewers",
-    "BBDSuperAdmin",
+    "ROLE_BBDAdmin_Finance",
+    "ROLE_BBDAdmin_Reviewers",
+    "ROLE_BBDSuperAdmin",
   ];
 
-  const UNIVERSITY_ADMIN_ROLES = ["HOD", "UniversityAdmin"];
-  const STUDENT_ADMIN_ROLES = ["Student"];
+  const UNIVERSITY_ADMIN_ROLES = ["ROLE_HOD", "ROLE_UniversityAdmin"];
+  const STUDENT_ADMIN_ROLES = ["ROLE_Student"];
   // const universityRoles =
 
   // Save data Session to localStorage
-  localStorage.setItem("isSessionActive", "true");
-  localStorage.setItem("userRole", "BBDAdmin_Finance");
+  // localStorage.setItem("isSessionActive", "false");
+  // localStorage.setItem("userRole", "ROLE_BBDAdmin_Finance");
 
   console.log(`Current user role = {${localStorage.getItem("userRole")}}`);
 
   if (
     BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
-    localStorage.getItem("isSessionActive")
+    localStorage.getItem("isSessionActive") === "true"
   ) {
     // see admin navbar///////////////////
     console.log("showing ADMIN Navbar");
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     document.body.insertAdjacentHTML("afterbegin", adminNavHTML);
   } else if (
     UNIVERSITY_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
-    localStorage.getItem("isSessionActive")
+    localStorage.getItem("isSessionActive") === "true"
   ) {
     //see head of department navbar/////////////
 
@@ -115,12 +115,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   homeBody.style.top = homeMenuHeight + "px";
 
   // Get saved data from localStorage
-  let isSessionActive = localStorage.getItem("isSessionActive");
-
   let logInButton = document.querySelector("#logInButton");
   let logOutButton = document.querySelector("#logOutButton");
-
-  console.log(localStorage.getItem("isSessionActive") === "true");
 
   if (
     localStorage.getItem("isSessionActive") === "true" &&
@@ -147,7 +143,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     const navMenuHide = () => {
       navMenu.classList.remove("close");
       navMenu.classList.add("open");
-      createAdminNav();
     };
 
     // navMenuHide();
