@@ -1,7 +1,7 @@
-const UNIVERSITY_ADMIN_ROLES = ["HOD", "UniversityAdmin"];
+const UNIVERSITY_ADMIN_ROLES = ["ROLE_HOD", "ROLE_UniversityAdmin"];
 if (
-  !UNIVERSITY_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
-  !localStorage.getItem("isSessionActive")
+  !UNIVERSITY_ADMIN_ROLES.includes(localStorage.getItem("userRole")) ||
+  localStorage.getItem("isSessionActive") === "false"
 ) {
   window.location.href = "/";
 }

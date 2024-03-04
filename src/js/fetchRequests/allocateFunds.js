@@ -1,13 +1,13 @@
 const BBD_ADMIN_ROLES = [
-  "BBDAdmin_Finance",
-  "BBDAdmin_Reviewers",
-  "BBDSuperAdmin",
+  "ROLE_BBDAdmin_Finance",
+  "ROLE_BBDAdmin_Reviewers",
+  "ROLE_BBDSuperAdmin",
 ];
 BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole"));
 
 if (
-  !BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
-  !localStorage.getItem("isSessionActive")
+  !BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) ||
+  localStorage.getItem("isSessionActive") === "false"
 ) {
   window.location.href = "/";
 }
