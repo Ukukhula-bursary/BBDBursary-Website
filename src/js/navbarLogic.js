@@ -27,13 +27,23 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   console.log(`Current user role = {${localStorage.getItem("userRole")}}`);
 
-  if (localStorage.getItem("userRole") === "ADMIN") {
+  if (
+    localStorage
+      .getItem("userRole")
+      .includes(["BBDAdmin_Finance", "BBDAdmin_Reviewers", "BBDSuperAdmin"]) &&
+    localStorage.getItem("isSessionActive")
+  ) {
     // see admin navbar///////////////////
     console.log("showing ADMIN Navbar");
 
     const adminNavHTML = await createAdminNav();
     document.body.insertAdjacentHTML("afterbegin", adminNavHTML);
-  } else if (localStorage.getItem("userRole") === "HOD") {
+  } else if (
+    localStorage
+      .getItem("userRole")
+      .includes(["HOD", "Student", "UniversityAdmin"]) &&
+    localStorage.getItem("isSessionActive")
+  ) {
     //see head of department navbar/////////////
 
     console.log("showing HOD Navbar");
