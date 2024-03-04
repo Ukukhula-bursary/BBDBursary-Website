@@ -1,6 +1,5 @@
 console.log(localStorage.getItem("userRole"));
 
-
 async function loadTable() {
   populateStatusDropDownByID("filter-section-status");
 
@@ -65,6 +64,7 @@ function populateRow(...args) {
   viewDetailsButton.setAttribute("class", "action-button");
 
   updateButton.setAttribute("value", applicationsId);
+  console.log(args);
   viewDetailsButton.setAttribute("value", applicationsId);
 
   updateButton.textContent = "update";

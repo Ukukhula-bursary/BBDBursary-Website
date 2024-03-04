@@ -8,7 +8,7 @@
          font-size: 1rem;
      }
 
-     #nav {
+     nav {
          background-color: var(--primary-color);
          position: fixed;
          display: flex;
@@ -20,28 +20,28 @@
          padding: 1rem;
      }
 
-     #nav ul {
+     nav ul {
          text-decoration: none;
          list-style-type: none;
          text-align: center;
          flex-direction: column;
      }
 
-     #nav ul.close {
+     nav ul.close {
          display: none;
      }
 
-     #nav ul.open {
+     nav ul.open {
          display: flex;
      }
 
-     #nav ul li {
+     nav ul li {
          padding: 0.5rem 0.5rem 0.5rem 0.5rem;
          border: 2px solid var(--text-color);
          background-color: var(--primary-color);
      }
 
-     #nav ul li a {
+     nav ul li a {
          text-decoration: none;
          color: var(--text-color);
      }
@@ -52,7 +52,7 @@
 
      }
 
-     #nav img {
+     nav img {
          width: 2rem;
          margin: 0.2rem;
      }

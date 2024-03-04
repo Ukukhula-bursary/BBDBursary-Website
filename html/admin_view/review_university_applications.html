@@ -30,7 +30,6 @@
                         <form
                             id="admin-university-application-form"
                             class="generic-form"
-                            action="#"
                             method="POST"
                         >
                             <h3 id="successMessage"></h3>
@@ -44,11 +43,14 @@
                             <select id="approval-status-drop-down" name="approval-status-drop-down" class="generic-drop-downs">
                                 <option value="" selected disabled>Choose Approval Status:</option>
                             </select>
-                            <section id="rejection-reason-container">
-                                <label for="rejection-reason">Give Rejection Reason</label>
-                                <input type="text" id="rejection-reason" name="rejection-reason"></input>
+                            <section id="reviewer-comment-reason-container">
                                 <label for="admin-comment">Reviewer Comment (optional)</label>
-                                <input type="text" id="admin-comment" name="admin-comment"></input>
+                                <input
+                                    type="text"
+                                    id="admin-comment"
+                                    name="admin-comment"
+                                    pattern="[a-zA-Z\s]{2,256}$"
+                                ></input>
                             </section>
                             <input
                                 type="submit"

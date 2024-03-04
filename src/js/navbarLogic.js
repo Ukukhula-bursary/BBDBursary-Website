@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   function createAdminNav() {
     const navHtml = `
-        <nav id="nav">
+        <nav >
             <section id="hamburger-section">
                 <h2 id="hamburger-section-header">
                     <img alt="graduation-cap" src="../../src/assets/icons/bbd-logo.svg" id="nav-logo">
@@ -19,14 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <ul id="nav-menu">
                  <li><a href="/index.html">Home</a></li>
                 <li><a href="/html/admin_view/admin_dashboard.html">Dashboard</a></li>
-                <li><a href="/html/admin_view/add_institution.html">Add Institution</a></li>
-                <li><a href="/html/admin_view/add_university_head_of_department.html">Add University Head Of Department</a></li>
-                <li><a href="/html/admin_view/add_an_admin.html">Add An Admin</a></li>
-                <li><a href="/html/admin_view/review_university_applications.html">Review University Applications</a></li>
-                <li><a href="/html/admin_view/review_a_student_application.html">Review A Student Application</a></li>
-                <li><a href="/html/admin_view/allocate_funds.html">Allocate Funds</a></li>
-                 
-
             </ul>   
             <section>
                     <button id="logInButton" class="logging-buttons" type="button" title="Log In">Log In</button>
@@ -42,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function createHodNav() {
     const navHtml = `
-    <nav id="nav">
+    <nav>
         <section id="hamburger-section">
             <h2 id="hamburger-section-header">
                 <img alt="bbd_logo" src="../../../src/assets/icons/bbd-logo.svg" id="nav-logo">
@@ -109,8 +101,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  const homeMenu = document.getElementById("nav");
-
+  const homeMenu = document.querySelector("nav");
+  
   let homeMenuHeight = homeMenu.offsetHeight;
 
   const homeBody = document.getElementById("home-body");
