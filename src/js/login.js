@@ -106,6 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       })
       .then((data) => {
+        console.log(data);
         const responseData = data.responseData;
         const token = responseData.token;
         const email = responseData.email;
@@ -118,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("userRole", userRole);
         localStorage.setItem("userID", userID);
 
-        window.location.href = "../../../index.html";
+        window.location.href = "/";
       })
       .catch((error) => {
         console.error("Error while sending data to API:", error);
