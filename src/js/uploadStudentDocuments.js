@@ -9,7 +9,8 @@ uploadIdButton.addEventListener("click", (e) => {
   const formData = new FormData();
   formData.append("file", file);
   console.log(formData);
-  const url = "http://localhost:8090/blob/uploadPdf";
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/blob/uploadPdf"; //need to update the api
   fetch(url, {
     method: "POST",
     mode: "cors",
