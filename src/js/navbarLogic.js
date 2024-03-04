@@ -169,7 +169,7 @@ function handleTokenResponse() {
 const YOUR_CLIENT_ID =
   "509502634606-7bcfbabbs4mmfiphg8ae4tn4djvom8rv.apps.googleusercontent.com";
 const YOUR_REDIRECT_URI =
-  "https://bbd-bursary-website-git-main-ukukhula.vercel.app/index.html";
+  "https://bbd-bursary-website-git-main-ukukhula.vercel.app";
 
 var fragmentString = location.hash.substring(1);
 
