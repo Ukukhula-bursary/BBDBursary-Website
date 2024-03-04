@@ -21,26 +21,42 @@ document.addEventListener("DOMContentLoaded", async function () {
       .catch((error) => console.error("Error loading menu:", error));
   }
 
+  const BBD_ADMIN_ROLES = [
+    "BBDAdmin_Finance",
+    "BBDAdmin_Reviewers",
+    "BBDSuperAdmin",
+  ];
+
+  const UNIVERSITY_ADMIN_ROLES = ["HOD", "UniversityAdmin"];
+  const STUDENT_ADMIN_ROLES = ["Student"];
+  // const universityRoles =
+
   // Save data Session to localStorage
   localStorage.setItem("isSessionActive", "true");
-  localStorage.setItem("userRole", "STUDENT");
+  localStorage.setItem("userRole", "BBDAdmin_Finance");
 
   console.log(`Current user role = {${localStorage.getItem("userRole")}}`);
 
-  if (localStorage.getItem("userRole") === "ADMIN") {
+  if (
+    BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
+    localStorage.getItem("isSessionActive")
+  ) {
     // see admin navbar///////////////////
     console.log("showing ADMIN Navbar");
 
     const adminNavHTML = await createAdminNav();
     document.body.insertAdjacentHTML("afterbegin", adminNavHTML);
-  } else if (localStorage.getItem("userRole") === "HOD") {
+  } else if (
+    UNIVERSITY_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
+    localStorage.getItem("isSessionActive")
+  ) {
     //see head of department navbar/////////////
 
     console.log("showing HOD Navbar");
 
     const headOfDepartmentNavHTML = await createHeadOfDepartmentNav();
     document.body.insertAdjacentHTML("afterbegin", headOfDepartmentNavHTML);
-  } else if (localStorage.getItem("userRole") === "STUDENT") {
+  } else if (STUDENT_ADMIN_ROLES.includes(localStorage.getItem("userRole"))) {
     //see student navbar/////////////
 
     console.log("student Navbar ");
@@ -104,9 +120,13 @@ document.addEventListener("DOMContentLoaded", async function () {
   let logInButton = document.querySelector("#logInButton");
   let logOutButton = document.querySelector("#logOutButton");
 
+  console.log(localStorage.getItem("isSessionActive") === "true");
+
   if (
-    isSessionActive === "true" &&
-    localStorage.getItem("userRole").includes(["ADMIN", "STUDENT", "HOD"])
+    localStorage.getItem("isSessionActive") === "true" &&
+    [...BBD_ADMIN_ROLES, UNIVERSITY_ADMIN_ROLES, STUDENT_ADMIN_ROLES].includes(
+      localStorage.getItem("userRole")
+    )
   ) {
     console.log("session is active");
 
@@ -219,7 +239,7 @@ function oauth2SignIn() {
     redirect_uri: YOUR_REDIRECT_URI,
     scope: "https://www.googleapis.com/auth/drive.metadata.readonly",
     state: "try_sample_request",
-    include_granted_scopes: "true",
+    include_granted_scopes: true,
     response_type: "token",
   };
 

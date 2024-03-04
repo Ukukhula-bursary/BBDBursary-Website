@@ -1,7 +1,12 @@
+const BBD_ADMIN_ROLES = [
+  "BBDAdmin_Finance",
+  "BBDAdmin_Reviewers",
+  "BBDSuperAdmin",
+];
+BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole"));
+
 if (
-  !localStorage
-    .getItem("userRole")
-    .includes(["BBDAdmin_Finance", "BBDAdmin_Reviewers", "BBDSuperAdmin"]) &&
+  !BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
   !localStorage.getItem("isSessionActive")
 ) {
   window.location.href = "/";
