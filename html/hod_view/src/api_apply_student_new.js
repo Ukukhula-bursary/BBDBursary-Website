@@ -1,5 +1,6 @@
 async function populateAndRetrieveApplyStudentNew() {
-    // const universityName = document.getElementById("name").value;
+
+    // get ethnicities
 
     const url = `https://bursary-api-1709020026838.azurewebsites.net/Ethnicity/all`;
     displayLoading()
@@ -14,14 +15,14 @@ async function populateAndRetrieveApplyStudentNew() {
             fillInEthnicityRadioButtons(data)
         })
 
-        // .then((data) => {
-        //     console.log(data);
-        //     return data;
-        // })
         .catch((err) => console.log(err));
 
-    displayLoading()
+    // get uni remaining fund
+
     const url1 = `https://bursary-api-1709020026838.azurewebsites.net/university_allocations/university_name=University of Cape Town/year=2023`;
+
+    displayLoading()
+
     fetch(url1, {
         method: "GET",
         mode: "cors",
@@ -31,25 +32,29 @@ async function populateAndRetrieveApplyStudentNew() {
         .then((data) => {
             hideLoading()
             let bursaryAmountInput = document.getElementById("bursary-amount");
+            if (data.amount > 125000) {
+                bursaryAmountInput.max = 125000
+            } else {
 
-            bursaryAmountInput.max = data.amount;
+                bursaryAmountInput.max = data.amount;
+            }
         })
 
-        // .then((data) => {
-        //     console.log(data);
-        //     return data;
-        // })
         .catch((err) => console.log(err));
 
 
+        // posting student app
     const addNewStudentApplicationButton = document.getElementById(
         "application_new_student_button"
     );
 
     addNewStudentApplicationButton.addEventListener("click", (e) => {
         e.preventDefault();
+
+
         const url =
             "https://bursary-api-1709020026838.azurewebsites.net/studentapplication/apply/new";
+        displayLoading()
 
         console.log("This is the bursary amount")
         let chosen_bursary_amount = document.getElementById("bursary-amount").value
@@ -76,6 +81,7 @@ async function populateAndRetrieveApplyStudentNew() {
             }),
         })
             .then((res) => {
+                hideLoading()
                 console.log("response.status =", res.status);
                 if (res.status === 200) {
                     console.log(res.json());
@@ -85,10 +91,6 @@ async function populateAndRetrieveApplyStudentNew() {
                     return res;
                 }
             })
-            // .then((data) => {
-            //     console.log(data);
-            //     return data;
-            // })
             .catch((err) => {
                 console.log("hi");
                 console.log(err);
@@ -103,6 +105,8 @@ const loaderMessage = document.querySelector("#loading-message");
 
 function displayLoading() {
     loader.classList.add("display");
+    let loadingGreyedOut = document.getElementById("loading-grey-out");
+    loadingGreyedOut.style.display = "block";
 
     // setTimeout(() => {
     //     loaderMessage.classList.add("display");
@@ -112,6 +116,8 @@ function displayLoading() {
 
 function hideLoading() {
     loader.classList.remove("display");
+    let loadingGreyedOut = document.getElementById("loading-grey-out");
+    loadingGreyedOut.style.display = "none";
     // loaderMessage.classList.remove("display");
 }
 
@@ -143,7 +149,7 @@ function successfullySubmit() {
     let resultPopUp = document.getElementById("resultPopUp");
 
     resultPopUp.style.display = "block";
-    
+
     let resultMessageBox = document.getElementById("resultMessage");
 
     resultMessageBox.innerText = "Congrats!\nYour application has successfully submitted\nWould you like to create a new  application or go to the dashboard?";
@@ -168,80 +174,80 @@ function successfullySubmit() {
     goToDashboardButton.appendChild(goToDashboardLink);
     resultMessageButtons.appendChild(goToDashboardButton);
 
-    }
+}
 
-    function unsuccessfullySubmit() {
-        let resultPopUp = document.getElementById("resultPopUp");
-        
-        resultPopUp.style.display = "block";
+function unsuccessfullySubmit() {
+    let resultPopUp = document.getElementById("resultPopUp");
 
-        let resultMessageBox = document.getElementById("resultMessage");
+    resultPopUp.style.display = "block";
 
-        resultMessageBox.innerText = "Unfortunatley, our application wasn't able to be submitted\n\nWould you like to try again with a new application or go to the dashboard?";
+    let resultMessageBox = document.getElementById("resultMessage");
 
-        let resultMessageButtons = document.getElementById("resultMessageButtons")
+    resultMessageBox.innerText = "Unfortunatley, our application wasn't able to be submitted\n\nWould you like to try again with a new application or go to the dashboard?";
 
-        let createNewApplicationButton = document.createElement("button");
+    let resultMessageButtons = document.getElementById("resultMessageButtons")
 
-        let createNewApplicationLink = document.createElement("a");
-        createNewApplicationLink.innerText = "New Application";
-        createNewApplicationLink.setAttribute("href", "/html/hod_view/apply_student_new.html");
+    let createNewApplicationButton = document.createElement("button");
 
-        createNewApplicationButton.appendChild(createNewApplicationLink);
-        resultMessageButtons.appendChild(createNewApplicationButton);
+    let createNewApplicationLink = document.createElement("a");
+    createNewApplicationLink.innerText = "New Application";
+    createNewApplicationLink.setAttribute("href", "/html/hod_view/apply_student_new.html");
 
-        let goToDashboardButton = document.createElement("button");
+    createNewApplicationButton.appendChild(createNewApplicationLink);
+    resultMessageButtons.appendChild(createNewApplicationButton);
 
-        let goToDashboardLink = document.createElement("a");
-        goToDashboardLink.innerText = "Go to dashboard";
-        goToDashboardLink.setAttribute("href", "/html/hod_view/hod_dashboard.html");
+    let goToDashboardButton = document.createElement("button");
 
-        goToDashboardButton.appendChild(goToDashboardLink);
-        resultMessageButtons.appendChild(goToDashboardButton);
-    }
+    let goToDashboardLink = document.createElement("a");
+    goToDashboardLink.innerText = "Go to dashboard";
+    goToDashboardLink.setAttribute("href", "/html/hod_view/hod_dashboard.html");
 
-    // const addNewStudentApplicationButton = document.getElementById(
-    //     "application_new_student_button"
-    // );
+    goToDashboardButton.appendChild(goToDashboardLink);
+    resultMessageButtons.appendChild(goToDashboardButton);
+}
 
-    // addNewStudentApplicationButton.addEventListener("click", (e) => {
-    //     e.preventDefault();
-    //     const url =
-    //         "https://bursary-api-1709020026838.azurewebsites.net/studentapplication/apply/new";
+// const addNewStudentApplicationButton = document.getElementById(
+//     "application_new_student_button"
+// );
 
-    //     fetch(url, {
-    //         method: "POST",
-    //         headers: new Headers({ "Content-Type": "Application/json" }),
-    //         mode: "cors",
-    //         body: JSON.stringify({
-    //             firstName: document.getElementById("firstName").value,
-    //             lastName: document.getElementById("lastName").value,
-    //             phoneNumber: document.getElementById("phone-number").value,
-    //             email: document.getElementById("emailAddress").value,
-    //             idNumber: document.getElementById("id-number").value,
-    //             ethnicity: "Indian",
-    //             universityName: "University of Cape Town",
-    //             departmentName: "Computer Science",
-    //             motivation: document.getElementById("motivation").value,
-    //             bursaryAmount: document.getElementById("bursary-amount").value,
-    //             universityStaffID: 1,
-    //         }),
-    //     })
-    //         .then((res) => console.log(res.json()))
-    //         .then((data) => {
-    //             console.log(data);
-    //             return data;
-    //         })
-    //         .catch((err) => {
-    //             console.log("hi");
-    //             console.log(err);
-    //         });
-    // });
+// addNewStudentApplicationButton.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     const url =
+//         "https://bursary-api-1709020026838.azurewebsites.net/studentapplication/apply/new";
 
-
-    document.addEventListener('DOMContentLoaded', async function () {
-        await populateAndRetrieveApplyStudentNew();
+//     fetch(url, {
+//         method: "POST",
+//         headers: new Headers({ "Content-Type": "Application/json" }),
+//         mode: "cors",
+//         body: JSON.stringify({
+//             firstName: document.getElementById("firstName").value,
+//             lastName: document.getElementById("lastName").value,
+//             phoneNumber: document.getElementById("phone-number").value,
+//             email: document.getElementById("emailAddress").value,
+//             idNumber: document.getElementById("id-number").value,
+//             ethnicity: "Indian",
+//             universityName: "University of Cape Town",
+//             departmentName: "Computer Science",
+//             motivation: document.getElementById("motivation").value,
+//             bursaryAmount: document.getElementById("bursary-amount").value,
+//             universityStaffID: 1,
+//         }),
+//     })
+//         .then((res) => console.log(res.json()))
+//         .then((data) => {
+//             console.log(data);
+//             return data;
+//         })
+//         .catch((err) => {
+//             console.log("hi");
+//             console.log(err);
+//         });
+// });
 
 
+document.addEventListener('DOMContentLoaded', async function () {
+    await populateAndRetrieveApplyStudentNew();
 
-    }, false);
+
+
+}, false);

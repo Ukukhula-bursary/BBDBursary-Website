@@ -15,16 +15,16 @@
 <script src="src1/hod_student_app.js" defer></script>
 <script src="src/api_apply_student_new.js" defer></script>
 
-
 <body>
     <main id="home-body">
         <section id="loading"></section>
-        <p id="loading-message">"Thank you for your patience, we're working hard to display the content for you!"</p>
+        <section id="loading-grey-out"></section>
+        <p id="loading-message"></p>
         <section id="home-section-request-access" class="home-section">
             <h2>
                 <img alt="graduation-cap" src="../../src/assets/icons/graduation-cap.jfif" id="request-access-icon"
                     class="section-icons">
-                New Student Applications
+                Apply for Student - New Student
             </h2>
             <section id="apply-student-section">
                 <section id="home-section-generic" class="home-section">
@@ -83,15 +83,17 @@
                                 Bursary Amount
                                 <section>
                                     <input type="range" id="bursary-amount" name="bursary-amount" min="0" 
-                                        step="20" value="100" oninput="rangeValue.innerText = this.value"/>
-                                        <p id="rangeValue">100</p>
+                                        step="20" value="0" oninput="rangeValue.innerText = this.value"/>
+                                        <p id="bursary-amount-value">R<span id="rangeValue">0</span></p>
                                 </section>
                             </label>
 
-                            <label for="motivation">Write a few sentences on why the student you chose deserves this
-                                bursary</label>
-                            <textarea id="motivation" name="motivation" rows="4" cols="50">
-                            </textarea>
+                            <label for="motivation">
+                                Write a few sentences on why the student you chose deserves this
+                                bursary
+                                <textarea id="motivation" name="motivation" rows="4" cols="50">
+                                </textarea>
+                            </label>
                             <br>
                             <button id="application_new_student_button">
                                 Submit Application

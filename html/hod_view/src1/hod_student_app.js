@@ -1,35 +1,35 @@
 // fill in these with API
 
-let university_choices = [
-    "University of Cape Town"
-    , "University of the Witwatersrand"
-    , "Stellenbosch University"
-    , "University of Pretoria"
-    , "University of Johannesburg"
-    , "University of KwaZulu - Natal"
-    , "University of the Western Cape"
-    , "Rhodes University"
-    , "Nelson Mandela University"
-    , "University of Limpopo"
-    , "University of Venda"
-    , "University of Fort Hare"
-];
+// let university_choices = [
+//     "University of Cape Town"
+//     , "University of the Witwatersrand"
+//     , "Stellenbosch University"
+//     , "University of Pretoria"
+//     , "University of Johannesburg"
+//     , "University of KwaZulu - Natal"
+//     , "University of the Western Cape"
+//     , "Rhodes University"
+//     , "Nelson Mandela University"
+//     , "University of Limpopo"
+//     , "University of Venda"
+//     , "University of Fort Hare"
+// ];
 
-let department_choices = [
-    "University Administration"
-    , "Computer Science"
-    , "Information Technology"
-    , "Software Engineering"
-    , "Cybersecurity"
-    , "Data Science"
-];
+// let department_choices = [
+//     "University Administration"
+//     , "Computer Science"
+//     , "Information Technology"
+//     , "Software Engineering"
+//     , "Cybersecurity"
+//     , "Data Science"
+// ];
 
-let ethnicity_choices = [
-    "Black",
-    "Coloured",
-    "Indian",
-    "Other"
-];
+// let ethnicity_choices = [
+//     "Black",
+//     "Coloured",
+//     "Indian",
+//     "Other"
+// ];
 
 
 
@@ -238,3 +238,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //     // Optionally, you can now use the stored token to make authenticated API requests
 // }
+
+
+// global 
