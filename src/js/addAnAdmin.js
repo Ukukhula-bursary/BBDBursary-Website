@@ -8,7 +8,6 @@ if (
   !BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) ||
   localStorage.getItem("isSessionActive") === "false"
 ) {
-  console.log("hello");
   window.location.href = "/";
 }
 
