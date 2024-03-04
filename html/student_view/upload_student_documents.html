@@ -14,27 +14,33 @@
     <main id="home-body">
     <h1>Review an application</h1>
 
-    <section id="admin-student-application-view-details-section" class="form-section">
-    <form>
+    <section class="form-section">
+    <form class="generic-form"
+    >
         <label for="upload-certified-id-copy">Certified ID Copy:</label>
 
         <input type="file" id="id-file" name="filename">
-        <button type="submit" id="upload-id">Upload certified ID</button>
+        <button type="submit" id="upload-id" class="upload-buttons">Upload certified ID</button>
     
         <label for="upload-accedemic-transcript">Academic Transcript:</label>
 
         <input type="file" id="transcript-file" name="filename">
-        <button type="submit" id="upload-transcript">Upload academic transcript</button>
+        <button type="submit" id="upload-transcript" class="upload-buttons">Upload academic transcript</button>
     
 
         <label for="upload-accedemic-vitae-transcript">Curriculum Vitae:</label>
 
         <input type="file" id="cv-file" name="filename">
-        <button type="submit" id="upload-cv">Upload curriculum vitae</button>
+        <button type="submit" id="upload-cv" class="upload-buttons">Upload curriculum vitae</button>
+
+        <input
+            type="button"
+            id="admin-back-button"
+            class="admin-back-button"
+            value="Back"
+        >
     </form>
     </section>
-
-    <button>Back</button>
 </main>
 </body>
 </html>

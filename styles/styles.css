@@ -247,7 +247,7 @@ section h2 {
 
 }
 
-.download-buttons {
+.download-buttons, .upload-buttons {
     background-color: var(--third-color);
     color:var(--text-color);
     padding: 20px;
