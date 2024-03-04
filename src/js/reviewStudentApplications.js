@@ -1,83 +1,49 @@
-const listApplicationsTesting = () => {
-  return [
-    {
-      "applicationID": 1,
-      "universityName": "University Of Pretoria",
-      "department": "Computer Science",
-      "studentName": "John Doe",
-      "ethnicity": "Black",
-      "bursaryAmount": "R10,000.00",
-      "status": "Approved",
-      "motivation": "I love it here!",
-      "dateOfApplication": "2024-01-01",
-      "bbdReviewerName": "John",
-      "bbdReviewerComment": "Something John Said",
-      "universityStaffReviewerName": "Jane",
-      "universityStaffReviewerComment": "Something Jane Said",
-    },
-    {
-      "applicationID": 2,
-      "universityName": "University Of Cape Town",
-      "department": "Marketing",
-      "studentName": "Jane Smith",
-      "ethnicity": "White",
-      "bursaryAmount": "R8,000.00",
-      "status": "Pending",
-      "motivation": "I want to make a difference.",
-      "dateOfApplication": "2024-01-02",
-      "bbdReviewerName": "Alice",
-      "bbdReviewerComment": "Something Alice Said",
-      "universityStaffReviewerName": "Bob",
-      "universityStaffReviewerComment": "Something Bob Said",
-    },
-    {
-      "applicationID": 10,
-      "universityName": "University Of Johannesburg",
-      "department": "Engineering",
-      "studentName": "Mary Johnson",
-      "ethnicity": "Asian",
-      "bursaryAmount": "R12,000.00",
-      "status": "Rejected",
-      "motivation": "I'm dedicated to my studies.",
-      "dateOfApplication": "2024-01-10",
-      "bbdReviewerName": "Charlie",
-      "bbdReviewerComment": "Something Charlie Said",
-      "universityStaffReviewerName": "Dana",
-      "universityStaffReviewerComment": "Something Dana Said",
-    }
-  ];
-};
+const BBD_ADMIN_ROLES = [
+  "ROLE_BBDAdmin_Finance",
+  "ROLE_BBDAdmin_Reviewers",
+  "ROLE_BBDSuperAdmin",
+];
+
+if (
+  !BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) ||
+  localStorage.getItem("isSessionActive") === "false"
+) {
+  window.location.href = "/";
+}
 
 async function loadTable() {
-  const applications = listApplicationsTesting();
+  populateStatusDropDownByID("filter-section-status");
+
+  const applications = await getAllStudentApplications();
   const tableBody = document.getElementById("tbodyID");
 
-  while (tableBody.lastElementChild && tableBody.lastElementChild.id !== "theadings") {
+  while (
+    tableBody.lastElementChild &&
+    tableBody.lastElementChild.id !== "theadings"
+  ) {
     tableBody.removeChild(tableBody.lastElementChild);
   }
 
   for (const application of applications) {
     let tableRow = populateRow(
       application.applicationID,
-      application.universityName,
-      application.department,
+      application.universityID,
+      application.university,
       application.studentName,
-      application.ethnicity,
-      application.bursaryAmount,
+      application.ethinity,
       application.status,
-      application.dateOfApplication,
       application.motivation,
-      application.bbdReviewerName,
-      application.bbdReviewerComment,
-      application.universityStaffReviewerName,
-      application.universityStaffReviewerComment,
+      application.bursaryAmount,
+      application.date,
+      application.reviewer,
+      application.reviewerComment
     );
 
     tableBody.appendChild(tableRow);
   }
-};
 
-
+  populateStatusDropDownByID("filter-section-status");
+}
 
 function populateRow(...args) {
   const tableRow = document.createElement("tr");
@@ -109,6 +75,7 @@ function populateRow(...args) {
   viewDetailsButton.setAttribute("class", "action-button");
 
   updateButton.setAttribute("value", applicationsId);
+  console.log(args);
   viewDetailsButton.setAttribute("value", applicationsId);
 
   updateButton.textContent = "update";
@@ -126,7 +93,6 @@ function populateRow(...args) {
     handleViewDetails(applicationsId);
   };
 
-
   actionsSection.appendChild(updateButton);
   actionsSection.appendChild(viewDetailsButton);
 
@@ -134,11 +100,10 @@ function populateRow(...args) {
   tableRow.appendChild(cell);
 
   return tableRow;
-};
+}
 
 function handleViewDetails(applicationsId) {
   //show form a with user documents
-  console.log(applicationsId)
   showApplicationDetailsPopUp(applicationsId);
 }
 
@@ -150,14 +115,48 @@ const confirmUpdate = (applicationsId) => {
 
 const handleUpdate = async (updateApplications, applicationsId) => {
   if (updateApplications) {
-    showUpdateApplicationPopUp(applicationsId);
+    populateStatusDropDownByID("approval-status-drop-down");
+    document.getElementById(
+      "admin-student-application-table-section"
+    ).style.display = "none";
+    document.getElementById(
+      "admin-student-application-form-section"
+    ).style.display = "flex";
+
+    document
+      .getElementById("submit-application-button")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        submitTheStudentApplication(applicationsId);
+      });
+
+    const cancelButton = document.getElementById("admin-cancel-button");
+
+    cancelButton.addEventListener("click", () => {
+      hideUpdateApplicationPopUp();
+    });
   }
 };
+
+function submitTheStudentApplication(applicationsId) {
+  const chosenStatusValue = document.getElementById(
+    "approval-status-drop-down"
+  ).value;
+
+  if (chosenStatusValue === "") {
+    document.getElementById("successMessage").textContent =
+      "Application must have a status.";
+  } else {
+    const reviewerComment =
+      document.getElementById("admin-comment").textContent;
+    updateStatus(applicationsId, chosenStatusValue, reviewerComment);
+  }
+}
 
 const handleCancel = async () => {
   if (updateApplications) {
     hideUpdateApplicationPopUp();
-    // loadTable();
+    loadTable();
   }
 };
 
@@ -169,49 +168,121 @@ const handleViewDetailsCancel = async () => {
 };
 
 function showApplicationDetailsPopUp(applicationsId) {
-  document.getElementById("admin-student-application-table-section").style.display = 'none';
-  document.getElementById("admin-student-application-view-details-section").style.display = 'flex';
+  document.getElementById(
+    "admin-student-application-table-section"
+  ).style.display = "none";
+  document.getElementById(
+    "admin-student-application-view-details-section"
+  ).style.display = "flex";
   const backButton = document.getElementById("admin-back-button");
 
   backButton.addEventListener("click", () => {
     hideApplicationViewDetailsPopUp();
-  })
+  });
 }
-
 
 function hideApplicationViewDetailsPopUp(applicationsId) {
-  document.getElementById("admin-student-application-view-details-section").style.display = 'none';
-  document.getElementById("admin-student-application-table-section").style.display = '';
-  // loadTable();
+  document.getElementById(
+    "admin-student-application-view-details-section"
+  ).style.display = "none";
+  document.getElementById(
+    "admin-student-application-table-section"
+  ).style.display = "";
 }
 
+function hideUpdateApplicationPopUp() {
+  document.getElementById("approval-status-drop-down").selectedIndex = 0;
 
-function showUpdateApplicationPopUp(applicationsId) {
-  document.getElementById("admin-student-application-table-section").style.display = 'none';
-  document.getElementById("admin-student-application-form-section").style.display = 'flex';
-  const cancelButton = document.getElementById("admin-cancel-button");
+  document.getElementById(
+    "admin-student-application-form-section"
+  ).style.display = "none";
+  document.getElementById(
+    "admin-student-application-table-section"
+  ).style.display = "";
+}
 
-  cancelButton.addEventListener("click", () => {
-    hideUpdateApplicationPopUp();
+//Fetch student applications
+async function getAllStudentApplications() {
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/studentapplication/students";
+
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => console.log(err))
+    .finally(
+      () => (document.getElementById("spinner-section").style.display = "none")
+    );
 }
 
-function hideUpdateApplicationPopUp(applicationsId) {
-  document.getElementById("admin-student-application-form-section").style.display = 'none';
-  document.getElementById("admin-student-application-table-section").style.display = '';
-  loadTable();
+async function getAllStatuses() {
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/statuses/all";
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => console.log(err));
 }
 
-document.getElementById('approval-status').addEventListener('change', function () {
-  var selectedOptionText = this.options[this.selectedIndex].text;
-  var rejectionReasonContainer = document.getElementById('rejection-reason-container');
+async function populateStatusDropDownByID(selectElementID) {
+  const selectElement = document.getElementById(selectElementID);
+  selectElement.disabled = true;
 
-  if (selectedOptionText === 'Rejected') {
-    rejectionReasonContainer.style.display = 'flex';
-  } else {
-    rejectionReasonContainer.style.display = 'none';
+  const statuses = await getAllStatuses();
+  if (statuses.length) {
+    selectElement.disabled = false;
+
+    for (const status of statuses) {
+      const newOption = document.createElement("option");
+      newOption.text = status.status;
+      newOption.value = status.statusID;
+      selectElement.add(newOption);
+    }
   }
-});
-
+}
 loadTable();
 
+async function updateStatus(applicationID, statusID, reviewerComment) {
+  const url = `https://bursary-api-1709020026838.azurewebsites.net/studentapplication/student/update/status`;
+  const message = (document.getElementById("successMessage").textContent =
+    "Please be patient while we update...");
+
+  return fetch(url, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      applicationID: applicationID,
+      statusID: statusID,
+      reviewerComment: reviewerComment,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data === 1) {
+        document.getElementById("successMessage").textContent =
+          "Update Successful!";
+      } else {
+        document.getElementById("successMessage").textContent =
+          "Update Not Successful!";
+      }
+      return data;
+    })
+    .catch((err) => console.log(err));
+}

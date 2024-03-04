@@ -4,12 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../../styles/styles.css" rel="stylesheet">
+        <link href="../../styles/mobile_styles.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <!-- Download fonts locally -->
         <link rel="shortcut icon" href="">
         <title>BBD Ukukhula Bursary - Add Admin</title>
     </head>
     <script src="../../src/js/navbarLogic.js" defer></script>
+    <script src="../../src/js/addAnAdmin.js" defer></script>
     <body>
         <main id="home-body">
             <section id="home-section-add-institution" class="home-section">
@@ -25,22 +27,11 @@
                 <section id="add-institution-section">
                     <section id="home-section-generic" class="home-section">
                         <section id="form-section" id="home-contact-section" class="home-section">
-                            <form
-                            id="generic-form"
-                                class="generic-form"
-                                action="#"
-                                method="POST"
-                                
-                            >
+                            <form id="add-an-admin-form" class="generic-form">
                                 <h3 id="successMessage"></h3>
-                                <label for="admin-role">Admin Role:</label>
-                                <select id="admin-role" name="university-status" class="buttons">
-                                    <!-- to be populated by the database -->
+                                <label for="admin-role-dropdown">Admin Role:</label>
+                                <select id="admin-role-dropdown" name="university-status" class="buttons">
                                     <option value="" selected disabled>Select Role</option>
-                                    <!-- should only be accessible by super admin -->
-                                    <option value="BBDAdmin_Finance">BBDAdmin_Finance</option>
-                                    <option value="BBDAdmin_Reviewers">BBDAdmin_Reviewers</option>
-                                    <option value="BBDSuperAdmin">BBDSuperAdmin</option>
                                 </select>
                                 <label for="firstName" class="generic-form-first-name-label">
                                     First Name
@@ -87,6 +78,12 @@
                                     name="phone-number"
                                     required
                                     placeholder="Enter Your Phone Number"
+                                >
+                                <input
+                                    type="submit"
+                                    id="submit-button"
+                                    class="buttons"
+                                    value="Add"
                                 >
                             </form>
                         </section>

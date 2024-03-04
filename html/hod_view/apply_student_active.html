@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../styles/hod/styles.css" rel="stylesheet">
+    <link href="styles/apply_student.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Download fonts locally -->
+    <link rel="shortcut icon" href="">
+    <title>BBD Ukukhula Bursary - New Student Applications</title>
+</head>
+<script src="src1/hod_student_app.js" defer></script>
+<script src="src/api_apply_student_active.js" defer></script>
+
+<body>
+    <main id="home-body">
+        <section id="loading"></section>
+        <section id="loading-grey-out"></section>
+        <p id="loading-message"></p>
+        <section id="home-section-request-access" class="home-section">
+            <h2>
+                <img alt="graduation-cap" src="../../src/assets/icons/graduation-cap.jfif" id="request-access-icon"
+                    class="section-icons">
+                Apply for Student - Active Student
+            </h2>
+            <section id="get-registered-university">
+                <h3>
+                    Select the university where you work
+                </h3>
+                <select id="select-university" name="university-status" class="buttons">
+                    <option selected="selected" disabled>
+                        Select University
+                    </option>
+                </select>
+            
+                <!-- <h5>
+                    If you can't find you university, you need to register your university on the system
+                </h5>
+                <button onclick="window.location.href='/html/hod_view/register_university.html';">
+                    Register University
+                </button> -->
+            
+            </section>
+            <section id="get-active-student">
+                <section id="resultPopUp">
+                    <h3 id="resultMessage">
+                    </h3>
+                    <section id="resultMessageButtons">
+                    </section>
+                </section>
+
+                <h3>
+                    Select the student you would like to apply for:
+                </h3>
+                <select id="select-student" name="student-status" class="buttons">
+                    <option selected="selected" disabled>
+                        Select Student
+                    </option>
+                </select>
+
+                <h5>
+                    If you can't find the student, you need to apply for a new student
+                </h5>
+                <button onclick="window.location.href='/html/hod_view/apply_student_new.html';">
+                    Apply for new student
+                </button>
+            </section>
+            <section id="apply-student-section">
+                <section id="home-section-generic" class="home-section">
+                    <section id="form-section" id="home-contact-section" class="home-section">
+                        <form id="generic-form" action="#" method="POST">
+
+
+                            <label for="bursary-amount">
+                                Bursary Amount
+                                <section>
+                                    <input type="range" id="bursary-amount" name="bursary-amount" min="0" step="20" value="0"
+                                        oninput="rangeValue.innerText = this.value" />
+                                    <p id="bursary-amount-value">R<span id="rangeValue">0</span></p>
+                                </section>
+                            </label>
+
+                            <label for="motivation">
+                                Write a few sentences on why the student you chose deserves this
+                                bursary
+                                <textarea id="motivation" name="motivation" rows="4" cols="50">
+                                </textarea>
+                            </label>
+                            <br>
+                            <button id="application_active_student_button">
+                                Submit Application
+                            </button>
+                            <br>
+                            <br>
+                        </form>
+                    </section>
+                </section>
+    </main>
+</body>
+
+</html>

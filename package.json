@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "devDependencies": {
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "name": "bbd-ukukhula-bursary",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ukukhula-bursary/BBDBursary-Website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ukukhula-bursary/BBDBursary-Website/issues"
+  },
+  "homepage": "https://github.com/Ukukhula-bursary/BBDBursary-Website#readme",
+  "description": ""
+}
