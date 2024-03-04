@@ -1,70 +1,59 @@
-document.addEventListener("DOMContentLoaded", function () {
-  function createAdminNav() {
-    const navHtml = `
-        <nav >
-            <section id="hamburger-section">
-                <h2 id="hamburger-section-header">
-                    <img alt="graduation-cap" src="../../src/assets/icons/bbd-logo.svg" id="nav-logo">
-                    <a href="/">Ukukhula Bursary</a>
-                </h2>
-                <form id="hamburger-form">
-                    <button type="button" id="hamburger-bar">
-                        <img alt="hamburger-bar" src="../../src/assets/icons/hamburger-bar.png">
-                    </button>
-                    <button type="button" id="hamburger-bar-cross">
-                        <img alt="hamburger-bar-cross" src="../../src/assets/icons/hamburger-bar-cross.png">
-                    </button>
-                </form>
-            </section>
-            <ul id="nav-menu">
-                 <li><a href="/index.html">Home</a></li>
-                <li><a href="/html/admin_view/admin_dashboard.html">Dashboard</a></li>
-            </ul>   
-            <section>
-                    <button id="logInButton" class="logging-buttons" type="button" title="Log In">Log In</button>
-                    <button id="logOutButton" class="logging-buttons" type="button" title="Log Out">Log Out</button>
-                </section>
-        </nav>
-    `;
-
-    document.body.insertAdjacentHTML("afterbegin", navHtml);
+document.addEventListener("DOMContentLoaded", async function () {
+  // Nav-bars based on user role
+  async function createAdminNav() {
+    return fetch("../../html/nav_bar/nav_bar.html")
+      .then((response) => response.text())
+      .then((html) => html)
+      .catch((error) => console.error("Error loading menu:", error));
   }
 
-  createAdminNav();
-
-  function createHodNav() {
-    const navHtml = `
-    <nav>
-        <section id="hamburger-section">
-            <h2 id="hamburger-section-header">
-                <img alt="bbd_logo" src="../../../src/assets/icons/bbd-logo.svg" id="nav-logo">
-                <a href="/">Ukukhula Bursary</a>
-            </h2>
-            <form id="hamburger-form">
-                <button type="button" id="hamburger-bar">
-                    <img alt="hamburger-bar" src="../../src/assets/icons/hamburger-bar.png">
-                </button>
-                <button type="button" id="hamburger-bar-cross">
-                    <img alt="hamburger-bar-cross" src="../../src/assets/icons/hamburger-bar-cross.png">
-                </button>
-            </form>
-        </section>
-        <ul id="nav-menu">
-            <li><a href="/html/hod_view/apply_student.html">New Applications</a></li>
-            <li><a href="/html/hod_view/view_applications.html">View Applications</a></li>
-            <li><a href="/html/hod_view/bursary_details.html">Bursary Details</a></li>
-            <li>
-                <button id="logInButton" type="button" title="Log In">Log In</button>
-                <button id="logOutButton" type="button" title="Log Out">Log Out</button>
-            </li>
-        </ul>
-    </nav>
-`;
-
-    document.body.insertAdjacentHTML("afterbegin", navHtml);
+  async function createVisitorNav() {
+    return fetch("../../html/nav_bar/visitor_nav_bar.html")
+      .then((response) => response.text())
+      .then((html) => html)
+      .catch((error) => console.error("Error loading menu:", error));
   }
 
-  // createHodNav();
+  async function createHeadOfDepartmentNav() {
+    return fetch("/html/nav_bar/hod_navbar.html")
+      .then((response) => response.text())
+      .then((html) => html)
+      .catch((error) => console.error("Error loading menu:", error));
+  }
+
+  // Save data Session to localStorage
+  localStorage.setItem("isSessionActive", "true");
+  localStorage.setItem("userRole", "STUDENT");
+
+  console.log(`Current user role = {${localStorage.getItem("userRole")}}`);
+
+  if (localStorage.getItem("userRole") === "ADMIN") {
+    // see admin navbar///////////////////
+    console.log("showing ADMIN Navbar");
+
+    const adminNavHTML = await createAdminNav();
+    document.body.insertAdjacentHTML("afterbegin", adminNavHTML);
+  } else if (localStorage.getItem("userRole") === "HOD") {
+    //see head of department navbar/////////////
+
+    console.log("showing HOD Navbar");
+
+    const headOfDepartmentNavHTML = await createHeadOfDepartmentNav();
+    document.body.insertAdjacentHTML("afterbegin", headOfDepartmentNavHTML);
+  } else if (localStorage.getItem("userRole") === "STUDENT") {
+    //see student navbar/////////////
+
+    console.log("student Navbar ");
+
+    const visitorNavHTML = await createVisitorNav();
+    document.body.insertAdjacentHTML("afterbegin", visitorNavHTML);
+  } else {
+    // see visitor navbar/////////////
+
+    console.log("visitor view: No  valid role found!");
+    const visitorNavHTML = await createVisitorNav();
+    document.body.insertAdjacentHTML("afterbegin", visitorNavHTML);
+  }
 
   const hamburgerBar = document.getElementById("hamburger-bar");
   const hamburgerBarCross = document.getElementById("hamburger-bar-cross");
@@ -72,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   hamburgerBar.classList.add("open");
   hamburgerBarCross.classList.add("close");
-  navMenu.classList.add("close");
 
   hamburgerBar.onclick = () => {
     hamburgerBar.classList.remove("open");
@@ -102,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const homeMenu = document.querySelector("nav");
-  
+
   let homeMenuHeight = homeMenu.offsetHeight;
 
   const homeBody = document.getElementById("home-body");
@@ -110,17 +98,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   homeBody.style.top = homeMenuHeight + "px";
 
-  // Save data to sessionStorage
-  sessionStorage.setItem("isSessionActive", "true");
-  sessionStorage.setItem("userRole", "admin");
-
-  // Get saved data from sessionStorage
-  let isSessionActive = sessionStorage.getItem("isSessionActive");
+  // Get saved data from localStorage
+  let isSessionActive = localStorage.getItem("isSessionActive");
 
   let logInButton = document.querySelector("#logInButton");
   let logOutButton = document.querySelector("#logOutButton");
 
-  if (isSessionActive === "true") {
+  if (
+    isSessionActive === "true" &&
+    localStorage.getItem("userRole").includes(["ADMIN", "STUDENT", "HOD"])
+  ) {
     console.log("session is active");
 
     logInButton.classList.add("close");
@@ -128,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     logOutButton.classList.remove("close");
     logOutButton.classList.add("open");
-  } else if (isSessionActive === "false") {
+  } else {
     console.log("session is not active");
 
     logOutButton.classList.remove("open");
@@ -276,19 +263,3 @@ function sendToAPI(data) {
       console.error("Error while sending data to API:", error);
     });
 }
-
-//////////////////////////////////////
-
-console.log(`Current user role = {${localStorage.getItem("userRole")}}`);
-
-// if (localStorage.getItem("userRole") === "admin") {
-//   console.log("show admin view");
-//   window.location.href = "html/admin-view/admin_dashboard.html";
-// } else if (localStorage.getItem("userRole") === "HOD") {
-//   console.log("show HOD view");
-//   window.location.href = "html/hod_view/hod_dashboard.html";
-// } else if (localStorage.getItem("userRole") === "Student") {
-//   console.log("show Student view");
-// } else {
-//   window.location.href = "index.html";
-// }

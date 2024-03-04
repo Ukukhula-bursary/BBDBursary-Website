@@ -1,3 +1,12 @@
+if (
+  !localStorage
+    .getItem("userRole")
+    .includes(["BBDAdmin_Finance", "BBDAdmin_Reviewers", "BBDSuperAdmin"]) &&
+  !localStorage.getItem("isSessionActive")
+) {
+  window.location.href = "/";
+}
+
 const allUniversityStaff = document.getElementById("all-university-staff");
 
 const addUniversityStaffButton = document.getElementById(
