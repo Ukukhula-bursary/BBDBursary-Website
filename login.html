@@ -3,12 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login</title>"
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/login.css">
     <script src="./src/js/login.js"></script>
 </head>
-    <button id="logInButton">Login</button>
+    <!-- <button id="logInButton">Login</button> -->
 
 <body>
+
+    <section class="wrapper">
+        <section class="login-form">
+            <section class="login-header">
+                <span>Login</span>
+            </section>
+            <section class="input_box">
+                <input type="text" id="user" class="input-field" required>
+                <label for="user" class="label"> Username</label>
+                <i class="bx bx-user icon"></i>
+            </section>
+            <section class="input_box">
+                <input type="text" id="user" class="input-field" required>
+                <label for="user" class="label"> Password</label>
+                <i class="bx bx-lock icon"></i>
+            </section>
+         
+
+            <section id="gSignInWrapper">
+                <section id="customBtn" class="customGPlusSignIn" >
+                    <span class="buttonText">Google</span>
+                </section>
+                <section id="customBtn" class="customGPlusSignIn" >
+                    <span class="buttonText">Login</span>
+                </section>
+                <!-- <input type="submit" value="Login" id="customBtn" class="customGPlusSignIn"> -->
+            </section>
+            <section class="register">
+                <span>Don't have an account? <a href="#">Register</a></span>
+            </section>
+
+        </section>
+
+    </section>
+
     
 </body>
 </html>
