@@ -5,7 +5,7 @@ const uploadCvButton = document.getElementById("upload-cv");
 uploadIdButton.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const file = document.getElementById("myFile").files[0];
+  const file = document.getElementById("id-file").files[0];
   const formData = new FormData();
   formData.append("file", file);
   console.log(formData);
