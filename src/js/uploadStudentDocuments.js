@@ -8,14 +8,56 @@ uploadIdButton.addEventListener("click", (e) => {
   const file = document.getElementById("id-file").files[0];
   const formData = new FormData();
   formData.append("file", file);
-  console.log(formData);
+
   const url =
     "https://bursary-api-1709020026838.azurewebsites.net/blob/uploadPdf"; //need to update the api
   fetch(url, {
     method: "POST",
     mode: "cors",
-    // accept: "application/json",
-    // headers: { "Content-Type": "multipart/form-data" },
+    body: formData,
+  })
+    .then((res) => res)
+    .then((data) => {
+      console.log(data);
+      return data;
+    })
+    .catch((err) => console.log(err));
+});
+
+uploadTranscriptButton.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const file = document.getElementById("transcript-file").files[0];
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/blob/uploadPdf"; //need to update the api
+  fetch(url, {
+    method: "POST",
+    mode: "cors",
+    body: formData,
+  })
+    .then((res) => res)
+    .then((data) => {
+      console.log(data);
+      return data;
+    })
+    .catch((err) => console.log(err));
+});
+
+uploadCvButton.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const file = document.getElementById("cv-file").files[0];
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const url =
+    "https://bursary-api-1709020026838.azurewebsites.net/blob/uploadPdf"; //need to update the api
+  fetch(url, {
+    method: "POST",
+    mode: "cors",
     body: formData,
   })
     .then((res) => res)
