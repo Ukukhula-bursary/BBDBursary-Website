@@ -28,38 +28,39 @@
             <section id="admin-student-application-section" class="home-section">
                 <!-- student application form section -->
                 <section id="admin-student-application-form-section" class="form-section">
-                    <form
-                        id="admin-student-application-form"
-                        class="generic-form"
-                        action="#"
-                        method="POST"
-                    >
+                    <form id="admin-student-application-form" class="generic-form">
                         <h3 id="successMessage"></h3>
                         <label for="approval-status-drop-down">Choose Approval Status:</label>
                         <select id="approval-status-drop-down" name="approval-status" class="generic-drop-downs">
                             <option value="" selected disabled>Choose Approval Status:</option>
                         </select>
-                        <section id="rejection-reason-container">
-                            <label for="rejection-reason">Give Rejection Reason</label>
-                            <input type="text" id="rejection-reason" name="rejection-reason"></input>
+                        <section id="reviewer-comment-reason-container">
                             <label for="admin-comment">Reviewer Comment (optional)</label>
-                            <input type="text" id="admin-comment" name="admin-comment"></input>
+                            <input
+                                type="text"
+                                id="admin-comment"
+                                name="admin-comment"
+                                pattern="[a-zA-Z\s]{2,256}$"
+                            ></input>
                         </section>
-                        <input
-                            type="submit"
-                            id="submit-button"
+                        <button
+                            type="button"
+                            id="submit-application-button"
                             class="buttons"
                             value="Submit (Update)"
-                        >
-                        <input
+                            title="Submit (Update)"
+                        >Submit (Update)</button>
+                        <button
                             type="button"
                             id="admin-cancel-button"
                             class="admin-cancel-button"
-                            value="Cancel"
+                            value="Back"
+                            title="Back"
                         >
+                            Back
+                        </button>
                     </form>
                 </section>
-
                 <!-- View Details Section -->
                 <section id="admin-student-application-view-details-section" class="form-section">
                     <form
@@ -68,6 +69,7 @@
                         action="#"
                         method="POST"
                     >
+                        `
                         <label for="download-certified-id-copy">Certified ID Copy:</label>
                         <button
                             id="download-certified-id-copy"
@@ -124,11 +126,11 @@
                                 value="Search"
                             >Search</button>
                             <button
-                            type="button"
-                            id="clear-filter--by-name-button"
-                            class="clear-filter-buttons"
-                            value="Clear"
-                        >Clear</button>
+                                type="button"
+                                id="clear-filter--by-name-button"
+                                class="clear-filter-buttons"
+                                value="Clear"
+                            >Clear</button>
                         </section>
                         <section>
                             <label for="filter-section-status">Filter By: Approval Status</label>

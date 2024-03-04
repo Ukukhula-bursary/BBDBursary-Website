@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University staff</title>
+</head>
+<body>
+    <!-- @RequestMapping("/universitystaff") -->
+
+    <!-- @GetMapping("/all") -->
+    <button id="all-universities-staff-button">get all university staff</button>
+    <section id="all-university-staff"></section>
+
+
+    <!-- @PostMapping("/add") addUniversityStaff-->
+    <form >
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+        <label for="phone-number">Phone number:</label><br>
+        <input type="text" id="phone-number" name="phone-number"><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="university-name">University name:</label><br>
+        <input type="text" id="university-name" name="university-name"><br><br>
+        <label for="department-name">Department name:</label><br>
+        <input type="text" id="department-name" name="department-name"><br><br>
+        <input type="submit" id="add-university-staff-button" value="Submit">
+    </form> 
+
+    <!-- @GetMapping("/id={id}") getUniversityStaffById -->
+    <button id="university-staff-by-id-button"></button>
+
+    <input type="number" id="staff-id">
+    <section id="university-staff-by-id"></section>
+
+
+    <script src="../../src/js/universityStaff.js"></script>
+</body>
+</html>

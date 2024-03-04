@@ -1,45 +1,75 @@
-document.addEventListener("DOMContentLoaded", function () {
-  function createAdminNav() {
-    const navHtml = `
-        <nav id="nav">
-            <section id="hamburger-section">
-                <h2 id="hamburger-section-header">
-                    <img alt="graduation-cap" src="../../src/assets/icons/bbd-logo.svg" id="nav-logo">
-                    <a href="/">Ukukhula Bursary</a>
-                </h2>
-                <form id="hamburger-form">
-                    <button type="button" id="hamburger-bar">
-                        <img alt="hamburger-bar" src="../../src/assets/icons/hamburger-bar.png">
-                    </button>
-                    <button type="button" id="hamburger-bar-cross">
-                        <img alt="hamburger-bar-cross" src="../../src/assets/icons/hamburger-bar-cross.png">
-                    </button>
-                </form>
-            </section>
-            <ul id="nav-menu">
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/html/admin_view/admin_dashboard.html">Dashboard</a></li>
-                <li><a href="/html/admin_view/add_institution.html">Add Institution</a></li>
-                <li><a href="/html/admin_view/add_university_head_of_department.html">Add University Head Of Department</a></li>
-                <li><a href="/html/admin_view/add_an_admin.html">Add An Admin</a></li>
-                <li><a href="/html/admin_view/review_university_applications.html">Review University Applications</a></li>
-                <li><a href="/html/admin_view/review_a_student_application.html">Review A Student Application</a></li>
-                <li><a href="/html/admin_view/allocate_funds.html">Allocate Funds</a></li>
-                <li>
-                    <button id="logInButton" class="logging-buttons" type="button" title="Log In">Log In</button>
-                    <button id="logOutButton" class="logging-buttons" type="button" title="Log Out">Log Out</button>
-                </li>
-            </ul>
-        </nav>
-    `;
-
-    document.body.insertAdjacentHTML("afterbegin", navHtml);
+document.addEventListener("DOMContentLoaded", async function () {
+  // Nav-bars based on user role
+  async function createAdminNav() {
+    return fetch("../../html/nav_bar/nav_bar.html")
+      .then((response) => response.text())
+      .then((html) => html)
+      .catch((error) => console.error("Error loading menu:", error));
   }
-  //save as html
-  //insert xml
-  // xml http requests ( pass )
 
-  createAdminNav();
+  async function createVisitorNav() {
+    return fetch("../../html/nav_bar/visitor_nav_bar.html")
+      .then((response) => response.text())
+      .then((html) => html)
+      .catch((error) => console.error("Error loading menu:", error));
+  }
+
+  async function createHeadOfDepartmentNav() {
+    return fetch("/html/nav_bar/hod_navbar.html")
+      .then((response) => response.text())
+      .then((html) => html)
+      .catch((error) => console.error("Error loading menu:", error));
+  }
+
+  const BBD_ADMIN_ROLES = [
+    "ROLE_BBDAdmin_Finance",
+    "ROLE_BBDAdmin_Reviewers",
+    "ROLE_BBDSuperAdmin",
+  ];
+
+  const UNIVERSITY_ADMIN_ROLES = ["ROLE_HOD", "ROLE_UniversityAdmin"];
+  const STUDENT_ADMIN_ROLES = ["ROLE_Student"];
+  // const universityRoles =
+
+  // Save data Session to localStorage
+  // localStorage.setItem("isSessionActive", "false");
+  // localStorage.setItem("userRole", "ROLE_BBDAdmin_Finance");
+
+  console.log(`Current user role = {${localStorage.getItem("userRole")}}`);
+
+  if (
+    BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
+    localStorage.getItem("isSessionActive") === "true"
+  ) {
+    // see admin navbar///////////////////
+    console.log("showing ADMIN Navbar");
+
+    const adminNavHTML = await createAdminNav();
+    document.body.insertAdjacentHTML("afterbegin", adminNavHTML);
+  } else if (
+    UNIVERSITY_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
+    localStorage.getItem("isSessionActive") === "true"
+  ) {
+    //see head of department navbar/////////////
+
+    console.log("showing HOD Navbar");
+
+    const headOfDepartmentNavHTML = await createHeadOfDepartmentNav();
+    document.body.insertAdjacentHTML("afterbegin", headOfDepartmentNavHTML);
+  } else if (STUDENT_ADMIN_ROLES.includes(localStorage.getItem("userRole"))) {
+    //see student navbar/////////////
+
+    console.log("student Navbar ");
+
+    const visitorNavHTML = await createVisitorNav();
+    document.body.insertAdjacentHTML("afterbegin", visitorNavHTML);
+  } else {
+    // see visitor navbar/////////////
+
+    console.log("visitor view: No  valid role found!");
+    const visitorNavHTML = await createVisitorNav();
+    document.body.insertAdjacentHTML("afterbegin", visitorNavHTML);
+  }
 
   const hamburgerBar = document.getElementById("hamburger-bar");
   const hamburgerBarCross = document.getElementById("hamburger-bar-cross");
@@ -47,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   hamburgerBar.classList.add("open");
   hamburgerBarCross.classList.add("close");
-  navMenu.classList.add("close");
 
   hamburgerBar.onclick = () => {
     hamburgerBar.classList.remove("open");
@@ -76,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  const homeMenu = document.getElementById("nav");
+  const homeMenu = document.querySelector("nav");
 
   let homeMenuHeight = homeMenu.offsetHeight;
 
@@ -85,16 +114,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   homeBody.style.top = homeMenuHeight + "px";
 
-  // Save data to sessionStorage
-  sessionStorage.setItem("isSessionActive", "true");
-  sessionStorage.setItem("userRole", "none");
-
-  // Get saved data from sessionStorage
-  let isSessionActive = sessionStorage.getItem("isSessionActive");
+  // Get saved data from localStorage
   let logInButton = document.querySelector("#logInButton");
   let logOutButton = document.querySelector("#logOutButton");
 
-  if (isSessionActive === "true") {
+  if (
+    localStorage.getItem("isSessionActive") === "true" &&
+    [...BBD_ADMIN_ROLES, UNIVERSITY_ADMIN_ROLES, STUDENT_ADMIN_ROLES].includes(
+      localStorage.getItem("userRole")
+    )
+  ) {
     console.log("session is active");
 
     logInButton.classList.add("close");
@@ -102,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     logOutButton.classList.remove("close");
     logOutButton.classList.add("open");
-  } else if (isSessionActive === "false") {
+  } else {
     console.log("session is not active");
 
     logOutButton.classList.remove("open");
@@ -110,7 +139,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     logInButton.classList.add("open");
     logInButton.classList.remove("close");
+
+    const navMenuHide = () => {
+      navMenu.classList.remove("close");
+      navMenu.classList.add("open");
+    };
+
+    // navMenuHide();
   }
+
+  logInButton.addEventListener("click", function () {
+    login();
+  });
 });
 
 // This function should be called when the user is redirected back to your application with the token
@@ -128,7 +168,8 @@ function handleTokenResponse() {
 
 const YOUR_CLIENT_ID =
   "509502634606-7bcfbabbs4mmfiphg8ae4tn4djvom8rv.apps.googleusercontent.com";
-const YOUR_REDIRECT_URI = "http://localhost:8080";
+const YOUR_REDIRECT_URI =
+  "https://bbd-bursary-website-git-main-ukukhula.vercel.app/index.html";
 
 var fragmentString = location.hash.substring(1);
 
@@ -151,7 +192,7 @@ if (Object.keys(params).length > 0) {
 // If there's an access token, try an API request.
 // Otherwise, start OAuth 2.0 flow.
 function login() {
-  var params = JSON.parse(localStorage.getItem("oauth2-test-params"));
+  const params = JSON.parse(localStorage.getItem("oauth2-test-params"));
   if (params && params["access_token"]) {
     var xhr = new XMLHttpRequest();
     xhr.open(
@@ -193,7 +234,7 @@ function oauth2SignIn() {
     redirect_uri: YOUR_REDIRECT_URI,
     scope: "https://www.googleapis.com/auth/drive.metadata.readonly",
     state: "try_sample_request",
-    include_granted_scopes: "true",
+    include_granted_scopes: true,
     response_type: "token",
   };
 
@@ -237,5 +278,3 @@ function sendToAPI(data) {
       console.error("Error while sending data to API:", error);
     });
 }
-
-//////////////////////////////////////

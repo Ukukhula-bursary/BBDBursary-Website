@@ -1,3 +1,16 @@
+const BBD_ADMIN_ROLES = [
+  "ROLE_BBDAdmin_Finance",
+  "ROLE_BBDAdmin_Reviewers",
+  "ROLE_BBDSuperAdmin",
+];
+
+if (
+  !BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) ||
+  localStorage.getItem("isSessionActive") === "false"
+) {
+  window.location.href = "/";
+}
+
 async function loadTable() {
   populateStatusDropDownByID("filter-approval-status");
 
@@ -108,21 +121,6 @@ function hideUpdateApplicationPopUp(applicationsId) {
   ).style.display = "";
 }
 
-document
-  .getElementById("approval-status-drop-down")
-  .addEventListener("change", function () {
-    const selectedOptionText = this.options[this.selectedIndex].text;
-    const rejectionReasonContainer = document.getElementById(
-      "rejection-reason-container"
-    );
-
-    if (selectedOptionText === "Rejected") {
-      rejectionReasonContainer.style.display = "flex";
-    } else {
-      rejectionReasonContainer.style.display = "none";
-    }
-  });
-
 const handleCancel = async () => {
   if (updateApplications) {
     hideUpdateApplicationPopUp();
@@ -175,11 +173,11 @@ document
       isActiveDropDown.options[isActiveDropDown.selectedIndex].textContent ===
       "No"
     ) {
-      const rejectionReasonContainer = document.getElementById(
-        "rejection-reason-container"
+      const reviewerReasonContainer = document.getElementById(
+        "reviewer-comment-reason-container"
       );
 
-      rejectionReasonContainer.style.display = "";
+      reviewerReasonContainer.style.display = "";
 
       document.getElementById("approval-status-drop-down").disabled = true;
     } else {
