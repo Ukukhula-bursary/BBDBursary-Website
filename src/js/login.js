@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const logInButton = document.getElementById("logInButton");
+  const logInButton = document.getElementById("google-button");
 
   logInButton.addEventListener("click", function () {
     login();
-    window.location.href = "../../../index.html";
   });
 
   const YOUR_CLIENT_ID =
@@ -111,11 +110,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const token = responseData.token;
         const email = responseData.email;
         const userRole = responseData.userRole;
+        const userID = responseData.userID;
 
         // Store the JWT token, email, and user role in local storage
         localStorage.setItem("jwtToken", token);
         localStorage.setItem("email", email);
         localStorage.setItem("userRole", userRole);
+        localStorage.setItem("userID", userID);
+
+        window.location.href = "../../../index.html";
       })
       .catch((error) => {
         console.error("Error while sending data to API:", error);
