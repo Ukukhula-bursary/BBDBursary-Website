@@ -25,39 +25,40 @@
                     <section id="form-section" id="home-contact-section" class="home-section">
                         <form id="generic-form" action="#" method="POST">
                             <h3 id="successMessage"></h3>
-                        
-                            <label for="firstName-name" id="generic-form-first-name-label">
+
+                            <label for="firstName-name" id="generic-form-first-name-label" class="new_student_info">
                                 First Name
                                 <input pattern="[a-zA-Z\s]{2,256}$"
                                     title="First Name: Must be filled, only alphabets and space allowed." type="text"
                                     id="firstName" name="First Name" required placeholder="Enter First Name">
                             </label>
-                            <label for="lastName" id="generic-form-last-name-label">
+                            <label for="lastName" id="generic-form-last-name-label" class="new_student_info">
                                 Last Name
                                 <input pattern="[a-zA-Z\s]{2,256}$"
                                     title="Last Name: Must be filled, only alphabets and space allowed." type="text"
                                     id="lastName" name="Last Name" required placeholder="Enter Last Name">
                             </label>
-                            <label for="emailAddress">
+                            <label for="emailAddress" class="new_student_info">
                                 Email
                                 <input pattern="[A-Za-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,320}$"
                                     title="Email: Must be in the following order: 'characters@characters.domain'"
                                     type="email" id="emailAddress" name="emailAddress" required
                                     placeholder="Enter Your Email Address">
                             </label>
-                            <label for="phone-number">
+                            <label for="phone-number" class="new_student_info">
                                 Phone Number
                                 <input pattern="^0[0-9]{9}$"
-                                title="Phone Number: Must start with  0 and be followed by  9 digits." type="tel"
-                                id="phone-number" name="phone-number" required placeholder="Enter Your Phone Number">
+                                    title="Phone Number: Must start with  0 and be followed by  9 digits." type="tel"
+                                    id="phone-number" name="phone-number" required
+                                    placeholder="Enter Your Phone Number">
                             </label>
-                            <label for="id-number">
+                            <label for="id-number" class="new_student_info">
                                 ID Number
-                                <input pattern="^[0-9]{13}$"
-                                    title="ID Number: Enter the student's ID number" type="text"
-                                    id="id-number" name="id-number" required placeholder="Enter Your ID Number">
+                                <input pattern="^[0-9]{13}$" title="ID Number: Enter the student's ID number"
+                                    type="text" id="id-number" name="id-number" required
+                                    placeholder="Enter Your ID Number">
                             </label>
-                            <label >
+                            <label class="new_student_info">
                                 Choose an ethnicity
                                 <section id="ethnicity"></section>
                             </label>
@@ -65,11 +66,16 @@
                                 Bursary Amount
                                 <input pattern="^[1-9][0-9]$"
                                     title="Bursary Amount: Should be the rands amount required." type="tel"
-                                    id="bursary-amount" name="bursary-amount" required placeholder="Enter Your The Amount Of The Bursary For Student">
+                                    id="bursary-amount" name="bursary-amount" required
+                                    placeholder="Enter Your The Amount Of The Bursary For Student">
                             </label>
-                            <label for="motivation">Write a few sentences on why the student you chose deserves this bursary</label>
+                            <label for="motivation">Write a few sentences on why the student you chose deserves this
+                                bursary</label>
                             <textarea id="motivation" name="motivation" rows="4" cols="50">
                             </textarea>
+                            <button>
+                                Submit Application
+                            </button>
                         </form>
                     </section>
                 </section>
