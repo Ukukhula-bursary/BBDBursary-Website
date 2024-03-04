@@ -17,22 +17,21 @@ async function getAllUniversities() {
     .catch((err) => console.log(err)); //alert
 }
 
-addNewUniversityButton.addEventListener("click", () => {
-  const universityName = document.getElementById("university-name");
-  const select = document.getElementById("university-status");
-  const selectedStatus = select.options[select.selectedIndex].value;
-
+addNewUniversityButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const universityName = document.getElementById("university-name").value;
+  console.log(universityName);
   const url =
     "https://bursary-api-1709020026838.azurewebsites.net/university/add";
   fetch(url, {
     method: "POST",
+    mode: "cors",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       universityName: universityName,
-      isActiveRecipient: selectedStatus,
     }),
   })
-    .then((res) => res.json())
-    .then(() => location.reload()) //should get all after posted
+    .then((res) => console.log(res.json()))
+    .then((data) => data)
     .catch((err) => console.log(err));
 });
