@@ -1,0 +1,89 @@
+:root {
+    --primary-color: #17252A;
+    --secondary-color: #2B7A78;
+    --third-color: #3AAFA9;
+    --fourth-color: #DEF2F1;
+    --text-color: #FEFFFF;
+    --danger-color: salmon;
+}
+
+main {
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.application {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    /* padding: 5vw; */
+    /* margin: 0 5vw; */
+    width: 96vw;
+    /* position: relative; */
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    /* -ms-transform: translateX(-50%);
+        transform: translateX(-50%); */
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.application:hover {
+    background-color: #ccc;
+}
+
+.application-info {
+    /* padding: 0 18px; */
+    padding: 0 1vw;
+    /* margin: 0 5vw; */
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.application:after {
+    content: '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+    /* Unicode character for "minus" sign (-) */
+}
+
+#loading {
+    width: 2rem;
+    height: 2rem;
+    border: 5px solid #f3f3f3;
+    border-top: 6px solid #9c41f2;
+    border-radius: 100%;
+    margin: auto;
+    visibility: hidden;
+    animation: spin 1s infinite linear;
+}
+
+#loading.display {
+    visibility: visible;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#loading-message{
+    text-align: center;
+}
