@@ -4,6 +4,10 @@ console.log(localStorage);
 //   window.location.href = "../../index.html";
 // }
 
+const token = localStorage.getItem("jwtToken");
+let tokenObj = JSON.parse(token); //<--- Take string from storage and parse it to an object.
+console.log(tokenObj.token);
+
 async function addAnAdmin() {
   const url = "https://bursary-api-1709020026838.azurewebsites.net/roles/";
   return fetch(url, {
@@ -48,46 +52,45 @@ populateRolesDropdown();
 async function addAdmin(formData) {
   const url = "https://bursary-api-1709020026838.azurewebsites.net/users/new";
   try {
-      const response = await fetch(url, {
-          method: "POST",
-          mode: "cors",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-      });
-      // if (!response.ok) {
-      //     throw new Error('Failed to add admin');
-      // }
-      const data = await response.json();
-      return data;
+    const response = await fetch(url, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    // if (!response.ok) {
+    //     throw new Error('Failed to add admin');
+    // }
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error("Error adding admin:", error);
     throw error;
   }
 }
 
-document.getElementById("add-an-admin-form").addEventListener("submit", async function (event) {
-  event.preventDefault();
+document
+  .getElementById("add-an-admin-form")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
 
- 
     const adminData = {
       firstName: document.getElementById("firstName").value,
       lastName: document.getElementById("lastName").value,
       phoneNumber: document.getElementById("phone-number").value,
       email: document.getElementById("emailAddress").value,
       isActiveUser: 1, // Assuming you want to create an active user
-      roleId: document.getElementById("admin-role-dropdown").value// Role ID from Role enum
-    
+      roleId: document.getElementById("admin-role-dropdown").value, // Role ID from Role enum
     };
- 
-   
-  try {
-   
+
+    try {
       const addedAdmin = await addAdmin(adminData);
       // console.log("Admin added successfully:", addedAdmin);
-      document.getElementById("successMessage").textContent = "Admin added successfully!";
-  } catch (error) {
+      document.getElementById("successMessage").textContent =
+        "Admin added successfully!";
+    } catch (error) {
       console.error("Failed to add admin:", error);
       document.getElementById("successMessage").textContent =
         "Failed to add admin. Please try again.";
