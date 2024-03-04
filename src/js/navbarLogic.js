@@ -1,65 +1,43 @@
-document.addEventListener("DOMContentLoaded", function () {
-  function createAdminNav() {
-    const navHtml = `
-        <nav >
-            <section id="hamburger-section">
-                <h2 id="hamburger-section-header">
-                    <img alt="graduation-cap" src="../../src/assets/icons/bbd-logo.svg" id="nav-logo">
-                    <a href="/">Ukukhula Bursary</a>
-                </h2>
-                <form id="hamburger-form">
-                    <button type="button" id="hamburger-bar">
-                        <img alt="hamburger-bar" src="../../src/assets/icons/hamburger-bar.png">
-                    </button>
-                    <button type="button" id="hamburger-bar-cross">
-                        <img alt="hamburger-bar-cross" src="../../src/assets/icons/hamburger-bar-cross.png">
-                    </button>
-                </form>
-            </section>
-            <ul id="nav-menu">
-                 <li><a href="/index.html">Home</a></li>
-                <li><a href="/html/admin_view/admin_dashboard.html">Dashboard</a></li>
-            </ul>   
-            <section>
-                    <button id="logInButton" class="logging-buttons" type="button" title="Log In">Log In</button>
-                    <button id="logOutButton" class="logging-buttons" type="button" title="Log Out">Log Out</button>
-                </section>
-        </nav>
-    `;
-
-    document.body.insertAdjacentHTML("afterbegin", navHtml);
+document.addEventListener("DOMContentLoaded", async function () {
+  async function createAdminNav() {
+    return fetch("../../html/nav_bar/nav_bar.html")
+      .then((response) => response.text())
+      .then((html) => html)
+      .catch((error) => console.error("Error loading menu:", error));
   }
 
-  createAdminNav();
+  const adminNavHTML = await createAdminNav();
+  document.body.insertAdjacentHTML("afterbegin", adminNavHTML);
 
   function createHodNav() {
-    const navHtml = `
-    <nav>
-        <section id="hamburger-section">
-            <h2 id="hamburger-section-header">
-                <img alt="bbd_logo" src="../../../src/assets/icons/bbd-logo.svg" id="nav-logo">
-                <a href="/">Ukukhula Bursary</a>
-            </h2>
-            <form id="hamburger-form">
-                <button type="button" id="hamburger-bar">
-                    <img alt="hamburger-bar" src="../../src/assets/icons/hamburger-bar.png">
-                </button>
-                <button type="button" id="hamburger-bar-cross">
-                    <img alt="hamburger-bar-cross" src="../../src/assets/icons/hamburger-bar-cross.png">
-                </button>
-            </form>
-        </section>
-        <ul id="nav-menu">
-            <li><a href="/html/hod_view/apply_student.html">New Applications</a></li>
-            <li><a href="/html/hod_view/view_applications.html">View Applications</a></li>
-            <li><a href="/html/hod_view/bursary_details.html">Bursary Details</a></li>
-            <li>
-                <button id="logInButton" type="button" title="Log In">Log In</button>
-                <button id="logOutButton" type="button" title="Log Out">Log Out</button>
-            </li>
-        </ul>
-    </nav>
-`;
+    fetch("../../html/nav_bar/nav_bar.html", () => {});
+    //     const navHtml = `
+    //     <nav>
+    //         <section id="hamburger-section">
+    //             <h2 id="hamburger-section-header">
+    //                 <img alt="bbd_logo" src="../../../src/assets/icons/bbd-logo.svg" id="nav-logo">
+    //                 <a href="/">Ukukhula Bursary</a>
+    //             </h2>
+    //             <form id="hamburger-form">
+    //                 <button type="button" id="hamburger-bar">
+    //                     <img alt="hamburger-bar" src="../../src/assets/icons/hamburger-bar.png">
+    //                 </button>
+    //                 <button type="button" id="hamburger-bar-cross">
+    //                     <img alt="hamburger-bar-cross" src="../../src/assets/icons/hamburger-bar-cross.png">
+    //                 </button>
+    //             </form>
+    //         </section>
+    //         <ul id="nav-menu">
+    //             <li><a href="/html/hod_view/apply_student.html">New Applications</a></li>
+    //             <li><a href="/html/hod_view/view_applications.html">View Applications</a></li>
+    //             <li><a href="/html/hod_view/bursary_details.html">Bursary Details</a></li>
+    //             <li>
+    //                 <button id="logInButton" type="button" title="Log In">Log In</button>
+    //                 <button id="logOutButton" type="button" title="Log Out">Log Out</button>
+    //             </li>
+    //         </ul>
+    //     </nav>
+    // `;
 
     document.body.insertAdjacentHTML("afterbegin", navHtml);
   }
@@ -72,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   hamburgerBar.classList.add("open");
   hamburgerBarCross.classList.add("close");
-  navMenu.classList.add("close");
 
   hamburgerBar.onclick = () => {
     hamburgerBar.classList.remove("open");
@@ -102,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const homeMenu = document.querySelector("nav");
-  
+
   let homeMenuHeight = homeMenu.offsetHeight;
 
   const homeBody = document.getElementById("home-body");
