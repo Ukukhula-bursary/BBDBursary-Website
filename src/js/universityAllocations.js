@@ -1,4 +1,11 @@
-console.log(localStorage.getItem("userRole"));
+if (
+  !localStorage
+    .getItem("userRole")
+    .includes(["BBDAdmin_Finance", "BBDAdmin_Reviewers", "BBDSuperAdmin"]) &&
+  !localStorage.getItem("isSessionActive")
+) {
+  window.location.href = "/";
+}
 
 const getAllocationByIdButton = document.getElementById(
   "university-allocation-by-id-button"

@@ -1,3 +1,12 @@
+if (
+  !localStorage
+    .getItem("userRole")
+    .includes(["BBDAdmin_Finance", "BBDAdmin_Reviewers", "BBDSuperAdmin"]) &&
+  !localStorage.getItem("isSessionActive")
+) {
+  window.location.href = "/";
+}
+
 const allAllocationsSection = document.getElementById("all-uni-allocations");
 const getAllUniversityAllocationsButton = document.getElementById(
   "get-all-uni-allocations"

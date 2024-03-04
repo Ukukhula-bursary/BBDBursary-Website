@@ -1,3 +1,12 @@
+if (
+  !localStorage
+    .getItem("userRole")
+    .includes(["HOD", "Student", "UniversityAdmin"]) &&
+  !localStorage.getItem("isSessionActive")
+) {
+  window.location.href = "/";
+}
+
 // fill in these with API
 
 let university_choices = [

@@ -1,7 +1,8 @@
 if (
   !localStorage
     .getItem("userRole")
-    .includes(["BBDAdmin_Finance", "BBDAdmin_Reviewers", "BBDSuperAdmin"])
+    .includes(["BBDAdmin_Finance", "BBDAdmin_Reviewers", "BBDSuperAdmin"]) &&
+  !localStorage.getItem("isSessionActive")
 ) {
   window.location.href = "/";
 }
