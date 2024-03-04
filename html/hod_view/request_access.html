@@ -4,22 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../styles/hod/styles_request_access.css" rel="stylesheet">
+    <link href="styles/styles_request_access.css" rel="stylesheet">
+    <link href="styles/apply_student.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Download fonts locally -->
     <link rel="shortcut icon" href="">
     <title>BBD Ukukhula Bursary - Request to HOD Access</title>
 </head>
-<script src="../../src/js/hod/hod_js.js" defer></script>
+<script src="src1/hod_student_app.js" defer></script>
+<script src="src/api_request_access.js" defer></script>
 
 <body>
     <main id="home-body">
+        <section id="loading"></section>
+        <section id="loading-grey-out"></section>
+        <p id="loading-message"></p>
         <section id="home-section-request-access" class="home-section">
             <h2>
                 <img alt="graduation-cap" src="../../src/assets/icons/graduation-cap.jfif" id="request-access-icon"
                     class="section-icons">
                 Request Access to Ukukhula Bursary System 
             </h2>
+            <section id="get-active-student">
+                <section id="resultPopUp">
+                    <h3 id="resultMessage">
+                    </h3>
+                    <section id="resultMessageButtons">
+                    </section>
+                </section>
             <section id="get-registered-university">
                 <h3>
                     Select the university where you work
@@ -76,6 +88,9 @@
                                     title="Phone Number: Must start with  0 and be followed by  9 digits." type="tel"
                                     id="phone-number" name="phone-number" required placeholder="Enter Your Phone Number">
                             </label>
+                            <button id="request_access_button">
+                                Submit Application
+                            </button>
                         </form>
                     </section>
                 </section>

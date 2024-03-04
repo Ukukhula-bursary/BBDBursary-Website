@@ -32,7 +32,7 @@ body {
 
 #nav {
     background-color: var(--primary-color);
-    /* position: fixed; */
+    position: fixed;
     display: flex;
     top: 0;
     width: 100%;
@@ -113,10 +113,6 @@ body {
     justify-content: flex-start;
     flex-wrap: wrap;
     padding: 5px;
-    text-align: center;
-    gap: 5vw;
-    margin: 2vw;
-
 }
 
 .home-section {
@@ -300,11 +296,11 @@ a.social-link-icons:active {
 
 .generic-form_request-access {
     display: none;
-    width: 100%;
+    width:100%;
 }
 
 #generic-form {
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 70%;
     border-radius: 1rem;
@@ -648,16 +644,16 @@ a.social-link-icons:active {
     }
 
     #generic-form {
-        display: flex;
+        display: none;
         flex-direction: column;
         width: 80vw;
         border-radius: 1rem;
         margin-top: 1rem;
     }
-
+   
     .generic-form_request-access {
         display: none;
-        width: 100%;
+    width: 100%;
     }
 
     #generic-form label {
@@ -819,23 +815,64 @@ tr:nth-child(even) {
     margin: 2rem;
 }
 
-#hod-dashboard-wrapper {
-    justify-content: center;
+#grid1 {
+    background-color: #2B7A78;
 }
 
-#hod-dashboard-wrapper>.item {
-    flex-direction: column;
-    background-color: var(--secondary-color);
+#grid2 {
+    background-color: aquamarine;
+}
+
+#grid3 {
+    background-color: palevioletred;
+}
+
+#grid4 {
+    background-color: orange;
+}
+
+#grid1,
+#grid2,
+#grid3,
+#grid4 {
+    height: 12rem;
+    overflow: hidden;
     display: flex;
-    width: 75vw;
-    height: auto;
-    flex-wrap: wrap;
-    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+}
+
+.grid-images {
+    /* width: 30rem; */
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+}
+
+.grid-text {
+    position: absolute;
+}
+
+/* #get-registered-university {
+}
+
+#get-registered-university>h3,h4{
+    display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    color: var(--text-color);
-    padding: 2rem;
+} */
+
+#get-registered-university {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+#get-registered-university > select, button {
+    padding: 1rem;
+    margin: 1rem;
 }
 
 label {
@@ -849,26 +886,4 @@ label>input {
     width: 55vw;
     text-align: center;
     height: 3vw;
-}
-
-textarea {
-    width: 55vw;
-}
-
-#ethnicity {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 55vw;
-    text-align: center;
-}
-
-input[type=radio] {
-    width: 100%;
-    height: 3vw;
-}
-
-#page_header {
-    color: #17252A;
-    background-color: #2B7A78;
 }
