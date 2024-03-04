@@ -14,17 +14,58 @@
         </form>
     </section>
     <ul id="nav-menu">
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/html/admin_view/admin_dashboard.html">Dashboard</a></li>
-        <li><a href="/html/admin_view/add_institution.html">Add Institution</a></li>
-        <li><a href="/html/admin_view/add_university_head_of_department.html">Add University Head Of Department</a></li>
-        <li><a href="/html/admin_view/add_an_admin.html">Add An Admin</a></li>
-        <li><a href="/html/admin_view/review_university_applications.html">Review University Applications</a></li>
-        <li><a href="/html/admin_view/review_a_student_application.html">Review A Student Application</a></li>
-        <li><a href="#">Allocate Funds</a></li>
         <li>
-            <button id="logInButton" type="button" title="Log In">Log In</button>
-            <button id="logOutButton" type="button" title="Log Out">Log Out</button>
+            <a href="/index.html">Home</a>
+        </li>
+        <li>
+            <a href="/html/admin_view/admin_dashboard.html">Dashboard</a>
+        </li>
+        <li>
+            <a href="#">Admin</a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="/html/admin_view/allocate_funds.html">Allocate Funding</a>
+                </li>
+                <li>
+                    <a href="/html/admin_view/add_an_admin.html">Add Admin</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Students</a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="/html/admin_view/review_a_student_application.html">Review Applications</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Universities</a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="/html/admin_view/add_university_head_of_department.html">Add Administrator</a>
+                </li>
+                <li>
+                    <a href="/html/admin_view/add_institution.html">Add Institution</a>
+                </li>
+                <li>
+                    <a href="/html/admin_view/review_university_applications.html">Review Applications</a>
+                </li>
+            </ul>
         </li>
     </ul>
+    <section>
+        <button
+            id="logInButton"
+            class="logging-buttons"
+            type="button"
+            title="Log In"
+        >Log In</button>
+        <button
+            id="logOutButton"
+            class="logging-buttons"
+            type="button"
+            title="Log Out"
+        >Log Out</button>
+    </section>
 </nav>

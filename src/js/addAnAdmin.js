@@ -1,8 +1,15 @@
-console.log(localStorage.getItem("userRole"));
-console.log(localStorage);
-// if (localStorage.getItem("userRole") !== "admin") {
-//   window.location.href = "../../index.html";
-// }
+const BBD_ADMIN_ROLES = [
+  "ROLE_BBDAdmin_Finance",
+  "ROLE_BBDAdmin_Reviewers",
+  "ROLE_BBDSuperAdmin",
+];
+
+if (
+  !BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) ||
+  localStorage.getItem("isSessionActive") === "false"
+) {
+  window.location.href = "/";
+}
 
 const token = localStorage.getItem("jwtToken");
 let tokenObj = JSON.parse(token); //<--- Take string from storage and parse it to an object.

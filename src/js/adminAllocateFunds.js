@@ -1,8 +1,15 @@
-console.log(localStorage.getItem("userRole"));
+const BBD_ADMIN_ROLES = [
+  "ROLE_BBDAdmin_Finance",
+  "ROLE_BBDAdmin_Reviewers",
+  "ROLE_BBDSuperAdmin",
+];
 
-// if (localStorage.getItem("userRole") !== "admin") {
-//   window.location.href = "../../index.html";
-// }
+if (
+  !BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) ||
+  localStorage.getItem("isSessionActive") === "false"
+) {
+  window.location.href = "/";
+}
 
 const listApplicationsTesting = () => {
   return [

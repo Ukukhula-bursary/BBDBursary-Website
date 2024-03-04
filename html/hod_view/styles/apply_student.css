@@ -1,0 +1,175 @@
+#choose-application-section {
+    background-color: rgb(18, 45, 54);
+    display: flex;
+    flex-direction: row;
+    gap: 5vh;
+    width: 96vw;
+    margin-right: 2vw;
+    margin-left: 2vw;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.choose-application {
+    margin: 5vh;
+    width: 25vw;
+    height: 25vw;
+
+    border-radius: 50%;
+
+    font-size: 2.5vw;
+
+
+}
+
+#get-active-student {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+#get-active-student>select,
+button {
+    padding: 1rem;
+    margin: 1rem;
+}
+
+#get-registered-university {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+#get-registered-university>select,
+button {
+    padding: 1rem;
+    margin: 1rem;
+}
+
+#loading {
+    width: 5rem;
+    height: 5rem;
+    border: 1rem solid #f3f3f3;
+    border-top: 1em solid #9c41f2;
+    border-radius: 100%;
+    margin: auto;
+    visibility: hidden;
+    animation: spin 1s infinite linear;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+#loading.display {
+    visibility: visible;
+}
+
+#loading-message {
+    display: none;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#loading-message {
+    text-align: center;
+}
+
+#loading-grey-out {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: #8C92AC;
+    opacity: 0.75;
+    position: fixed;
+    z-index: 99;
+    display: none;
+}
+
+#resultPopUp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    width: 50vh;
+    height: 50vh;
+    background-color: black;
+    color: white;
+}
+
+#resultMessage {
+    width: 50vh;
+    height: 35vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#resultMessageButtons {
+    display: flex;
+    /* background-color: #9c41f2; */
+    /* z-index: 100; */
+}
+
+input[type="range"] {
+    width: 55vw;
+    border-radius: 20rem;
+    background-size: 70% 100%;
+    height: 10rem;
+}
+
+#bursary-amount-value {
+    text-align: center;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vw;
+}
+
+label>input {
+    width: 55vw;
+    text-align: center;
+    height: 3vw;
+}
+
+label>textarea {
+    width: 55vw;
+}
+
+#ethnicity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 55vw;
+    text-align: center;
+}
+
+input[type=radio] {
+    width: 100%;
+    height: 3vw;
+}
+
+#page_header {
+    color: #17252A;
+    background-color: #2B7A78;
+}

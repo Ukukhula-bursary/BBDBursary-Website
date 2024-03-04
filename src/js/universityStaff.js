@@ -1,3 +1,16 @@
+const BBD_ADMIN_ROLES = [
+  "ROLE_BBDAdmin_Finance",
+  "ROLE_BBDAdmin_Reviewers",
+  "ROLE_BBDSuperAdmin",
+];
+
+if (
+  !BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) ||
+  localStorage.getItem("isSessionActive") === "false"
+) {
+  window.location.href = "/";
+}
+
 const allUniversityStaff = document.getElementById("all-university-staff");
 
 const addUniversityStaffButton = document.getElementById(

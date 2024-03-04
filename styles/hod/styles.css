@@ -32,7 +32,7 @@ body {
 
 #nav {
     background-color: var(--primary-color);
-    position: fixed;
+    /* position: fixed; */
     display: flex;
     top: 0;
     width: 100%;
@@ -113,6 +113,10 @@ body {
     justify-content: flex-start;
     flex-wrap: wrap;
     padding: 5px;
+    text-align: center;
+    gap: 5vw;
+    margin: 2vw;
+
 }
 
 .home-section {
@@ -255,7 +259,7 @@ section h2 {
 }
 
 #about-us-text p {
-    font-size: 2rem;
+    font-size: 1rem;
 
 }
 
@@ -296,7 +300,7 @@ a.social-link-icons:active {
 
 .generic-form_request-access {
     display: none;
-    width:100%;
+    width: 100%;
 }
 
 #generic-form {
@@ -650,10 +654,10 @@ a.social-link-icons:active {
         border-radius: 1rem;
         margin-top: 1rem;
     }
-   
+
     .generic-form_request-access {
         display: none;
-    width: 100%;
+        width: 100%;
     }
 
     #generic-form label {
@@ -838,7 +842,7 @@ label {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:1vw;
+    gap: 1vw;
 }
 
 label>input {
@@ -847,15 +851,24 @@ label>input {
     height: 3vw;
 }
 
+textarea {
+    width: 55vw;
+}
+
 #ethnicity {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 55vw;
     text-align: center;
-    }
-    
+}
+
 input[type=radio] {
     width: 100%;
     height: 3vw;
+}
+
+#page_header {
+    color: #17252A;
+    background-color: #2B7A78;
 }

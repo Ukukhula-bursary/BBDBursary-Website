@@ -1,4 +1,15 @@
-console.log(localStorage.getItem("userRole"));
+const BBD_ADMIN_ROLES = [
+  "ROLE_BBDAdmin_Finance",
+  "ROLE_BBDAdmin_Reviewers",
+  "ROLE_BBDSuperAdmin",
+];
+
+if (
+  !BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) ||
+  localStorage.getItem("isSessionActive") === "false"
+) {
+  window.location.href = "/";
+}
 
 async function loadTable() {
   populateStatusDropDownByID("filter-approval-status");
