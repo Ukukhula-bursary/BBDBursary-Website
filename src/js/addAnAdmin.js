@@ -1,3 +1,9 @@
+console.log(localStorage.getItem("userRole"));
+console.log(localStorage);
+// if (localStorage.getItem("userRole") !== "admin") {
+//   window.location.href = "../../index.html";
+// }
+
 async function addAnAdmin() {
   const url = "https://bursary-api-1709020026838.azurewebsites.net/roles/";
   return fetch(url, {

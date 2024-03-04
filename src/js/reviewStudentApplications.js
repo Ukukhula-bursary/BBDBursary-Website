@@ -1,3 +1,6 @@
+console.log(localStorage.getItem("userRole"));
+
+
 async function loadTable() {
   populateStatusDropDownByID("filter-section-status");
 

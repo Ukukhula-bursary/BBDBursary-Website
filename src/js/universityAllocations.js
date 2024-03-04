@@ -1,3 +1,5 @@
+console.log(localStorage.getItem("userRole"));
+
 const getAllocationByIdButton = document.getElementById(
   "university-allocation-by-id-button"
 );
