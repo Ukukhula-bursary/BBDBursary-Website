@@ -8,16 +8,19 @@ uploadIdButton.addEventListener("click", (e) => {
   const file = document.getElementById("myFile").files[0];
   const formData = new FormData();
   formData.append("file", file);
-  //console.log(typeof file, file);
-  const url =
-    "https://bursary-api-1709020026838.azurewebsites.net/blob/uploadJpg";
+  console.log(formData);
+  const url = "http://localhost:8090/blob/uploadPdf";
   fetch(url, {
     method: "POST",
     mode: "cors",
-    //headers: { "Content-Type": "Application/json" },
+    // accept: "application/json",
+    // headers: { "Content-Type": "multipart/form-data" },
     body: formData,
   })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((res) => res)
+    .then((data) => {
+      console.log(data);
+      return data;
+    })
     .catch((err) => console.log(err));
 });
