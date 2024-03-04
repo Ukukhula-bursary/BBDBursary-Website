@@ -275,7 +275,7 @@ section h2 {
 
 }
 
-.download-buttons {
+.download-buttons, .upload-buttons {
     background-color: var(--third-color);
     color: var(--text-color);
     padding: 20px;
@@ -289,7 +289,7 @@ section h2 {
 }
 
 
-.download-buttons:hover {
+.download-buttons:hover, .upload-buttons:hover{
     background-color: var(--secondary-color);
     color: var(--fourth-color);
     padding: 20px;
@@ -471,6 +471,7 @@ a.social-link-icons:active {
 .form-section {
     background-color: rgb(18, 45, 54);
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: center;
 }
