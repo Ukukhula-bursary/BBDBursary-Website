@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../styles/hod/styles.css" rel="stylesheet">
+    <link href="styles/apply_student.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Download fonts locally -->
+    <link rel="shortcut icon" href="">
+    <title>BBD Ukukhula Bursary - New Student Applications</title>
+</head>
+<script src="src1/hod_student_app.js" defer></script>
+<script src="src/api_apply_student_new.js" defer></script>
+
+
+<body>
+    <main id="home-body">
+        <section id="loading"></section>
+        <p id="loading-message">"Thank you for your patience, we're working hard to display the content for you!"</p>
+        <section id="home-section-request-access" class="home-section">
+            <h2>
+                <img alt="graduation-cap" src="../../src/assets/icons/graduation-cap.jfif" id="request-access-icon"
+                    class="section-icons">
+                New Student Applications
+            </h2>
+            <section id="apply-student-section">
+                <section id="home-section-generic" class="home-section">
+                    <section id="form-section" id="home-contact-section" class="home-section">
+                        <form id="generic-form" action="#" method="POST">
+                            <section id="resultPopUp">
+                                <h3 id="resultMessage">
+                                </h3>
+                                <section id="resultMessageButtons">
+                                </section>
+                            </section>
+
+                            <label for="firstName-name" id="generic-form-first-name-label" class="new_student_info">
+                                First Name
+                                <input pattern="[a-zA-Z\s]{2,256}$"
+                                    title="First Name: Must be filled, only alphabets and space allowed." type="text"
+                                    id="firstName" name="First Name" required placeholder="Enter First Name">
+                            </label>
+
+                            <label for="lastName" id="generic-form-last-name-label" class="new_student_info">
+                                Last Name
+                                <input pattern="[a-zA-Z\s]{2,256}$"
+                                    title="Last Name: Must be filled, only alphabets and space allowed." type="text"
+                                    id="lastName" name="Last Name" required placeholder="Enter Last Name">
+                            </label>
+
+                            <label for="emailAddress" class="new_student_info">
+                                Email
+                                <input pattern="[A-Za-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,320}$"
+                                    title="Email: Must be in the following order: 'characters@characters.domain'"
+                                    type="email" id="emailAddress" name="emailAddress" required
+                                    placeholder="Enter Your Email Address">
+                            </label>
+
+                            <label for="phone-number" class="new_student_info">
+                                Phone Number
+                                <input pattern="^0[0-9]{9}$"
+                                    title="Phone Number: Must start with  0 and be followed by  9 digits." type="tel"
+                                    id="phone-number" name="phone-number" required
+                                    placeholder="Enter Your Phone Number">
+                            </label>
+
+                            <label for="id-number" class="new_student_info">
+                                ID Number
+                                <input pattern="^[0-9]{13}$" title="ID Number: Enter the student's ID number"
+                                    type="text" id="id-number" name="id-number" required
+                                    placeholder="Enter Your ID Number">
+                            </label>
+
+                            <label class="new_student_info">
+                                Choose an ethnicity
+                                <section id="ethnicity"></section>
+                            </label>
+
+                            <label for="bursary-amount">
+                                Bursary Amount
+                                <section>
+                                    <input type="range" id="bursary-amount" name="bursary-amount" min="0" 
+                                        step="20" value="100" oninput="rangeValue.innerText = this.value"/>
+                                        <p id="rangeValue">100</p>
+                                </section>
+                            </label>
+
+                            <label for="motivation">Write a few sentences on why the student you chose deserves this
+                                bursary</label>
+                            <textarea id="motivation" name="motivation" rows="4" cols="50">
+                            </textarea>
+                            <br>
+                            <button id="application_new_student_button">
+                                Submit Application
+                            </button>
+                            <br>
+                            <br>
+                        </form>
+                    </section>
+                </section>
+    </main>
+</body>
+
+</html>
