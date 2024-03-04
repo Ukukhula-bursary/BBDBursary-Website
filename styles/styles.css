@@ -299,7 +299,7 @@ section h2 {
 
 
 #filter-section {
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
     background-color: var(--fourth-color)
