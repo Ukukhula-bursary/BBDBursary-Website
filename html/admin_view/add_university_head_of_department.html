@@ -11,7 +11,8 @@
         <title>BBD Ukukhula Bursary - Add Head Of Department</title>
     </head>
     <script src="../../src/js/navbarLogic.js" defer></script>
-    <script src="../../src/js/addUniversityHeadOfDepartment.js" defer></script>
+    <script src="../../src/js/universityStaff.js" defer></script>
+
     <body>
         <main id="home-body">
             <section id="home-section-add-institution" class="home-section">
@@ -30,18 +31,11 @@
                             <form
                                 id="generic-form"
                                 class="generic-form"
-                                action="#"
-                                method="POST"
+                               
                             >
-                                <h3 id="successMessage"></h3>
-                                <label for="university-name-drop-down">University Name:</label>
-                                <select id="university-name-drop-down" name="university-name-drop-down" class="buttons">
-                                    <option value="" selected disabled>Select University</option>
-                                </select>
                                 <label for="firstName" class="generic-form-first-name-label">
                                     First Name
-                                </label
-                            >
+                                </label>
                                 <input
                                     pattern="[a-zA-Z\s]{2,256}$"
                                     title="First Name: Must be filled, only alphabets and space allowed."
@@ -64,16 +58,6 @@
                                     required
                                     placeholder="Enter Last Name"
                                 >
-                                <label for="emailAddress">Email</label>
-                                <input
-                                    pattern="[A-Za-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,320}$"
-                                    title="Email: Must be in the following order: 'characters@characters.domain'"
-                                    type="email"
-                                    id="emailAddress"
-                                    name="emailAddress"
-                                    required
-                                    placeholder="Enter Your Email Address"
-                                >
                                 <label for="phone-number">Phone Number</label>
                                 <input
                                     pattern="^0[0-9]{9}$"
@@ -84,12 +68,30 @@
                                     required
                                     placeholder="Enter Your Phone Number"
                                 >
+                                <label for="emailAddress">Email</label>
                                 <input
-                                    type="submit"
-                                    id="submit-button"
-                                    class="buttons"
-                                    value="Add"
+                                    pattern="[A-Za-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,320}$"
+                                    title="Email: Must be in the following order: 'characters@characters.domain'"
+                                    type="email"
+                                    id="email"
+                                    name="emailAddress"
+                                    required
+                                    placeholder="Enter Your Email Address"
                                 >
+                                <label for="university-name">University Name:</label>
+                                <select id="university-name-dropdown" name="university-name" class="buttons">
+                                    <option value="" selected disabled>Select University</option>
+                                </select>
+                                <label for="department-name">Department Name:</label>
+                                <select id="department-name-dropdown" name="department-name" class="buttons">
+                                    <option value="" selected disabled>Select Department</option>
+                                </select>
+                                <button
+                                    type="submit"
+                                    id="add-university-staff-button"
+                                    class="buttons"
+                                    
+                                >Submit</button>
                             </form>
                         </section>
                     </section>
