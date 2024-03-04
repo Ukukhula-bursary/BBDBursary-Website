@@ -253,7 +253,7 @@ function oauth2SignIn() {
 }
 
 function sendToAPI(data) {
-  fetch("http://localhost:8090/Oauth/login", {
+  fetch("https://bursary-api-1709020026838.azurewebsites.net/Oauth/login", {
     method: "POST",
     mode: "cors",
     // headers: {
