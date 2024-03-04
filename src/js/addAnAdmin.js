@@ -8,11 +8,15 @@ const token = localStorage.getItem("jwtToken");
 let tokenObj = JSON.parse(token); //<--- Take string from storage and parse it to an object.
 console.log(tokenObj.token);
 
+var decoded = jwt.verify(tokenObj.token, "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");
+console.log(decoded);
+
 async function addAnAdmin() {
   const url = "https://bursary-api-1709020026838.azurewebsites.net/roles/";
   return fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/json",
     },
   })
