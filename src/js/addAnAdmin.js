@@ -1,3 +1,9 @@
+console.log(localStorage.getItem("userRole"));
+console.log(localStorage);
+// if (localStorage.getItem("userRole") !== "admin") {
+//   window.location.href = "../../index.html";
+// }
+
 async function addAnAdmin() {
   const url = "https://bursary-api-1709020026838.azurewebsites.net/roles/";
   return fetch(url, {
@@ -21,9 +27,8 @@ const Role = {
   BBDSuperAdmin: 1,
   HOD: 5,
   Student: 4,
-  UniversityAdmin: 6
+  UniversityAdmin: 6,
 };
-
 
 async function populateRolesDropdown() {
   selectDropdown.disabled = true;
@@ -57,8 +62,8 @@ async function addAdmin(formData) {
       const data = await response.json();
       return data;
   } catch (error) {
-      console.error("Error adding admin:", error);
-      throw error;
+    console.error("Error adding admin:", error);
+    throw error;
   }
 }
 
@@ -84,7 +89,7 @@ document.getElementById("add-an-admin-form").addEventListener("submit", async fu
       document.getElementById("successMessage").textContent = "Admin added successfully!";
   } catch (error) {
       console.error("Failed to add admin:", error);
-      document.getElementById("successMessage").textContent = "Failed to add admin. Please try again.";
-  }
-});
-
+      document.getElementById("successMessage").textContent =
+        "Failed to add admin. Please try again.";
+    }
+  });

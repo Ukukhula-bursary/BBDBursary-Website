@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </form>
             </section>
             <ul id="nav-menu">
-                <li><a href="/index.html">Home</a></li>
+                 <li><a href="/index.html">Home</a></li>
                 <li><a href="/html/admin_view/admin_dashboard.html">Dashboard</a></li>
                 <li><a href="/html/admin_view/add_institution.html">Add Institution</a></li>
                 <li><a href="/html/admin_view/add_university_head_of_department.html">Add University Head Of Department</a></li>
@@ -25,21 +25,54 @@ document.addEventListener("DOMContentLoaded", function () {
                 <li><a href="/html/admin_view/review_university_applications.html">Review University Applications</a></li>
                 <li><a href="/html/admin_view/review_a_student_application.html">Review A Student Application</a></li>
                 <li><a href="/html/admin_view/allocate_funds.html">Allocate Funds</a></li>
-                <li>
+                 
+
+            </ul>   
+            <section>
                     <button id="logInButton" class="logging-buttons" type="button" title="Log In">Log In</button>
                     <button id="logOutButton" class="logging-buttons" type="button" title="Log Out">Log Out</button>
-                </li>
-            </ul>
+                </section>
         </nav>
     `;
 
     document.body.insertAdjacentHTML("afterbegin", navHtml);
   }
-  //save as html
-  //insert xml
-  // xml http requests ( pass )
 
   createAdminNav();
+
+  function createHodNav() {
+    const navHtml = `
+    <nav id="nav">
+        <section id="hamburger-section">
+            <h2 id="hamburger-section-header">
+                <img alt="bbd_logo" src="../../../src/assets/icons/bbd-logo.svg" id="nav-logo">
+                <a href="/">Ukukhula Bursary</a>
+            </h2>
+            <form id="hamburger-form">
+                <button type="button" id="hamburger-bar">
+                    <img alt="hamburger-bar" src="../../src/assets/icons/hamburger-bar.png">
+                </button>
+                <button type="button" id="hamburger-bar-cross">
+                    <img alt="hamburger-bar-cross" src="../../src/assets/icons/hamburger-bar-cross.png">
+                </button>
+            </form>
+        </section>
+        <ul id="nav-menu">
+            <li><a href="/html/hod_view/apply_student.html">New Applications</a></li>
+            <li><a href="/html/hod_view/view_applications.html">View Applications</a></li>
+            <li><a href="/html/hod_view/bursary_details.html">Bursary Details</a></li>
+            <li>
+                <button id="logInButton" type="button" title="Log In">Log In</button>
+                <button id="logOutButton" type="button" title="Log Out">Log Out</button>
+            </li>
+        </ul>
+    </nav>
+`;
+
+    document.body.insertAdjacentHTML("afterbegin", navHtml);
+  }
+
+  // createHodNav();
 
   const hamburgerBar = document.getElementById("hamburger-bar");
   const hamburgerBarCross = document.getElementById("hamburger-bar-cross");
@@ -87,10 +120,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Save data to sessionStorage
   sessionStorage.setItem("isSessionActive", "true");
-  sessionStorage.setItem("userRole", "none");
+  sessionStorage.setItem("userRole", "admin");
 
   // Get saved data from sessionStorage
   let isSessionActive = sessionStorage.getItem("isSessionActive");
+
   let logInButton = document.querySelector("#logInButton");
   let logOutButton = document.querySelector("#logOutButton");
 
@@ -110,7 +144,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     logInButton.classList.add("open");
     logInButton.classList.remove("close");
+
+    const navMenuHide = () => {
+      navMenu.classList.remove("close");
+      navMenu.classList.add("open");
+      createAdminNav();
+    };
+
+    // navMenuHide();
   }
+
+  logInButton.addEventListener("click", function () {
+    login();
+  });
 });
 
 // This function should be called when the user is redirected back to your application with the token
@@ -128,7 +174,8 @@ function handleTokenResponse() {
 
 const YOUR_CLIENT_ID =
   "509502634606-7bcfbabbs4mmfiphg8ae4tn4djvom8rv.apps.googleusercontent.com";
-const YOUR_REDIRECT_URI = "http://localhost:8080";
+const YOUR_REDIRECT_URI =
+  "https://bbd-bursary-website-git-main-ukukhula.vercel.app/index.html";
 
 var fragmentString = location.hash.substring(1);
 
@@ -151,7 +198,7 @@ if (Object.keys(params).length > 0) {
 // If there's an access token, try an API request.
 // Otherwise, start OAuth 2.0 flow.
 function login() {
-  var params = JSON.parse(localStorage.getItem("oauth2-test-params"));
+  const params = JSON.parse(localStorage.getItem("oauth2-test-params"));
   if (params && params["access_token"]) {
     var xhr = new XMLHttpRequest();
     xhr.open(
@@ -239,3 +286,17 @@ function sendToAPI(data) {
 }
 
 //////////////////////////////////////
+
+console.log(`Current user role = {${localStorage.getItem("userRole")}}`);
+
+// if (localStorage.getItem("userRole") === "admin") {
+//   console.log("show admin view");
+//   window.location.href = "html/admin-view/admin_dashboard.html";
+// } else if (localStorage.getItem("userRole") === "HOD") {
+//   console.log("show HOD view");
+//   window.location.href = "html/hod_view/hod_dashboard.html";
+// } else if (localStorage.getItem("userRole") === "Student") {
+//   console.log("show Student view");
+// } else {
+//   window.location.href = "index.html";
+// }

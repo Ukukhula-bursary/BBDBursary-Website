@@ -1,3 +1,9 @@
+console.log(localStorage.getItem("userRole"));
+
+// if (localStorage.getItem("userRole") !== "admin") {
+//   window.location.href = "../../index.html";
+// }
+
 const listApplicationsTesting = () => {
   return [
     {
