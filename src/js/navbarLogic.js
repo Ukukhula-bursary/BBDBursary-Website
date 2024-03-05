@@ -253,7 +253,7 @@ function sendToAPI(data) {
     });
 }
 
-function setViews(){
+async function setViews(){
   if (
     BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
     localStorage.getItem("isSessionActive") === "true"
