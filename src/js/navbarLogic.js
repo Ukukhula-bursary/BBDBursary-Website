@@ -29,18 +29,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   const UNIVERSITY_ADMIN_ROLES = ["ROLE_HOD", "ROLE_UniversityAdmin"];
   const STUDENT_ADMIN_ROLES = ["ROLE_Student"];
-  // const universityRoles =
 
-  console.log(`Current user role = {${localStorage.getItem("userRole")}}`);
-
-  //wrap setView fn()
   if (
     BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
     localStorage.getItem("isSessionActive") === "true"
   ) {
     // see admin navbar///////////////////
-    console.log("showing ADMIN Navbar");
-
     const adminNavHTML = await createAdminNav();
     document.body.insertAdjacentHTML("afterbegin", adminNavHTML);
   } else if (
@@ -48,22 +42,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     localStorage.getItem("isSessionActive") === "true"
   ) {
     //see head of department navbar/////////////
-
-    console.log("showing HOD Navbar");
-
     const headOfDepartmentNavHTML = await createHeadOfDepartmentNav();
     document.body.insertAdjacentHTML("afterbegin", headOfDepartmentNavHTML);
   } else if (STUDENT_ADMIN_ROLES.includes(localStorage.getItem("userRole"))) {
     //see student navbar/////////////
 
-    console.log("student Navbar ");
-
     const visitorNavHTML = await createVisitorNav();
     document.body.insertAdjacentHTML("afterbegin", visitorNavHTML);
   } else {
     // see visitor navbar/////////////
-
-    console.log("visitor view: No  valid role found!");
     const visitorNavHTML = await createVisitorNav();
     document.body.insertAdjacentHTML("afterbegin", visitorNavHTML);
   }
@@ -121,16 +108,12 @@ document.addEventListener("DOMContentLoaded", async function () {
       localStorage.getItem("userRole")
     )
   ) {
-    console.log("session is active");
-
     logInButton.classList.add("close");
     logInButton.classList.remove("open");
 
     logOutButton.classList.remove("close");
     logOutButton.classList.add("open");
   } else {
-    console.log("session is not active");
-
     logOutButton.classList.remove("open");
     logOutButton.classList.add("close");
 
@@ -142,7 +125,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       navMenu.classList.add("open");
     };
 
-    // navMenuHide();
+    navMenuHide();
   }
 
   logInButton.addEventListener("click", function () {
@@ -257,15 +240,11 @@ function sendToAPI(data) {
   fetch("https://bursary-api-1709020026838.azurewebsites.net/Oauth/login", {
     method: "POST",
     mode: "cors",
-    // headers: {
-    //     'Content-Type': 'application/json'
-    // },
-    body: JSON.stringify({ responseData: data }), // Assuming data needs parsing
+    body: JSON.stringify({ responseData: data }),
   })
     .then((response) => {
-      // alert(response.json());
       if (response.ok) {
-        return response.json(); // Parse response JSON
+        return response.json();
       } else {
         console.error("Failed to send data to API.");
       }
