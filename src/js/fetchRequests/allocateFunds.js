@@ -39,7 +39,10 @@ getAllUniversityAllocationsButton.addEventListener("click", () => {
 
   fetch(url, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
     .then((data) => {
@@ -56,7 +59,10 @@ getAllocationsForYearButton.addEventListener("click", () => {
 
   fetch(url, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
     .then((data) => {
@@ -71,7 +77,10 @@ getAllocationByNameButton.addEventListener("click", () => {
 
   fetch(url, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
     .then((data) => {
@@ -91,7 +100,10 @@ getRemainingAllocationButton.addEventListener("click", () => {
 
   fetch(url, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
     .then((data) => {

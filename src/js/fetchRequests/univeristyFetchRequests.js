@@ -19,6 +19,8 @@ async function getAllUniversities() {
   return fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+
       "Content-Type": "application/json",
     },
   })
@@ -41,7 +43,10 @@ addNewUniversityButton.addEventListener("click", (e) => {
   fetch(url, {
     method: "POST",
     mode: "cors",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       universityName: universityName,
     }),

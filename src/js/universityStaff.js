@@ -69,6 +69,8 @@ async function getAllDepartments() {
   return fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+
       "Content-Type": "application/json",
     },
   })
@@ -110,7 +112,10 @@ addUniversityStaffButton.addEventListener("click", (e) => {
   fetch(url, {
     method: "POST",
     mode: "cors",
-    headers: { "Content-Type": "Application/json" },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      "Content-Type": "Application/json",
+    },
     body: JSON.stringify({
       firstName: document.getElementById("firstName").value,
       lastName: document.getElementById("lastName").value,

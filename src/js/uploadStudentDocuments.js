@@ -14,6 +14,7 @@ uploadIdButton.addEventListener("click", (e) => {
   fetch(url, {
     method: "POST",
     mode: "cors",
+    headers: { Authorization: `Bearer ${localStorage.getItem("jwtToken")}` },
     body: formData,
   })
     .then((res) => res)
@@ -36,6 +37,7 @@ uploadTranscriptButton.addEventListener("click", (e) => {
   fetch(url, {
     method: "POST",
     mode: "cors",
+    headers: { Authorization: `Bearer ${localStorage.getItem("jwtToken")}` },
     body: formData,
   })
     .then((res) => res)
@@ -58,6 +60,7 @@ uploadCvButton.addEventListener("click", (e) => {
   fetch(url, {
     method: "POST",
     mode: "cors",
+    headers: { Authorization: `Bearer ${localStorage.getItem("jwtToken")}` },
     body: formData,
   })
     .then((res) => res)
