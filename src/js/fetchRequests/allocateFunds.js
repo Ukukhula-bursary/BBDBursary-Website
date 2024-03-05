@@ -48,7 +48,7 @@ getAllUniversityAllocationsButton.addEventListener("click", () => {
     .then((data) => {
       console.log(data);
 
-      allAllocationsSection.innerHTML += data;
+      allAllocationsSection.textContent = data;
     })
     .catch((err) => console.log(err));
 });
@@ -66,7 +66,7 @@ getAllocationsForYearButton.addEventListener("click", () => {
   })
     .then((res) => res.json())
     .then((data) => {
-      spentByYearSpan.innerHTML += data;
+      spentByYearSpan.textContent = data;
     })
     .catch((err) => console.log(err));
 });
@@ -85,7 +85,7 @@ getAllocationByNameButton.addEventListener("click", () => {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      universityNameSpan.innerHTML += data;
+      universityNameSpan.textContent = data;
     })
     .catch((err) => console.log(err));
 });
@@ -108,7 +108,7 @@ getRemainingAllocationButton.addEventListener("click", () => {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      universityNameSpan.innerHTML += data;
+      universityNameSpan.textContent = data;
     })
     .catch((err) => console.log(err));
 });

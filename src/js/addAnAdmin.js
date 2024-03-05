@@ -70,6 +70,7 @@ async function addAdmin(formData) {
       method: "POST",
       mode: "cors",
       headers: {
+        Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),

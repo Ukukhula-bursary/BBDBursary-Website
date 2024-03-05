@@ -47,7 +47,7 @@ getAllocationByIdButton.addEventListener("click", (e) => {
     },
   })
     .then((res) => res.json())
-    .then((data) => (displayUniversityAllocationId.innerHTML += `${data}`))
+    .then((data) => (displayUniversityAllocationId.textContent = `${data}`))
     .catch((err) => console.log(err));
 });
 
@@ -63,7 +63,7 @@ getAllUniversityAllocationsButton.addEventListener("click", (e) => {
     },
   })
     .then((res) => res.json())
-    .then((data) => (displayAllUniversityAllocations.innerHTML += `${data}`))
+    .then((data) => (displayAllUniversityAllocations.textContent = `${data}`))
     .catch((err) => console.log(err));
 });
 
@@ -113,6 +113,6 @@ getTotalSpentButton.addEventListener("click", (e) => {
     },
   })
     .then((res) => res.json())
-    .then((data) => (displayTotalSpent.innerHTML += `${data}`))
+    .then((data) => (displayTotalSpent.textContent = `${data}`))
     .catch((err) => console.log(err));
 });
