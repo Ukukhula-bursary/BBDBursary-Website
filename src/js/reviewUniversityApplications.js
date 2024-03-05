@@ -134,6 +134,7 @@ async function getAllUniversities() {
   return fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
       "Content-Type": "application/json",
     },
   })

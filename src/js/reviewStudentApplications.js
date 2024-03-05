@@ -209,6 +209,7 @@ async function getAllStudentApplications() {
   return fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
       "Content-Type": "application/json",
     },
   })
@@ -228,6 +229,7 @@ async function getAllStatuses() {
   return fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
       "Content-Type": "application/json",
     },
   })
@@ -264,6 +266,7 @@ async function updateStatus(applicationID, statusID, reviewerComment) {
   return fetch(url, {
     method: "PUT",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
       Accept: "application/json",
       "Content-Type": "application/json",
     },

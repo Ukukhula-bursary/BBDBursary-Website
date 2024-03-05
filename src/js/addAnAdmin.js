@@ -12,10 +12,13 @@ if (
 }
 
 const token = localStorage.getItem("jwtToken");
-let tokenObj = JSON.parse(token); //<--- Take string from storage and parse it to an object.
+const tokenObj = JSON.parse(token); //<--- Take string from storage and parse it to an object.
 console.log(tokenObj.token);
 
-var decoded = jwt.verify(tokenObj.token, "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");
+const decoded = jwt.verify(
+  tokenObj.token,
+  "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"
+);
 console.log(decoded);
 
 async function addAnAdmin() {
