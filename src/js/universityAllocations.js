@@ -42,11 +42,12 @@ getAllocationByIdButton.addEventListener("click", (e) => {
   fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
       "Content-Type": "application/json",
     },
   })
     .then((res) => res.json())
-    .then((data) => (displayUniversityAllocationId.innerHTML += `${data}`))
+    .then((data) => (displayUniversityAllocationId.textContent = `${data}`))
     .catch((err) => console.log(err));
 });
 
@@ -56,11 +57,13 @@ getAllUniversityAllocationsButton.addEventListener("click", (e) => {
   fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+
       "Content-Type": "application/json",
     },
   })
     .then((res) => res.json())
-    .then((data) => (displayAllUniversityAllocations.innerHTML += `${data}`))
+    .then((data) => (displayAllUniversityAllocations.textContent = `${data}`))
     .catch((err) => console.log(err));
 });
 
@@ -69,7 +72,10 @@ updateAllFundsButton.addEventListener("click", (e) => {
   const url = "/universities/allocate-to-all";
   fetch(url, {
     method: "PATCH",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({ Amount: updatedAmount }),
   })
     .then((res) => res.json())
@@ -83,7 +89,10 @@ addNewAllocationButton.addEventListener("click", (e) => {
   const url = "/universities/addNew";
   fetch(url, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({ Amount: value }),
   })
     .then((res) => res.json())
@@ -98,10 +107,12 @@ getTotalSpentButton.addEventListener("click", (e) => {
   fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+
       "Content-Type": "application/json",
     },
   })
     .then((res) => res.json())
-    .then((data) => (displayTotalSpent.innerHTML += `${data}`))
+    .then((data) => (displayTotalSpent.textContent = `${data}`))
     .catch((err) => console.log(err));
 });

@@ -134,6 +134,7 @@ async function getAllUniversities() {
   return fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
       "Content-Type": "application/json",
     },
   })
@@ -192,6 +193,7 @@ async function getAllStatuses() {
   return fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
       "Content-Type": "application/json",
     },
   })
@@ -225,6 +227,8 @@ async function getAllUniversityApplications() {
   return fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+
       "Content-Type": "application/json",
     },
   })

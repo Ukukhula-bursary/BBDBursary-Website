@@ -11,11 +11,22 @@ if (
   window.location.href = "/";
 }
 
+const token = localStorage.getItem("jwtToken");
+const tokenObj = JSON.parse(token); //<--- Take string from storage and parse it to an object.
+console.log(tokenObj.token);
+
+const decoded = jwt.verify(
+  tokenObj.token,
+  "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"
+);
+console.log(decoded);
+
 async function addAnAdmin() {
   const url = "https://bursary-api-1709020026838.azurewebsites.net/roles/";
   return fetch(url, {
     method: "GET",
     headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
       "Content-Type": "application/json",
     },
   })
@@ -58,6 +69,7 @@ async function addAdmin(formData) {
       method: "POST",
       mode: "cors",
       headers: {
+        Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),

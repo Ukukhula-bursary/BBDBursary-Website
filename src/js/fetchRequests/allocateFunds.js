@@ -39,13 +39,16 @@ getAllUniversityAllocationsButton.addEventListener("click", () => {
 
   fetch(url, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
 
-      allAllocationsSection.innerHTML += data;
+      allAllocationsSection.textContent = data;
     })
     .catch((err) => console.log(err));
 });
@@ -56,11 +59,14 @@ getAllocationsForYearButton.addEventListener("click", () => {
 
   fetch(url, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
     .then((data) => {
-      spentByYearSpan.innerHTML += data;
+      spentByYearSpan.textContent = data;
     })
     .catch((err) => console.log(err));
 });
@@ -71,12 +77,15 @@ getAllocationByNameButton.addEventListener("click", () => {
 
   fetch(url, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      universityNameSpan.innerHTML += data;
+      universityNameSpan.textContent = data;
     })
     .catch((err) => console.log(err));
 });
@@ -91,12 +100,15 @@ getRemainingAllocationButton.addEventListener("click", () => {
 
   fetch(url, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      universityNameSpan.innerHTML += data;
+      universityNameSpan.textContent = data;
     })
     .catch((err) => console.log(err));
 });
