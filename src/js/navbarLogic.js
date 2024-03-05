@@ -31,12 +31,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   const STUDENT_ADMIN_ROLES = ["ROLE_Student"];
   // const universityRoles =
 
-  // Save data Session to localStorage
-  // localStorage.setItem("isSessionActive", "false");
-  // localStorage.setItem("userRole", "ROLE_BBDAdmin_Finance");
-
   console.log(`Current user role = {${localStorage.getItem("userRole")}}`);
 
+  //wrap setView fn()
   if (
     BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
     localStorage.getItem("isSessionActive") === "true"
@@ -150,6 +147,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   logInButton.addEventListener("click", function () {
     login();
+  });
+
+  logOutButton.addEventListener("click", function () {
+    logOut();
   });
 });
 
@@ -274,9 +275,13 @@ function sendToAPI(data) {
       localStorage.setItem("email", data.email);
       localStorage.setItem("userRole", data.userRole);
       localStorage.setItem("isSessionActive", "true");
+      window.location.href = "/";
       console.log("Authenticated");
     })
     .catch((error) => {
       console.error("Error while sending data to API:", error);
     });
+}
+function logOut() {
+  localStorage.clear();F
 }
