@@ -283,5 +283,5 @@ function sendToAPI(data) {
     });
 }
 function logOut() {
-  localStorage.clear();F
+  localStorage.clear();
 }
