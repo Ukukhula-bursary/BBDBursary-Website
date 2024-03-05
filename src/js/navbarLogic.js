@@ -215,7 +215,6 @@ function login() {
   } else {
     oauth2SignIn();
   }
-  location.reload(true);
 }
 
 /*
@@ -276,7 +275,7 @@ function sendToAPI(data) {
       localStorage.setItem("email", data.email);
       localStorage.setItem("userRole", data.userRole);
       localStorage.setItem("isSessionActive", "true");
-      window.location.href = "/";
+      location.reload(true);
       console.log("Authenticated");
     })
     .catch((error) => {
