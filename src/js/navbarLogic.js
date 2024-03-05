@@ -273,6 +273,8 @@ function sendToAPI(data) {
       localStorage.setItem("jwtToken", data.token);
       localStorage.setItem("email", data.email);
       localStorage.setItem("userRole", data.userRole);
+      localStorage.setItem("isSessionActive", "true");
+      console.log("Authenticated");
     })
     .catch((error) => {
       console.error("Error while sending data to API:", error);
