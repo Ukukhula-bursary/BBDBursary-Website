@@ -34,7 +34,39 @@ document.addEventListener("DOMContentLoaded", async function () {
   console.log(`Current user role = {${localStorage.getItem("userRole")}}`);
 
   //wrap setView fn()
-  setViews();
+  if (
+    BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
+    localStorage.getItem("isSessionActive") === "true"
+  ) {
+    // see admin navbar///////////////////
+    console.log("showing ADMIN Navbar");
+
+    const adminNavHTML = await createAdminNav();
+    document.body.insertAdjacentHTML("afterbegin", adminNavHTML);
+  } else if (
+    UNIVERSITY_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
+    localStorage.getItem("isSessionActive") === "true"
+  ) {
+    //see head of department navbar/////////////
+
+    console.log("showing HOD Navbar");
+
+    const headOfDepartmentNavHTML = await createHeadOfDepartmentNav();
+    document.body.insertAdjacentHTML("afterbegin", headOfDepartmentNavHTML);
+  } else if (STUDENT_ADMIN_ROLES.includes(localStorage.getItem("userRole"))) {
+    //see student navbar/////////////
+
+    console.log("student Navbar ");
+
+    const visitorNavHTML = await createVisitorNav();
+    document.body.insertAdjacentHTML("afterbegin", visitorNavHTML);
+  } else {
+    // see visitor navbar/////////////
+
+    console.log("visitor view: No  valid role found!");
+    const visitorNavHTML = await createVisitorNav();
+    document.body.insertAdjacentHTML("afterbegin", visitorNavHTML);
+  }
 
   const hamburgerBar = document.getElementById("hamburger-bar");
   const hamburgerBarCross = document.getElementById("hamburger-bar-cross");
@@ -113,14 +145,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     // navMenuHide();
   }
 
-  logInButton.addEventListener("click",async function  () {
-    await login();
-    setViews();
+  logInButton.addEventListener("click", function () {
+    login();
   });
 
   logOutButton.addEventListener("click", function () {
     logOut();
-    setViews();
   });
 });
 
@@ -162,7 +192,7 @@ if (Object.keys(params).length > 0) {
 
 // If there's an access token, try an API request.
 // Otherwise, start OAuth 2.0 flow.
-async function login() {
+function login() {
   const params = JSON.parse(localStorage.getItem("oauth2-test-params"));
   if (params && params["access_token"]) {
     var xhr = new XMLHttpRequest();
@@ -185,6 +215,7 @@ async function login() {
   } else {
     oauth2SignIn();
   }
+  location.reload(true);
 }
 
 /*
@@ -252,45 +283,7 @@ function sendToAPI(data) {
       console.error("Error while sending data to API:", error);
     });
 }
-
-async function setViews(){
-  if (
-    BBD_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
-    localStorage.getItem("isSessionActive") === "true"
-  ) {
-    // see admin navbar///////////////////
-    console.log("showing ADMIN Navbar");
-
-    const adminNavHTML = await createAdminNav();
-    document.body.insertAdjacentHTML("afterbegin", adminNavHTML);
-  } else if (
-    UNIVERSITY_ADMIN_ROLES.includes(localStorage.getItem("userRole")) &&
-    localStorage.getItem("isSessionActive") === "true"
-  ) {
-    //see head of department navbar/////////////
-
-    console.log("showing HOD Navbar");
-
-    const headOfDepartmentNavHTML = await createHeadOfDepartmentNav();
-    document.body.insertAdjacentHTML("afterbegin", headOfDepartmentNavHTML);
-  } else if (STUDENT_ADMIN_ROLES.includes(localStorage.getItem("userRole"))) {
-    //see student navbar/////////////
-
-    console.log("student Navbar ");
-
-    const visitorNavHTML = await createVisitorNav();
-    document.body.insertAdjacentHTML("afterbegin", visitorNavHTML);
-  } else {
-    // see visitor navbar/////////////
-
-    console.log("visitor view: No  valid role found!");
-    const visitorNavHTML = await createVisitorNav();
-    document.body.insertAdjacentHTML("afterbegin", visitorNavHTML);
-  }
-
-}
-
-
 function logOut() {
   localStorage.clear();
+  location.reload(true);
 }
